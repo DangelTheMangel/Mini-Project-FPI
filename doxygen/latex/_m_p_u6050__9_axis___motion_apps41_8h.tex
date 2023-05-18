@@ -1,0 +1,126 @@
+\hypertarget{_m_p_u6050__9_axis___motion_apps41_8h}{}\doxysection{libraries/\+Grove\+\_\+\+IMU\+\_\+9\+DOF/\+MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.h File Reference}
+\label{_m_p_u6050__9_axis___motion_apps41_8h}\index{libraries/Grove\_IMU\_9DOF/MPU6050\_9Axis\_MotionApps41.h@{libraries/Grove\_IMU\_9DOF/MPU6050\_9Axis\_MotionApps41.h}}
+{\ttfamily \#include \char`\"{}I2\+Cdev.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}helper\+\_\+3dmath.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}MPU6050.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$avr/pgmspace.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_a920ecc1b08bdb8173f4790774000ab6f}{MPU6050\+\_\+\+INCLUDE\+\_\+\+DMP\+\_\+\+MOTIONAPPS41}}
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_af6551f0b4c3964c3128f808e7bf987c7}{DEBUG\+\_\+\+PRINT}}(\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}})
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_a40c71ee610c953dd0e914ece23dde8a5}{DEBUG\+\_\+\+PRINTF}}(\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}},  \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}})
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_a8e30ff0704664fcb13dabf0c4dc5c8f5}{DEBUG\+\_\+\+PRINTLN}}(\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}})
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_ad1937eefa9a7b6d3c9034dd9e62ab114}{DEBUG\+\_\+\+PRINTLNF}}(\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}},  \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}})
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_a46b28dbcdbf39e66ec0ecc073a7345d4}{MPU6050\+\_\+\+DMP\+\_\+\+CODE\+\_\+\+SIZE}}~1962
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_afa62d211d77172f56da13321845e8410}{MPU6050\+\_\+\+DMP\+\_\+\+CONFIG\+\_\+\+SIZE}}~232
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_aef1d5979e111bf2da69c882ac9d5c704}{MPU6050\+\_\+\+DMP\+\_\+\+UPDATES\+\_\+\+SIZE}}~140
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned char dmp\+Memory\mbox{[}\mbox{\hyperlink{_m_p_u6050__6_axis___motion_apps20_8h_a46b28dbcdbf39e66ec0ecc073a7345d4}{MPU6050\+\_\+\+DMP\+\_\+\+CODE\+\_\+\+SIZE}}\mbox{]} \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_a9ef67ec0ac01c37764f8e0f73b1e4b81}{PROGMEM}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_af6551f0b4c3964c3128f808e7bf987c7}\label{_m_p_u6050__9_axis___motion_apps41_8h_af6551f0b4c3964c3128f808e7bf987c7}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!DEBUG\_PRINT@{DEBUG\_PRINT}}
+\index{DEBUG\_PRINT@{DEBUG\_PRINT}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_PRINT}{DEBUG\_PRINT}}
+{\footnotesize\ttfamily \#define DEBUG\+\_\+\+PRINT(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00057}{57}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_a40c71ee610c953dd0e914ece23dde8a5}\label{_m_p_u6050__9_axis___motion_apps41_8h_a40c71ee610c953dd0e914ece23dde8a5}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!DEBUG\_PRINTF@{DEBUG\_PRINTF}}
+\index{DEBUG\_PRINTF@{DEBUG\_PRINTF}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_PRINTF}{DEBUG\_PRINTF}}
+{\footnotesize\ttfamily \#define DEBUG\+\_\+\+PRINTF(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}},  }\item[{}]{\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00058}{58}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_a8e30ff0704664fcb13dabf0c4dc5c8f5}\label{_m_p_u6050__9_axis___motion_apps41_8h_a8e30ff0704664fcb13dabf0c4dc5c8f5}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!DEBUG\_PRINTLN@{DEBUG\_PRINTLN}}
+\index{DEBUG\_PRINTLN@{DEBUG\_PRINTLN}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_PRINTLN}{DEBUG\_PRINTLN}}
+{\footnotesize\ttfamily \#define DEBUG\+\_\+\+PRINTLN(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00059}{59}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_ad1937eefa9a7b6d3c9034dd9e62ab114}\label{_m_p_u6050__9_axis___motion_apps41_8h_ad1937eefa9a7b6d3c9034dd9e62ab114}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!DEBUG\_PRINTLNF@{DEBUG\_PRINTLNF}}
+\index{DEBUG\_PRINTLNF@{DEBUG\_PRINTLNF}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_PRINTLNF}{DEBUG\_PRINTLNF}}
+{\footnotesize\ttfamily \#define DEBUG\+\_\+\+PRINTLNF(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}},  }\item[{}]{\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00060}{60}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_a46b28dbcdbf39e66ec0ecc073a7345d4}\label{_m_p_u6050__9_axis___motion_apps41_8h_a46b28dbcdbf39e66ec0ecc073a7345d4}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!MPU6050\_DMP\_CODE\_SIZE@{MPU6050\_DMP\_CODE\_SIZE}}
+\index{MPU6050\_DMP\_CODE\_SIZE@{MPU6050\_DMP\_CODE\_SIZE}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{MPU6050\_DMP\_CODE\_SIZE}{MPU6050\_DMP\_CODE\_SIZE}}
+{\footnotesize\ttfamily \#define MPU6050\+\_\+\+DMP\+\_\+\+CODE\+\_\+\+SIZE~1962}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00063}{63}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_afa62d211d77172f56da13321845e8410}\label{_m_p_u6050__9_axis___motion_apps41_8h_afa62d211d77172f56da13321845e8410}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!MPU6050\_DMP\_CONFIG\_SIZE@{MPU6050\_DMP\_CONFIG\_SIZE}}
+\index{MPU6050\_DMP\_CONFIG\_SIZE@{MPU6050\_DMP\_CONFIG\_SIZE}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{MPU6050\_DMP\_CONFIG\_SIZE}{MPU6050\_DMP\_CONFIG\_SIZE}}
+{\footnotesize\ttfamily \#define MPU6050\+\_\+\+DMP\+\_\+\+CONFIG\+\_\+\+SIZE~232}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00064}{64}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_aef1d5979e111bf2da69c882ac9d5c704}\label{_m_p_u6050__9_axis___motion_apps41_8h_aef1d5979e111bf2da69c882ac9d5c704}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!MPU6050\_DMP\_UPDATES\_SIZE@{MPU6050\_DMP\_UPDATES\_SIZE}}
+\index{MPU6050\_DMP\_UPDATES\_SIZE@{MPU6050\_DMP\_UPDATES\_SIZE}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{MPU6050\_DMP\_UPDATES\_SIZE}{MPU6050\_DMP\_UPDATES\_SIZE}}
+{\footnotesize\ttfamily \#define MPU6050\+\_\+\+DMP\+\_\+\+UPDATES\+\_\+\+SIZE~140}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00065}{65}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_a920ecc1b08bdb8173f4790774000ab6f}\label{_m_p_u6050__9_axis___motion_apps41_8h_a920ecc1b08bdb8173f4790774000ab6f}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!MPU6050\_INCLUDE\_DMP\_MOTIONAPPS41@{MPU6050\_INCLUDE\_DMP\_MOTIONAPPS41}}
+\index{MPU6050\_INCLUDE\_DMP\_MOTIONAPPS41@{MPU6050\_INCLUDE\_DMP\_MOTIONAPPS41}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{MPU6050\_INCLUDE\_DMP\_MOTIONAPPS41}{MPU6050\_INCLUDE\_DMP\_MOTIONAPPS41}}
+{\footnotesize\ttfamily \#define MPU6050\+\_\+\+INCLUDE\+\_\+\+DMP\+\_\+\+MOTIONAPPS41}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00040}{40}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_m_p_u6050__9_axis___motion_apps41_8h_a9ef67ec0ac01c37764f8e0f73b1e4b81}\label{_m_p_u6050__9_axis___motion_apps41_8h_a9ef67ec0ac01c37764f8e0f73b1e4b81}} 
+\index{MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}!PROGMEM@{PROGMEM}}
+\index{PROGMEM@{PROGMEM}!MPU6050\_9Axis\_MotionApps41.h@{MPU6050\_9Axis\_MotionApps41.h}}
+\doxysubsubsection{\texorpdfstring{PROGMEM}{PROGMEM}}
+{\footnotesize\ttfamily const unsigned char dmp\+Updates \mbox{[}\mbox{\hyperlink{_m_p_u6050__6_axis___motion_apps20_8h_aef1d5979e111bf2da69c882ac9d5c704}{MPU6050\+\_\+\+DMP\+\_\+\+UPDATES\+\_\+\+SIZE}}\mbox{]} PROGMEM}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source_l00080}{80}} of file \mbox{\hyperlink{_m_p_u6050__9_axis___motion_apps41_8h_source}{MPU6050\+\_\+9\+Axis\+\_\+\+Motion\+Apps41.\+h}}.
+

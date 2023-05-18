@@ -1,0 +1,229 @@
+\hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino}{}\doxysection{libraries/\+Seeed\+\_\+\+ICM20600\+\_\+\+AK09918/\+Seeed\+\_\+\+ICM20600\+\_\+\+AK09918-\/master/examples/compass/compass.ino File Reference}
+\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino}\index{libraries/Seeed\_ICM20600\_AK09918/Seeed\_ICM20600\_AK09918-\/master/examples/compass/compass.ino@{libraries/Seeed\_ICM20600\_AK09918/Seeed\_ICM20600\_AK09918-\/master/examples/compass/compass.ino}}
+{\ttfamily \#include \char`\"{}AK09918.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ICM20600.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\item 
+void \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a2caf83bc51248bb06ab915a29e2b8fc8}{calibrate}} (uint32\+\_\+t timeout, int32\+\_\+t $\ast$offsetx, int32\+\_\+t $\ast$offsety, int32\+\_\+t $\ast$offsetz)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_a_k09918_8h_a98c8c5e8a42877a7bd1ac0e272adf028}{AK09918\+\_\+err\+\_\+type\+\_\+t}} \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a49d075376b4370dfdd3eb4bb9704c059}{err}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ac2fb30be1b894e32b31b68bb513262a3}{z}}
+\item 
+\mbox{\hyperlink{class_a_k09918}{AK09918}} \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_acf349734b916fdfc82601a3aa47a9d7c}{ak09918}}
+\item 
+\mbox{\hyperlink{class_i_c_m20600}{ICM20600}} \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aea5c9b89ed066b25942f95415b35e963}{icm20600}} (true)
+\item 
+int16\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aa31250bd8ad7b6e60eb7cfdc5709b701}{acc\+\_\+x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a2edd44395cc97e056ec642808d645127}{acc\+\_\+y}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a269c4f06d5fbe3b801242887a3c621c3}{acc\+\_\+z}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aa73d218073e2bb099d98313bf3f9c7a7}{offset\+\_\+x}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ad57a958db6109608fb28ebd22fcb9021}{offset\+\_\+y}}
+\item 
+int32\+\_\+t \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a8a463c6b58a2b29497d3a777ccc288b1}{offset\+\_\+z}}
+\item 
+double \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a1d3228afa3a1d6773954f40c1e519eb9}{roll}}
+\item 
+double \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a34c057a0378030db67bd6a129f37d938}{pitch}}
+\item 
+double \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ae0de824e4ae55feb3dd4838d75ab332e}{declination\+\_\+shenzhen}} = -\/2.\+2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a2caf83bc51248bb06ab915a29e2b8fc8}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a2caf83bc51248bb06ab915a29e2b8fc8}} 
+\index{compass.ino@{compass.ino}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{calibrate()}{calibrate()}}
+{\footnotesize\ttfamily void calibrate (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{timeout,  }\item[{int32\+\_\+t $\ast$}]{offsetx,  }\item[{int32\+\_\+t $\ast$}]{offsety,  }\item[{int32\+\_\+t $\ast$}]{offsetz }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00096}{96}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{compass.ino@{compass.ino}!loop@{loop}}
+\index{loop@{loop}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00039}{39}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{compass.ino@{compass.ino}!setup@{setup}}
+\index{setup@{setup}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00016}{16}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aa31250bd8ad7b6e60eb7cfdc5709b701}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aa31250bd8ad7b6e60eb7cfdc5709b701}} 
+\index{compass.ino@{compass.ino}!acc\_x@{acc\_x}}
+\index{acc\_x@{acc\_x}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{acc\_x}{acc\_x}}
+{\footnotesize\ttfamily int16\+\_\+t acc\+\_\+x}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00009}{9}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a2edd44395cc97e056ec642808d645127}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a2edd44395cc97e056ec642808d645127}} 
+\index{compass.ino@{compass.ino}!acc\_y@{acc\_y}}
+\index{acc\_y@{acc\_y}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{acc\_y}{acc\_y}}
+{\footnotesize\ttfamily int16\+\_\+t acc\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00009}{9}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a269c4f06d5fbe3b801242887a3c621c3}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a269c4f06d5fbe3b801242887a3c621c3}} 
+\index{compass.ino@{compass.ino}!acc\_z@{acc\_z}}
+\index{acc\_z@{acc\_z}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{acc\_z}{acc\_z}}
+{\footnotesize\ttfamily int16\+\_\+t acc\+\_\+z}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00009}{9}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_acf349734b916fdfc82601a3aa47a9d7c}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_acf349734b916fdfc82601a3aa47a9d7c}} 
+\index{compass.ino@{compass.ino}!ak09918@{ak09918}}
+\index{ak09918@{ak09918}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{ak09918}{ak09918}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_a_k09918}{AK09918}} ak09918}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00007}{7}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ae0de824e4ae55feb3dd4838d75ab332e}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ae0de824e4ae55feb3dd4838d75ab332e}} 
+\index{compass.ino@{compass.ino}!declination\_shenzhen@{declination\_shenzhen}}
+\index{declination\_shenzhen@{declination\_shenzhen}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{declination\_shenzhen}{declination\_shenzhen}}
+{\footnotesize\ttfamily double declination\+\_\+shenzhen = -\/2.\+2}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00014}{14}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a49d075376b4370dfdd3eb4bb9704c059}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a49d075376b4370dfdd3eb4bb9704c059}} 
+\index{compass.ino@{compass.ino}!err@{err}}
+\index{err@{err}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_a_k09918_8h_a98c8c5e8a42877a7bd1ac0e272adf028}{AK09918\+\_\+err\+\_\+type\+\_\+t}} err}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00005}{5}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aea5c9b89ed066b25942f95415b35e963}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aea5c9b89ed066b25942f95415b35e963}} 
+\index{compass.ino@{compass.ino}!icm20600@{icm20600}}
+\index{icm20600@{icm20600}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{icm20600}{icm20600}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_i_c_m20600}{ICM20600}} icm20600(true) (\begin{DoxyParamCaption}\item[{true}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aa73d218073e2bb099d98313bf3f9c7a7}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_aa73d218073e2bb099d98313bf3f9c7a7}} 
+\index{compass.ino@{compass.ino}!offset\_x@{offset\_x}}
+\index{offset\_x@{offset\_x}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{offset\_x}{offset\_x}}
+{\footnotesize\ttfamily int32\+\_\+t offset\+\_\+x}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00010}{10}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ad57a958db6109608fb28ebd22fcb9021}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ad57a958db6109608fb28ebd22fcb9021}} 
+\index{compass.ino@{compass.ino}!offset\_y@{offset\_y}}
+\index{offset\_y@{offset\_y}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{offset\_y}{offset\_y}}
+{\footnotesize\ttfamily int32\+\_\+t offset\+\_\+y}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00010}{10}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a8a463c6b58a2b29497d3a777ccc288b1}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a8a463c6b58a2b29497d3a777ccc288b1}} 
+\index{compass.ino@{compass.ino}!offset\_z@{offset\_z}}
+\index{offset\_z@{offset\_z}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{offset\_z}{offset\_z}}
+{\footnotesize\ttfamily int32\+\_\+t offset\+\_\+z}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00010}{10}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a34c057a0378030db67bd6a129f37d938}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a34c057a0378030db67bd6a129f37d938}} 
+\index{compass.ino@{compass.ino}!pitch@{pitch}}
+\index{pitch@{pitch}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{pitch}{pitch}}
+{\footnotesize\ttfamily double pitch}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00011}{11}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a1d3228afa3a1d6773954f40c1e519eb9}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_a1d3228afa3a1d6773954f40c1e519eb9}} 
+\index{compass.ino@{compass.ino}!roll@{roll}}
+\index{roll@{roll}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{roll}{roll}}
+{\footnotesize\ttfamily double roll}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00011}{11}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}} 
+\index{compass.ino@{compass.ino}!x@{x}}
+\index{x@{x}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily int32\+\_\+t x}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00006}{6}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}} 
+\index{compass.ino@{compass.ino}!y@{y}}
+\index{y@{y}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily int32\+\_\+t y}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00006}{6}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+
+\mbox{\Hypertarget{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ac2fb30be1b894e32b31b68bb513262a3}\label{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_ac2fb30be1b894e32b31b68bb513262a3}} 
+\index{compass.ino@{compass.ino}!z@{z}}
+\index{z@{z}!compass.ino@{compass.ino}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily int32\+\_\+t z}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source_l00006}{6}} of file \mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2examples_2compass_2compass_8ino_source}{compass.\+ino}}.
+

@@ -1,0 +1,16 @@
+digraph "setup"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [label="setup",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="This function when the bord start and setup the bluetooth connection with Grove - Serial Bluetooth v3..."];
+  Node1 -> Node2 [color="steelblue1",style="solid"];
+  Node2 [label="blueToothSerial",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$master_8ino.html#aa708aaae7a8634cd4b103756845be406",tooltip=" "];
+  Node1 -> Node3 [color="steelblue1",style="solid"];
+  Node3 [label="icm20600",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$master_8ino.html#a807c1b84d1f6fbd1f2746b9cbbb06389",tooltip=" "];
+  Node1 -> Node4 [color="steelblue1",style="solid"];
+  Node4 [label="setupBlueToothConnection",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$master_8ino.html#aabec44d551f4da54e5fb45808e722b04",tooltip="inspried by the example code called:Master_button setup code website: https://wiki...."];
+  Node4 -> Node2 [color="steelblue1",style="solid"];
+}

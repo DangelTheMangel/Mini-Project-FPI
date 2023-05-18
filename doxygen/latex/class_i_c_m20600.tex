@@ -1,0 +1,624 @@
+\hypertarget{class_i_c_m20600}{}\doxysection{ICM20600 Class Reference}
+\label{class_i_c_m20600}\index{ICM20600@{ICM20600}}
+
+
+{\ttfamily \#include $<$ICM20600.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_i_c_m20600_acdc8e6970db08d54d634957ee46ab328}{ICM20600}} (bool AD0=true)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_i_c_m20600_af1272a7bec3d5206048ebb4b03acefbb}{get\+Device\+ID}} ()
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a06c9829e1163ceecf36cba40256b4f63}{initialize}} ()
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_ac92b9734c59b9e476ea03bafaa6e2794}{reset}} ()
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a4a39309110365c6be5ca5a34fc2fe4e7}{set\+Power\+Mode}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a65f8161b4c12c97bcc50b4fef5ec8538}{icm20600\+\_\+power\+\_\+type\+\_\+t}} mode)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a2614512f99bae39d50f17b3623faac96}{set\+Sample\+Rate\+Divier}} (uint8\+\_\+t div)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a4502f99495a57156323525ad5c34c230}{set\+Acc\+Scale\+Range}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a37373dd342da2670cbe86a58f8286151}{acc\+\_\+scale\+\_\+type\+\_\+t}} range)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_abd074dc7fa2fb2ffce018849ab1be8ac}{set\+Acc\+Average\+Sample}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_acc590b7b3c0e1dd7ac8ea4dbc03234eb}{acc\+\_\+averaging\+\_\+sample\+\_\+type\+\_\+t}} sample)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a59cedcb14f9ddcc44582256240292646}{set\+Acc\+Output\+Data\+Rate}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_ae52a0dae9f487b0c23a65900c7918027}{acc\+\_\+lownoise\+\_\+odr\+\_\+type\+\_\+t}} odr)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a1136db7e965362a137e3d4a5279f66b4}{set\+Gyro\+Scale\+Range}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a3ce0d44e64e8c098bf2244b8e6a4211b}{gyro\+\_\+scale\+\_\+type\+\_\+t}} range)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a83b276ee895dc06d4dccc1af8e74b462}{set\+Gyro\+Average\+Sample}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a733617ab5ba0d0f7c584e7bb1bee377a}{gyro\+\_\+averaging\+\_\+sample\+\_\+type\+\_\+t}} sample)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a894dc63f69d141de3edb5485f2c3387e}{set\+Gyro\+Output\+Data\+Rate}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_afe59b281fe04af37f916fa4ac2b21f9a}{gyro\+\_\+lownoise\+\_\+odr\+\_\+type\+\_\+t}} odr)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a007ac6ec46e2f93bbdfd630c4b512747}{get\+Acceleration}} (int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}}, int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}}, int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_ac2fb30be1b894e32b31b68bb513262a3}{z}})
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ad626afce415467599cc4fea66f4e6dd9}{get\+AccelerationX}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a50093ad8a077d69b445031bb3f7f358c}{get\+AccelerationY}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ad5bf4a2f2cc620cd2c7629903977f768}{get\+AccelerationZ}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_acaac52808e6374c2695b5814c1a6d55b}{get\+Raw\+AccelerationX}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ae20af375d2f96f037a516aaea5884638}{get\+Raw\+AccelerationY}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ab3d953d90e95ca5b443c133466aeb6a9}{get\+Raw\+AccelerationZ}} (void)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_ac2fd761a601f64b284da26c42d75405d}{get\+Gyroscope}} (int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}}, int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}}, int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_ac2fb30be1b894e32b31b68bb513262a3}{z}})
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a60f53e22da9868b8ed487431440517a2}{get\+GyroscopeX}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_afbcfab87af95d898d17f38613880521f}{get\+GyroscopeY}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_aafdf333eaeae140e2b9a6cf643cfb15f}{get\+GyroscopeZ}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a2b028c3d0be3d41c5e6d7c35dd080586}{get\+Raw\+GyroscopeX}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a75aea524ba62b5922be84c0e67b49815}{get\+Raw\+GyroscopeY}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ad25fd9c3dc00a5aa79b6bf535ba798d1}{get\+Raw\+GyroscopeZ}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_aa1eba63201cfe87bd78bb9aee60c90c9}{get\+Temperature}} (void)
+\item 
+\mbox{\hyperlink{class_i_c_m20600_acdc8e6970db08d54d634957ee46ab328}{ICM20600}} (bool AD0=true)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_i_c_m20600_af1272a7bec3d5206048ebb4b03acefbb}{get\+Device\+ID}} ()
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a06c9829e1163ceecf36cba40256b4f63}{initialize}} ()
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_ac92b9734c59b9e476ea03bafaa6e2794}{reset}} ()
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a4a39309110365c6be5ca5a34fc2fe4e7}{set\+Power\+Mode}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a65f8161b4c12c97bcc50b4fef5ec8538}{icm20600\+\_\+power\+\_\+type\+\_\+t}} mode)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a2614512f99bae39d50f17b3623faac96}{set\+Sample\+Rate\+Divier}} (uint8\+\_\+t div)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a4502f99495a57156323525ad5c34c230}{set\+Acc\+Scale\+Range}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a37373dd342da2670cbe86a58f8286151}{acc\+\_\+scale\+\_\+type\+\_\+t}} range)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_abd074dc7fa2fb2ffce018849ab1be8ac}{set\+Acc\+Average\+Sample}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_acc590b7b3c0e1dd7ac8ea4dbc03234eb}{acc\+\_\+averaging\+\_\+sample\+\_\+type\+\_\+t}} sample)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a59cedcb14f9ddcc44582256240292646}{set\+Acc\+Output\+Data\+Rate}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_ae52a0dae9f487b0c23a65900c7918027}{acc\+\_\+lownoise\+\_\+odr\+\_\+type\+\_\+t}} odr)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a1136db7e965362a137e3d4a5279f66b4}{set\+Gyro\+Scale\+Range}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a3ce0d44e64e8c098bf2244b8e6a4211b}{gyro\+\_\+scale\+\_\+type\+\_\+t}} range)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a83b276ee895dc06d4dccc1af8e74b462}{set\+Gyro\+Average\+Sample}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a733617ab5ba0d0f7c584e7bb1bee377a}{gyro\+\_\+averaging\+\_\+sample\+\_\+type\+\_\+t}} sample)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a894dc63f69d141de3edb5485f2c3387e}{set\+Gyro\+Output\+Data\+Rate}} (\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_afe59b281fe04af37f916fa4ac2b21f9a}{gyro\+\_\+lownoise\+\_\+odr\+\_\+type\+\_\+t}} odr)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_a007ac6ec46e2f93bbdfd630c4b512747}{get\+Acceleration}} (int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}}, int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}}, int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_ac2fb30be1b894e32b31b68bb513262a3}{z}})
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ad626afce415467599cc4fea66f4e6dd9}{get\+AccelerationX}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a50093ad8a077d69b445031bb3f7f358c}{get\+AccelerationY}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ad5bf4a2f2cc620cd2c7629903977f768}{get\+AccelerationZ}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_acaac52808e6374c2695b5814c1a6d55b}{get\+Raw\+AccelerationX}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ae20af375d2f96f037a516aaea5884638}{get\+Raw\+AccelerationY}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ab3d953d90e95ca5b443c133466aeb6a9}{get\+Raw\+AccelerationZ}} (void)
+\item 
+void \mbox{\hyperlink{class_i_c_m20600_ac2fd761a601f64b284da26c42d75405d}{get\+Gyroscope}} (int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af6d3062751bd565decb1a2cd3b63bdb2}{x}}, int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_af64066d134a77e01b3d6eb8da813627a}{y}}, int16\+\_\+t $\ast$\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2examples_2compass_2compass_8ino_ac2fb30be1b894e32b31b68bb513262a3}{z}})
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a60f53e22da9868b8ed487431440517a2}{get\+GyroscopeX}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_afbcfab87af95d898d17f38613880521f}{get\+GyroscopeY}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_aafdf333eaeae140e2b9a6cf643cfb15f}{get\+GyroscopeZ}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a2b028c3d0be3d41c5e6d7c35dd080586}{get\+Raw\+GyroscopeX}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a75aea524ba62b5922be84c0e67b49815}{get\+Raw\+GyroscopeY}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_ad25fd9c3dc00a5aa79b6bf535ba798d1}{get\+Raw\+GyroscopeZ}} (void)
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_aa1eba63201cfe87bd78bb9aee60c90c9}{get\+Temperature}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a16f37f496169c2234a3257a1dec5911c}{\+\_\+addr}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a0209a141ce95777cacbfa71f83871f4a}{\+\_\+buffer}} \mbox{[}16\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a369879ced32242105bd144393a863717}{\+\_\+acc\+\_\+scale}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_i_c_m20600_a45e954d56f8393417fa7b99ebd537fe6}{\+\_\+gyro\+\_\+scale}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source_l00191}{191}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source}{ICM20600.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_i_c_m20600_acdc8e6970db08d54d634957ee46ab328}\label{class_i_c_m20600_acdc8e6970db08d54d634957ee46ab328}} 
+\index{ICM20600@{ICM20600}!ICM20600@{ICM20600}}
+\index{ICM20600@{ICM20600}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{ICM20600()}{ICM20600()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily ICM20600\+::\+ICM20600 (\begin{DoxyParamCaption}\item[{bool}]{AD0 = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_acdc8e6970db08d54d634957ee46ab328}\label{class_i_c_m20600_acdc8e6970db08d54d634957ee46ab328}} 
+\index{ICM20600@{ICM20600}!ICM20600@{ICM20600}}
+\index{ICM20600@{ICM20600}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{ICM20600()}{ICM20600()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily ICM20600\+::\+ICM20600 (\begin{DoxyParamCaption}\item[{bool}]{AD0 = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_i_c_m20600_a007ac6ec46e2f93bbdfd630c4b512747}\label{class_i_c_m20600_a007ac6ec46e2f93bbdfd630c4b512747}} 
+\index{ICM20600@{ICM20600}!getAcceleration@{getAcceleration}}
+\index{getAcceleration@{getAcceleration}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getAcceleration()}{getAcceleration()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::get\+Acceleration (\begin{DoxyParamCaption}\item[{int16\+\_\+t $\ast$}]{x,  }\item[{int16\+\_\+t $\ast$}]{y,  }\item[{int16\+\_\+t $\ast$}]{z }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00339}{339}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a007ac6ec46e2f93bbdfd630c4b512747}\label{class_i_c_m20600_a007ac6ec46e2f93bbdfd630c4b512747}} 
+\index{ICM20600@{ICM20600}!getAcceleration@{getAcceleration}}
+\index{getAcceleration@{getAcceleration}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getAcceleration()}{getAcceleration()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::get\+Acceleration (\begin{DoxyParamCaption}\item[{int16\+\_\+t $\ast$}]{x,  }\item[{int16\+\_\+t $\ast$}]{y,  }\item[{int16\+\_\+t $\ast$}]{z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_ad626afce415467599cc4fea66f4e6dd9}\label{class_i_c_m20600_ad626afce415467599cc4fea66f4e6dd9}} 
+\index{ICM20600@{ICM20600}!getAccelerationX@{getAccelerationX}}
+\index{getAccelerationX@{getAccelerationX}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getAccelerationX()}{getAccelerationX()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+AccelerationX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00345}{345}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_ad626afce415467599cc4fea66f4e6dd9}\label{class_i_c_m20600_ad626afce415467599cc4fea66f4e6dd9}} 
+\index{ICM20600@{ICM20600}!getAccelerationX@{getAccelerationX}}
+\index{getAccelerationX@{getAccelerationX}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getAccelerationX()}{getAccelerationX()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+AccelerationX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a50093ad8a077d69b445031bb3f7f358c}\label{class_i_c_m20600_a50093ad8a077d69b445031bb3f7f358c}} 
+\index{ICM20600@{ICM20600}!getAccelerationY@{getAccelerationY}}
+\index{getAccelerationY@{getAccelerationY}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getAccelerationY()}{getAccelerationY()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+AccelerationY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00350}{350}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a50093ad8a077d69b445031bb3f7f358c}\label{class_i_c_m20600_a50093ad8a077d69b445031bb3f7f358c}} 
+\index{ICM20600@{ICM20600}!getAccelerationY@{getAccelerationY}}
+\index{getAccelerationY@{getAccelerationY}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getAccelerationY()}{getAccelerationY()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+AccelerationY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_ad5bf4a2f2cc620cd2c7629903977f768}\label{class_i_c_m20600_ad5bf4a2f2cc620cd2c7629903977f768}} 
+\index{ICM20600@{ICM20600}!getAccelerationZ@{getAccelerationZ}}
+\index{getAccelerationZ@{getAccelerationZ}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getAccelerationZ()}{getAccelerationZ()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+AccelerationZ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00355}{355}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_ad5bf4a2f2cc620cd2c7629903977f768}\label{class_i_c_m20600_ad5bf4a2f2cc620cd2c7629903977f768}} 
+\index{ICM20600@{ICM20600}!getAccelerationZ@{getAccelerationZ}}
+\index{getAccelerationZ@{getAccelerationZ}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getAccelerationZ()}{getAccelerationZ()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+AccelerationZ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_af1272a7bec3d5206048ebb4b03acefbb}\label{class_i_c_m20600_af1272a7bec3d5206048ebb4b03acefbb}} 
+\index{ICM20600@{ICM20600}!getDeviceID@{getDeviceID}}
+\index{getDeviceID@{getDeviceID}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getDeviceID()}{getDeviceID()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t ICM20600\+::get\+Device\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_af1272a7bec3d5206048ebb4b03acefbb}\label{class_i_c_m20600_af1272a7bec3d5206048ebb4b03acefbb}} 
+\index{ICM20600@{ICM20600}!getDeviceID@{getDeviceID}}
+\index{getDeviceID@{getDeviceID}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getDeviceID()}{getDeviceID()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t ICM20600\+::get\+Device\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_ac2fd761a601f64b284da26c42d75405d}\label{class_i_c_m20600_ac2fd761a601f64b284da26c42d75405d}} 
+\index{ICM20600@{ICM20600}!getGyroscope@{getGyroscope}}
+\index{getGyroscope@{getGyroscope}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getGyroscope()}{getGyroscope()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::get\+Gyroscope (\begin{DoxyParamCaption}\item[{int16\+\_\+t $\ast$}]{x,  }\item[{int16\+\_\+t $\ast$}]{y,  }\item[{int16\+\_\+t $\ast$}]{z }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00376}{376}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_ac2fd761a601f64b284da26c42d75405d}\label{class_i_c_m20600_ac2fd761a601f64b284da26c42d75405d}} 
+\index{ICM20600@{ICM20600}!getGyroscope@{getGyroscope}}
+\index{getGyroscope@{getGyroscope}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getGyroscope()}{getGyroscope()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::get\+Gyroscope (\begin{DoxyParamCaption}\item[{int16\+\_\+t $\ast$}]{x,  }\item[{int16\+\_\+t $\ast$}]{y,  }\item[{int16\+\_\+t $\ast$}]{z }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a60f53e22da9868b8ed487431440517a2}\label{class_i_c_m20600_a60f53e22da9868b8ed487431440517a2}} 
+\index{ICM20600@{ICM20600}!getGyroscopeX@{getGyroscopeX}}
+\index{getGyroscopeX@{getGyroscopeX}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getGyroscopeX()}{getGyroscopeX()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+GyroscopeX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00382}{382}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a60f53e22da9868b8ed487431440517a2}\label{class_i_c_m20600_a60f53e22da9868b8ed487431440517a2}} 
+\index{ICM20600@{ICM20600}!getGyroscopeX@{getGyroscopeX}}
+\index{getGyroscopeX@{getGyroscopeX}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getGyroscopeX()}{getGyroscopeX()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+GyroscopeX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_afbcfab87af95d898d17f38613880521f}\label{class_i_c_m20600_afbcfab87af95d898d17f38613880521f}} 
+\index{ICM20600@{ICM20600}!getGyroscopeY@{getGyroscopeY}}
+\index{getGyroscopeY@{getGyroscopeY}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getGyroscopeY()}{getGyroscopeY()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+GyroscopeY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00388}{388}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_afbcfab87af95d898d17f38613880521f}\label{class_i_c_m20600_afbcfab87af95d898d17f38613880521f}} 
+\index{ICM20600@{ICM20600}!getGyroscopeY@{getGyroscopeY}}
+\index{getGyroscopeY@{getGyroscopeY}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getGyroscopeY()}{getGyroscopeY()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+GyroscopeY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_aafdf333eaeae140e2b9a6cf643cfb15f}\label{class_i_c_m20600_aafdf333eaeae140e2b9a6cf643cfb15f}} 
+\index{ICM20600@{ICM20600}!getGyroscopeZ@{getGyroscopeZ}}
+\index{getGyroscopeZ@{getGyroscopeZ}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getGyroscopeZ()}{getGyroscopeZ()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+GyroscopeZ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00394}{394}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_aafdf333eaeae140e2b9a6cf643cfb15f}\label{class_i_c_m20600_aafdf333eaeae140e2b9a6cf643cfb15f}} 
+\index{ICM20600@{ICM20600}!getGyroscopeZ@{getGyroscopeZ}}
+\index{getGyroscopeZ@{getGyroscopeZ}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getGyroscopeZ()}{getGyroscopeZ()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+GyroscopeZ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_acaac52808e6374c2695b5814c1a6d55b}\label{class_i_c_m20600_acaac52808e6374c2695b5814c1a6d55b}} 
+\index{ICM20600@{ICM20600}!getRawAccelerationX@{getRawAccelerationX}}
+\index{getRawAccelerationX@{getRawAccelerationX}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawAccelerationX()}{getRawAccelerationX()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+AccelerationX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00361}{361}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_acaac52808e6374c2695b5814c1a6d55b}\label{class_i_c_m20600_acaac52808e6374c2695b5814c1a6d55b}} 
+\index{ICM20600@{ICM20600}!getRawAccelerationX@{getRawAccelerationX}}
+\index{getRawAccelerationX@{getRawAccelerationX}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawAccelerationX()}{getRawAccelerationX()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+AccelerationX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_ae20af375d2f96f037a516aaea5884638}\label{class_i_c_m20600_ae20af375d2f96f037a516aaea5884638}} 
+\index{ICM20600@{ICM20600}!getRawAccelerationY@{getRawAccelerationY}}
+\index{getRawAccelerationY@{getRawAccelerationY}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawAccelerationY()}{getRawAccelerationY()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+AccelerationY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00366}{366}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_ae20af375d2f96f037a516aaea5884638}\label{class_i_c_m20600_ae20af375d2f96f037a516aaea5884638}} 
+\index{ICM20600@{ICM20600}!getRawAccelerationY@{getRawAccelerationY}}
+\index{getRawAccelerationY@{getRawAccelerationY}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawAccelerationY()}{getRawAccelerationY()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+AccelerationY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_ab3d953d90e95ca5b443c133466aeb6a9}\label{class_i_c_m20600_ab3d953d90e95ca5b443c133466aeb6a9}} 
+\index{ICM20600@{ICM20600}!getRawAccelerationZ@{getRawAccelerationZ}}
+\index{getRawAccelerationZ@{getRawAccelerationZ}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawAccelerationZ()}{getRawAccelerationZ()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+AccelerationZ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00371}{371}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_ab3d953d90e95ca5b443c133466aeb6a9}\label{class_i_c_m20600_ab3d953d90e95ca5b443c133466aeb6a9}} 
+\index{ICM20600@{ICM20600}!getRawAccelerationZ@{getRawAccelerationZ}}
+\index{getRawAccelerationZ@{getRawAccelerationZ}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawAccelerationZ()}{getRawAccelerationZ()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+AccelerationZ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a2b028c3d0be3d41c5e6d7c35dd080586}\label{class_i_c_m20600_a2b028c3d0be3d41c5e6d7c35dd080586}} 
+\index{ICM20600@{ICM20600}!getRawGyroscopeX@{getRawGyroscopeX}}
+\index{getRawGyroscopeX@{getRawGyroscopeX}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawGyroscopeX()}{getRawGyroscopeX()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+GyroscopeX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00400}{400}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a2b028c3d0be3d41c5e6d7c35dd080586}\label{class_i_c_m20600_a2b028c3d0be3d41c5e6d7c35dd080586}} 
+\index{ICM20600@{ICM20600}!getRawGyroscopeX@{getRawGyroscopeX}}
+\index{getRawGyroscopeX@{getRawGyroscopeX}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawGyroscopeX()}{getRawGyroscopeX()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+GyroscopeX (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a75aea524ba62b5922be84c0e67b49815}\label{class_i_c_m20600_a75aea524ba62b5922be84c0e67b49815}} 
+\index{ICM20600@{ICM20600}!getRawGyroscopeY@{getRawGyroscopeY}}
+\index{getRawGyroscopeY@{getRawGyroscopeY}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawGyroscopeY()}{getRawGyroscopeY()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+GyroscopeY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00405}{405}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a75aea524ba62b5922be84c0e67b49815}\label{class_i_c_m20600_a75aea524ba62b5922be84c0e67b49815}} 
+\index{ICM20600@{ICM20600}!getRawGyroscopeY@{getRawGyroscopeY}}
+\index{getRawGyroscopeY@{getRawGyroscopeY}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawGyroscopeY()}{getRawGyroscopeY()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+GyroscopeY (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_ad25fd9c3dc00a5aa79b6bf535ba798d1}\label{class_i_c_m20600_ad25fd9c3dc00a5aa79b6bf535ba798d1}} 
+\index{ICM20600@{ICM20600}!getRawGyroscopeZ@{getRawGyroscopeZ}}
+\index{getRawGyroscopeZ@{getRawGyroscopeZ}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawGyroscopeZ()}{getRawGyroscopeZ()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+GyroscopeZ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00410}{410}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_ad25fd9c3dc00a5aa79b6bf535ba798d1}\label{class_i_c_m20600_ad25fd9c3dc00a5aa79b6bf535ba798d1}} 
+\index{ICM20600@{ICM20600}!getRawGyroscopeZ@{getRawGyroscopeZ}}
+\index{getRawGyroscopeZ@{getRawGyroscopeZ}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getRawGyroscopeZ()}{getRawGyroscopeZ()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Raw\+GyroscopeZ (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_aa1eba63201cfe87bd78bb9aee60c90c9}\label{class_i_c_m20600_aa1eba63201cfe87bd78bb9aee60c90c9}} 
+\index{ICM20600@{ICM20600}!getTemperature@{getTemperature}}
+\index{getTemperature@{getTemperature}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getTemperature()}{getTemperature()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Temperature (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00415}{415}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_aa1eba63201cfe87bd78bb9aee60c90c9}\label{class_i_c_m20600_aa1eba63201cfe87bd78bb9aee60c90c9}} 
+\index{ICM20600@{ICM20600}!getTemperature@{getTemperature}}
+\index{getTemperature@{getTemperature}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{getTemperature()}{getTemperature()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int16\+\_\+t ICM20600\+::get\+Temperature (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a06c9829e1163ceecf36cba40256b4f63}\label{class_i_c_m20600_a06c9829e1163ceecf36cba40256b4f63}} 
+\index{ICM20600@{ICM20600}!initialize@{initialize}}
+\index{initialize@{initialize}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a06c9829e1163ceecf36cba40256b4f63}\label{class_i_c_m20600_a06c9829e1163ceecf36cba40256b4f63}} 
+\index{ICM20600@{ICM20600}!initialize@{initialize}}
+\index{initialize@{initialize}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::initialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_ac92b9734c59b9e476ea03bafaa6e2794}\label{class_i_c_m20600_ac92b9734c59b9e476ea03bafaa6e2794}} 
+\index{ICM20600@{ICM20600}!reset@{reset}}
+\index{reset@{reset}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00422}{422}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_ac92b9734c59b9e476ea03bafaa6e2794}\label{class_i_c_m20600_ac92b9734c59b9e476ea03bafaa6e2794}} 
+\index{ICM20600@{ICM20600}!reset@{reset}}
+\index{reset@{reset}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_abd074dc7fa2fb2ffce018849ab1be8ac}\label{class_i_c_m20600_abd074dc7fa2fb2ffce018849ab1be8ac}} 
+\index{ICM20600@{ICM20600}!setAccAverageSample@{setAccAverageSample}}
+\index{setAccAverageSample@{setAccAverageSample}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setAccAverageSample()}{setAccAverageSample()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Acc\+Average\+Sample (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_acc590b7b3c0e1dd7ac8ea4dbc03234eb}{acc\+\_\+averaging\+\_\+sample\+\_\+type\+\_\+t}}}]{sample }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00140}{140}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_abd074dc7fa2fb2ffce018849ab1be8ac}\label{class_i_c_m20600_abd074dc7fa2fb2ffce018849ab1be8ac}} 
+\index{ICM20600@{ICM20600}!setAccAverageSample@{setAccAverageSample}}
+\index{setAccAverageSample@{setAccAverageSample}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setAccAverageSample()}{setAccAverageSample()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Acc\+Average\+Sample (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_acc590b7b3c0e1dd7ac8ea4dbc03234eb}{acc\+\_\+averaging\+\_\+sample\+\_\+type\+\_\+t}}}]{sample }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a59cedcb14f9ddcc44582256240292646}\label{class_i_c_m20600_a59cedcb14f9ddcc44582256240292646}} 
+\index{ICM20600@{ICM20600}!setAccOutputDataRate@{setAccOutputDataRate}}
+\index{setAccOutputDataRate@{setAccOutputDataRate}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setAccOutputDataRate()}{setAccOutputDataRate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Acc\+Output\+Data\+Rate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_ae52a0dae9f487b0c23a65900c7918027}{acc\+\_\+lownoise\+\_\+odr\+\_\+type\+\_\+t}}}]{odr }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00171}{171}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a59cedcb14f9ddcc44582256240292646}\label{class_i_c_m20600_a59cedcb14f9ddcc44582256240292646}} 
+\index{ICM20600@{ICM20600}!setAccOutputDataRate@{setAccOutputDataRate}}
+\index{setAccOutputDataRate@{setAccOutputDataRate}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setAccOutputDataRate()}{setAccOutputDataRate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Acc\+Output\+Data\+Rate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_ae52a0dae9f487b0c23a65900c7918027}{acc\+\_\+lownoise\+\_\+odr\+\_\+type\+\_\+t}}}]{odr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a4502f99495a57156323525ad5c34c230}\label{class_i_c_m20600_a4502f99495a57156323525ad5c34c230}} 
+\index{ICM20600@{ICM20600}!setAccScaleRange@{setAccScaleRange}}
+\index{setAccScaleRange@{setAccScaleRange}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setAccScaleRange()}{setAccScaleRange()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Acc\+Scale\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a37373dd342da2670cbe86a58f8286151}{acc\+\_\+scale\+\_\+type\+\_\+t}}}]{range }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00104}{104}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a4502f99495a57156323525ad5c34c230}\label{class_i_c_m20600_a4502f99495a57156323525ad5c34c230}} 
+\index{ICM20600@{ICM20600}!setAccScaleRange@{setAccScaleRange}}
+\index{setAccScaleRange@{setAccScaleRange}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setAccScaleRange()}{setAccScaleRange()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Acc\+Scale\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a37373dd342da2670cbe86a58f8286151}{acc\+\_\+scale\+\_\+type\+\_\+t}}}]{range }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a83b276ee895dc06d4dccc1af8e74b462}\label{class_i_c_m20600_a83b276ee895dc06d4dccc1af8e74b462}} 
+\index{ICM20600@{ICM20600}!setGyroAverageSample@{setGyroAverageSample}}
+\index{setGyroAverageSample@{setGyroAverageSample}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setGyroAverageSample()}{setGyroAverageSample()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Gyro\+Average\+Sample (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a733617ab5ba0d0f7c584e7bb1bee377a}{gyro\+\_\+averaging\+\_\+sample\+\_\+type\+\_\+t}}}]{sample }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00254}{254}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a83b276ee895dc06d4dccc1af8e74b462}\label{class_i_c_m20600_a83b276ee895dc06d4dccc1af8e74b462}} 
+\index{ICM20600@{ICM20600}!setGyroAverageSample@{setGyroAverageSample}}
+\index{setGyroAverageSample@{setGyroAverageSample}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setGyroAverageSample()}{setGyroAverageSample()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Gyro\+Average\+Sample (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a733617ab5ba0d0f7c584e7bb1bee377a}{gyro\+\_\+averaging\+\_\+sample\+\_\+type\+\_\+t}}}]{sample }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a894dc63f69d141de3edb5485f2c3387e}\label{class_i_c_m20600_a894dc63f69d141de3edb5485f2c3387e}} 
+\index{ICM20600@{ICM20600}!setGyroOutputDataRate@{setGyroOutputDataRate}}
+\index{setGyroOutputDataRate@{setGyroOutputDataRate}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setGyroOutputDataRate()}{setGyroOutputDataRate()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Gyro\+Output\+Data\+Rate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_afe59b281fe04af37f916fa4ac2b21f9a}{gyro\+\_\+lownoise\+\_\+odr\+\_\+type\+\_\+t}}}]{odr }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00303}{303}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a894dc63f69d141de3edb5485f2c3387e}\label{class_i_c_m20600_a894dc63f69d141de3edb5485f2c3387e}} 
+\index{ICM20600@{ICM20600}!setGyroOutputDataRate@{setGyroOutputDataRate}}
+\index{setGyroOutputDataRate@{setGyroOutputDataRate}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setGyroOutputDataRate()}{setGyroOutputDataRate()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Gyro\+Output\+Data\+Rate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_afe59b281fe04af37f916fa4ac2b21f9a}{gyro\+\_\+lownoise\+\_\+odr\+\_\+type\+\_\+t}}}]{odr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a1136db7e965362a137e3d4a5279f66b4}\label{class_i_c_m20600_a1136db7e965362a137e3d4a5279f66b4}} 
+\index{ICM20600@{ICM20600}!setGyroScaleRange@{setGyroScaleRange}}
+\index{setGyroScaleRange@{setGyroScaleRange}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setGyroScaleRange()}{setGyroScaleRange()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Gyro\+Scale\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a3ce0d44e64e8c098bf2244b8e6a4211b}{gyro\+\_\+scale\+\_\+type\+\_\+t}}}]{range }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a1136db7e965362a137e3d4a5279f66b4}\label{class_i_c_m20600_a1136db7e965362a137e3d4a5279f66b4}} 
+\index{ICM20600@{ICM20600}!setGyroScaleRange@{setGyroScaleRange}}
+\index{setGyroScaleRange@{setGyroScaleRange}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setGyroScaleRange()}{setGyroScaleRange()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Gyro\+Scale\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a3ce0d44e64e8c098bf2244b8e6a4211b}{gyro\+\_\+scale\+\_\+type\+\_\+t}}}]{range }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a4a39309110365c6be5ca5a34fc2fe4e7}\label{class_i_c_m20600_a4a39309110365c6be5ca5a34fc2fe4e7}} 
+\index{ICM20600@{ICM20600}!setPowerMode@{setPowerMode}}
+\index{setPowerMode@{setPowerMode}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setPowerMode()}{setPowerMode()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Power\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a65f8161b4c12c97bcc50b4fef5ec8538}{icm20600\+\_\+power\+\_\+type\+\_\+t}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a4a39309110365c6be5ca5a34fc2fe4e7}\label{class_i_c_m20600_a4a39309110365c6be5ca5a34fc2fe4e7}} 
+\index{ICM20600@{ICM20600}!setPowerMode@{setPowerMode}}
+\index{setPowerMode@{setPowerMode}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setPowerMode()}{setPowerMode()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Power\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h_a65f8161b4c12c97bcc50b4fef5ec8538}{icm20600\+\_\+power\+\_\+type\+\_\+t}}}]{mode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_i_c_m20600_a2614512f99bae39d50f17b3623faac96}\label{class_i_c_m20600_a2614512f99bae39d50f17b3623faac96}} 
+\index{ICM20600@{ICM20600}!setSampleRateDivier@{setSampleRateDivier}}
+\index{setSampleRateDivier@{setSampleRateDivier}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setSampleRateDivier()}{setSampleRateDivier()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Sample\+Rate\+Divier (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{div }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source_l00099}{99}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp_source}{ICM20600.\+cpp}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a2614512f99bae39d50f17b3623faac96}\label{class_i_c_m20600_a2614512f99bae39d50f17b3623faac96}} 
+\index{ICM20600@{ICM20600}!setSampleRateDivier@{setSampleRateDivier}}
+\index{setSampleRateDivier@{setSampleRateDivier}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{setSampleRateDivier()}{setSampleRateDivier()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void ICM20600\+::set\+Sample\+Rate\+Divier (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{div }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_i_c_m20600_a369879ced32242105bd144393a863717}\label{class_i_c_m20600_a369879ced32242105bd144393a863717}} 
+\index{ICM20600@{ICM20600}!\_acc\_scale@{\_acc\_scale}}
+\index{\_acc\_scale@{\_acc\_scale}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{\_acc\_scale}{\_acc\_scale}}
+{\footnotesize\ttfamily uint16\+\_\+t ICM20600\+::\+\_\+acc\+\_\+scale\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source_l00239}{239}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source}{ICM20600.\+h}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a16f37f496169c2234a3257a1dec5911c}\label{class_i_c_m20600_a16f37f496169c2234a3257a1dec5911c}} 
+\index{ICM20600@{ICM20600}!\_addr@{\_addr}}
+\index{\_addr@{\_addr}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{\_addr}{\_addr}}
+{\footnotesize\ttfamily uint8\+\_\+t ICM20600\+::\+\_\+addr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source_l00237}{237}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source}{ICM20600.\+h}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a0209a141ce95777cacbfa71f83871f4a}\label{class_i_c_m20600_a0209a141ce95777cacbfa71f83871f4a}} 
+\index{ICM20600@{ICM20600}!\_buffer@{\_buffer}}
+\index{\_buffer@{\_buffer}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{\_buffer}{\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t ICM20600\+::\+\_\+buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source_l00238}{238}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source}{ICM20600.\+h}}.
+
+\mbox{\Hypertarget{class_i_c_m20600_a45e954d56f8393417fa7b99ebd537fe6}\label{class_i_c_m20600_a45e954d56f8393417fa7b99ebd537fe6}} 
+\index{ICM20600@{ICM20600}!\_gyro\_scale@{\_gyro\_scale}}
+\index{\_gyro\_scale@{\_gyro\_scale}!ICM20600@{ICM20600}}
+\doxysubsubsection{\texorpdfstring{\_gyro\_scale}{\_gyro\_scale}}
+{\footnotesize\ttfamily uint16\+\_\+t ICM20600\+::\+\_\+gyro\+\_\+scale\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source_l00239}{239}} of file \mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h_source}{ICM20600.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+libraries/\+Grove\+\_\+\+IMU\+\_\+9\+DOF\+\_\+\+ICM20600\+\_\+\+AK09918/\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h}{ICM20600.\+h}}\item 
+libraries/\+Seeed\+\_\+\+ICM20600\+\_\+\+AK09918/\+Seeed\+\_\+\+ICM20600\+\_\+\+AK09918-\/master/\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h}{ICM20600.\+h}}\item 
+libraries/\+Grove\+\_\+\+IMU\+\_\+9\+DOF\+\_\+\+ICM20600\+\_\+\+AK09918/\mbox{\hyperlink{_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8cpp}{ICM20600.\+cpp}}\item 
+libraries/\+Seeed\+\_\+\+ICM20600\+\_\+\+AK09918/\+Seeed\+\_\+\+ICM20600\+\_\+\+AK09918-\/master/\mbox{\hyperlink{_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8cpp}{ICM20600.\+cpp}}\end{DoxyCompactItemize}

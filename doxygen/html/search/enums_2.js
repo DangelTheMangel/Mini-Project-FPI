@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['gyro_5faveraging_5fsample_5ftype_5ft_0',['gyro_averaging_sample_type_t',['../_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h.html#a733617ab5ba0d0f7c584e7bb1bee377a',1,'gyro_averaging_sample_type_t():&#160;ICM20600.h'],['../_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h.html#a733617ab5ba0d0f7c584e7bb1bee377a',1,'gyro_averaging_sample_type_t():&#160;ICM20600.h']]],
+  ['gyro_5flownoise_5fodr_5ftype_5ft_1',['gyro_lownoise_odr_type_t',['../_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h.html#afe59b281fe04af37f916fa4ac2b21f9a',1,'gyro_lownoise_odr_type_t():&#160;ICM20600.h'],['../_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h.html#afe59b281fe04af37f916fa4ac2b21f9a',1,'gyro_lownoise_odr_type_t():&#160;ICM20600.h']]],
+  ['gyro_5fscale_5ftype_5ft_2',['gyro_scale_type_t',['../_grove___i_m_u__9_d_o_f___i_c_m20600___a_k09918_2_i_c_m20600_8h.html#a3ce0d44e64e8c098bf2244b8e6a4211b',1,'gyro_scale_type_t():&#160;ICM20600.h'],['../_seeed___i_c_m20600___a_k09918_2_seeed___i_c_m20600___a_k09918-master_2_i_c_m20600_8h.html#a3ce0d44e64e8c098bf2244b8e6a4211b',1,'gyro_scale_type_t():&#160;ICM20600.h']]]
+];

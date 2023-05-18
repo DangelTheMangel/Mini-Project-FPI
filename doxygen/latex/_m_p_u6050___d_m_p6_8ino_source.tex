@@ -1,0 +1,365 @@
+\hypertarget{_m_p_u6050___d_m_p6_8ino_source}{}\doxysection{MPU6050\+\_\+\+DMP6.\+ino}
+\label{_m_p_u6050___d_m_p6_8ino_source}\index{libraries/Grove\_IMU\_9DOF/examples/MPU6050\_DMP6/MPU6050\_DMP6.ino@{libraries/Grove\_IMU\_9DOF/examples/MPU6050\_DMP6/MPU6050\_DMP6.ino}}
+\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00001}00001\ \textcolor{comment}{//\ I2C\ device\ class\ (I2Cdev)\ demonstration\ Arduino\ sketch\ for\ MPU6050\ class\ using\ DMP\ (MotionApps\ v2.0)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00002}00002\ \textcolor{comment}{//\ 6/21/2012\ by\ Jeff\ Rowberg\ <jeff@rowberg.net>}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00003}00003\ \textcolor{comment}{//\ Updates\ should\ (hopefully)\ always\ be\ available\ at\ https://github.com/jrowberg/i2cdevlib}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00005}00005\ \textcolor{comment}{//\ Changelog:}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/21\ -\/\ added\ note\ about\ Arduino\ 1.0.1\ +\ Leonardo\ compatibility\ error}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/20\ -\/\ improved\ FIFO\ overflow\ handling\ and\ simplified\ read\ process}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00008}00008\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/19\ -\/\ completely\ rearranged\ DMP\ initialization\ code\ and\ simplification}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00009}00009\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/13\ -\/\ pull\ gyro\ and\ accel\ data\ from\ FIFO\ packet\ instead\ of\ reading\ directly}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00010}00010\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/09\ -\/\ fix\ broken\ FIFO\ read\ sequence\ and\ change\ interrupt\ detection\ to\ RISING}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00011}00011\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/05\ -\/\ add\ gravity-\/compensated\ initial\ reference\ frame\ acceleration\ output}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00012}00012\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ add\ 3D\ math\ helper\ file\ to\ DMP6\ example\ sketch}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00013}00013\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ add\ Euler\ output\ and\ Yaw/Pitch/Roll\ output\ formats}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00014}00014\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/04\ -\/\ remove\ accel\ offset\ clearing\ for\ better\ results\ (thanks\ Sungon\ Lee)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00015}00015\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/01\ -\/\ fixed\ gyro\ sensitivity\ to\ be\ 2000\ deg/sec\ instead\ of\ 250}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ \ 2012-\/05-\/30\ -\/\ basic\ DMP\ initialization\ working}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00018}00018\ \textcolor{comment}{/*\ \ ============================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00019}00019\ \textcolor{comment}{\ \ \ \ I2Cdev\ device\ library\ code\ is\ placed\ under\ the\ MIT\ license}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00020}00020\ \textcolor{comment}{\ \ \ \ Copyright\ (c)\ 2012\ Jeff\ Rowberg}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00021}00021\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00022}00022\ \textcolor{comment}{\ \ \ \ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00023}00023\ \textcolor{comment}{\ \ \ \ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00024}00024\ \textcolor{comment}{\ \ \ \ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00025}00025\ \textcolor{comment}{\ \ \ \ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00026}00026\ \textcolor{comment}{\ \ \ \ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00027}00027\ \textcolor{comment}{\ \ \ \ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00028}00028\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00029}00029\ \textcolor{comment}{\ \ \ \ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00030}00030\ \textcolor{comment}{\ \ \ \ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00031}00031\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00032}00032\ \textcolor{comment}{\ \ \ \ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00033}00033\ \textcolor{comment}{\ \ \ \ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00034}00034\ \textcolor{comment}{\ \ \ \ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00035}00035\ \textcolor{comment}{\ \ \ \ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00036}00036\ \textcolor{comment}{\ \ \ \ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00037}00037\ \textcolor{comment}{\ \ \ \ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00038}00038\ \textcolor{comment}{\ \ \ \ THE\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00039}00039\ \textcolor{comment}{\ \ \ \ ===============================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00040}00040\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00042}00042\ \textcolor{comment}{//\ Arduino\ Wire\ library\ is\ required\ if\ I2Cdev\ I2CDEV\_ARDUINO\_WIRE\ implementation}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00043}00043\ \textcolor{comment}{//\ is\ used\ in\ I2Cdev.h}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}Wire.h"{}}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00046}00046\ \textcolor{comment}{//\ I2Cdev\ and\ MPU6050\ must\ be\ installed\ as\ libraries,\ or\ else\ the\ .cpp/.h\ files}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00047}00047\ \textcolor{comment}{//\ for\ both\ classes\ must\ be\ in\ the\ include\ path\ of\ your\ project}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}I2Cdev.h"{}}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_m_p_u6050__6_axis___motion_apps20_8h}{MPU6050\_6Axis\_MotionApps20.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00051}00051\ \textcolor{comment}{//\#include\ "{}MPU6050.h"{}\ //\ not\ necessary\ if\ using\ MotionApps\ include\ file}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00053}00053\ \textcolor{comment}{//\ class\ default\ I2C\ address\ is\ 0x68}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00054}00054\ \textcolor{comment}{//\ specific\ I2C\ addresses\ may\ be\ passed\ as\ a\ parameter\ here}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00055}00055\ \textcolor{comment}{//\ AD0\ low\ =\ 0x68\ (default\ for\ SparkFun\ breakout\ and\ InvenSense\ evaluation\ board)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00056}00056\ \textcolor{comment}{//\ AD0\ high\ =\ 0x69}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00057}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{00057}}\ \mbox{\hyperlink{class_m_p_u6050}{MPU6050}}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00059}00059\ \textcolor{comment}{/*\ \ =========================================================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00060}00060\ \textcolor{comment}{\ \ \ \ NOTE:\ In\ addition\ to\ connection\ 3.3v,\ GND,\ SDA,\ and\ SCL,\ this\ sketch}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00061}00061\ \textcolor{comment}{\ \ \ \ depends\ on\ the\ MPU-\/6050's\ INT\ pin\ being\ connected\ to\ the\ Arduino's}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00062}00062\ \textcolor{comment}{\ \ \ \ external\ interrupt\ \#0\ pin.\ On\ the\ Arduino\ Uno\ and\ Mega\ 2560,\ this\ is}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00063}00063\ \textcolor{comment}{\ \ \ \ digital\ I/O\ pin\ 2.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00064}00064\ \textcolor{comment}{\ \ \ \ =========================================================================\ */}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00066}00066\ \textcolor{comment}{/*\ \ =========================================================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00067}00067\ \textcolor{comment}{\ \ \ \ NOTE:\ Arduino\ v1.0.1\ with\ the\ Leonardo\ board\ generates\ a\ compile\ error}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00068}00068\ \textcolor{comment}{\ \ \ \ when\ using\ Serial.write(buf,\ len).\ The\ Teapot\ output\ uses\ this\ method.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00069}00069\ \textcolor{comment}{\ \ \ \ The\ solution\ requires\ a\ modification\ to\ the\ Arduino\ USBAPI.h\ file,\ which}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00070}00070\ \textcolor{comment}{\ \ \ \ is\ fortunately\ simple,\ but\ annoying.\ This\ will\ be\ fixed\ in\ the\ next\ IDE}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00071}00071\ \textcolor{comment}{\ \ \ \ release.\ For\ more\ info,\ see\ these\ links:}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00072}00072\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00073}00073\ \textcolor{comment}{\ \ \ \ http://arduino.cc/forum/index.php/topic,109987.0.html}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00074}00074\ \textcolor{comment}{\ \ \ \ http://code.google.com/p/arduino/issues/detail?id=958}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00075}00075\ \textcolor{comment}{\ \ \ \ =========================================================================\ */}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00079}00079\ \textcolor{comment}{//\ uncomment\ "{}OUTPUT\_READABLE\_QUATERNION"{}\ if\ you\ want\ to\ see\ the\ actual}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00080}00080\ \textcolor{comment}{//\ quaternion\ components\ in\ a\ [w,\ x,\ y,\ z]\ format\ (not\ best\ for\ parsing}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00081}00081\ \textcolor{comment}{//\ on\ a\ remote\ host\ such\ as\ Processing\ or\ something\ though)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00082}00082\ \textcolor{comment}{//\#define\ OUTPUT\_READABLE\_QUATERNION}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00084}00084\ \textcolor{comment}{//\ uncomment\ "{}OUTPUT\_READABLE\_EULER"{}\ if\ you\ want\ to\ see\ Euler\ angles}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00085}00085\ \textcolor{comment}{//\ (in\ degrees)\ calculated\ from\ the\ quaternions\ coming\ from\ the\ FIFO.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00086}00086\ \textcolor{comment}{//\ Note\ that\ Euler\ angles\ suffer\ from\ gimbal\ lock\ (for\ more\ info,\ see}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00087}00087\ \textcolor{comment}{//\ http://en.wikipedia.org/wiki/Gimbal\_lock)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00088}00088\ \textcolor{comment}{//\#define\ OUTPUT\_READABLE\_EULER}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00090}00090\ \textcolor{comment}{//\ uncomment\ "{}OUTPUT\_READABLE\_YAWPITCHROLL"{}\ if\ you\ want\ to\ see\ the\ yaw/}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00091}00091\ \textcolor{comment}{//\ pitch/roll\ angles\ (in\ degrees)\ calculated\ from\ the\ quaternions\ coming}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00092}00092\ \textcolor{comment}{//\ from\ the\ FIFO.\ Note\ this\ also\ requires\ gravity\ vector\ calculations.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00093}00093\ \textcolor{comment}{//\ Also\ note\ that\ yaw/pitch/roll\ angles\ suffer\ from\ gimbal\ lock\ (for}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00094}00094\ \textcolor{comment}{//\ more\ info,\ see:\ http://en.wikipedia.org/wiki/Gimbal\_lock)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00095}00095\ \textcolor{comment}{//\#define\ OUTPUT\_READABLE\_YAWPITCHROLL}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00097}00097\ \textcolor{comment}{//\ uncomment\ "{}OUTPUT\_READABLE\_REALACCEL"{}\ if\ you\ want\ to\ see\ acceleration}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00098}00098\ \textcolor{comment}{//\ components\ with\ gravity\ removed.\ This\ acceleration\ reference\ frame\ is}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00099}00099\ \textcolor{comment}{//\ not\ compensated\ for\ orientation,\ so\ +X\ is\ always\ +X\ according\ to\ the}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00100}00100\ \textcolor{comment}{//\ sensor,\ just\ without\ the\ effects\ of\ gravity.\ If\ you\ want\ acceleration}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00101}00101\ \textcolor{comment}{//\ compensated\ for\ orientation,\ us\ OUTPUT\_READABLE\_WORLDACCEL\ instead.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00102}00102\ \textcolor{comment}{//\#define\ OUTPUT\_READABLE\_REALACCEL}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00104}00104\ \textcolor{comment}{//\ uncomment\ "{}OUTPUT\_READABLE\_WORLDACCEL"{}\ if\ you\ want\ to\ see\ acceleration}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00105}00105\ \textcolor{comment}{//\ components\ with\ gravity\ removed\ and\ adjusted\ for\ the\ world\ frame\ of}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00106}00106\ \textcolor{comment}{//\ reference\ (yaw\ is\ relative\ to\ initial\ orientation,\ since\ no\ magnetometer}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00107}00107\ \textcolor{comment}{//\ is\ present\ in\ this\ case).\ Could\ be\ quite\ handy\ in\ some\ cases.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00108}00108\ \textcolor{comment}{//\#define\ OUTPUT\_READABLE\_WORLDACCEL}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00110}00110\ \textcolor{comment}{//\ uncomment\ "{}OUTPUT\_TEAPOT"{}\ if\ you\ want\ output\ that\ matches\ the}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00111}00111\ \textcolor{comment}{//\ format\ used\ for\ the\ InvenSense\ teapot\ demo}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00112}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aefa52309bdaf59039162bb984350a96d}{00112}}\ \textcolor{preprocessor}{\#define\ OUTPUT\_TEAPOT}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00116}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab4553be4db9860d940f81d7447173b2f}{00116}}\ \textcolor{preprocessor}{\#define\ LED\_PIN\ 13\ }\textcolor{comment}{//\ (Arduino\ is\ 13,\ Teensy\ is\ 11,\ Teensy++\ is\ 6)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00117}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{00117}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blinkState}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00119}00119\ \textcolor{comment}{//\ MPU\ control/status\ vars}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00120}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a6261092e5137b9d7bd0132e96745e0fb}{00120}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a6261092e5137b9d7bd0132e96745e0fb}{dmpReady}}\ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ set\ true\ if\ DMP\ init\ was\ successful}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00121}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}{00121}}\ uint8\_t\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}{mpuIntStatus}};\ \ \ \textcolor{comment}{//\ holds\ actual\ interrupt\ status\ byte\ from\ MPU}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00122}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad7aeaa77feb7caa9d19d95407da2dcc9}{00122}}\ uint8\_t\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad7aeaa77feb7caa9d19d95407da2dcc9}{devStatus}};\ \ \ \ \ \ \textcolor{comment}{//\ return\ status\ after\ each\ device\ operation\ (0\ =\ success,\ !0\ =\ error)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00123}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}{00123}}\ uint16\_t\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}{packetSize}};\ \ \ \ \textcolor{comment}{//\ expected\ DMP\ packet\ size\ (default\ is\ 42\ bytes)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00124}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{00124}}\ uint16\_t\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{fifoCount}};\ \ \ \ \ \textcolor{comment}{//\ count\ of\ all\ bytes\ currently\ in\ FIFO}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00125}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{00125}}\ uint8\_t\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[64];\ \textcolor{comment}{//\ FIFO\ storage\ buffer}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00127}00127\ \textcolor{comment}{//\ orientation/motion\ vars}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00128}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{00128}}\ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}};\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [w,\ x,\ y,\ z]\ \ \ \ \ \ \ \ \ quaternion\ container}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00129}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe6939b4d1797dc67a683e64cf673f44}{00129}}\ \mbox{\hyperlink{class_vector_int16}{VectorInt16}}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe6939b4d1797dc67a683e64cf673f44}{aa}};\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [x,\ y,\ z]\ \ \ \ \ \ \ \ \ \ \ \ accel\ sensor\ measurements}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00130}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}{00130}}\ \mbox{\hyperlink{class_vector_int16}{VectorInt16}}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}{aaReal}};\ \ \ \ \ \textcolor{comment}{//\ [x,\ y,\ z]\ \ \ \ \ \ \ \ \ \ \ \ gravity-\/free\ accel\ sensor\ measurements}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00131}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}{00131}}\ \mbox{\hyperlink{class_vector_int16}{VectorInt16}}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}{aaWorld}};\ \ \ \ \textcolor{comment}{//\ [x,\ y,\ z]\ \ \ \ \ \ \ \ \ \ \ \ world-\/frame\ accel\ sensor\ measurements}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00132}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}{00132}}\ \mbox{\hyperlink{class_vector_float}{VectorFloat}}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}{gravity}};\ \ \ \ \textcolor{comment}{//\ [x,\ y,\ z]\ \ \ \ \ \ \ \ \ \ \ \ gravity\ vector}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00133}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}{00133}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}{euler}}[3];\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [psi,\ theta,\ phi]\ \ \ \ Euler\ angle\ container}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00134}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}{00134}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}{ypr}}[3];\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ [yaw,\ pitch,\ roll]\ \ \ yaw/pitch/roll\ container\ and\ gravity\ vector}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00136}00136\ \textcolor{comment}{//\ packet\ structure\ for\ InvenSense\ teapot\ demo}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00137}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{00137}}\ uint8\_t\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[14]\ =\ \{\ \textcolor{charliteral}{'\$'},\ 0x02,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0,\ 0x00,\ 0x00,\ \textcolor{charliteral}{'\(\backslash\)r'},\ \textcolor{charliteral}{'\(\backslash\)n'}\ \};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00141}00141\ \textcolor{comment}{//\ ================================================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00142}00142\ \textcolor{comment}{//\ ===\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ INTERRUPT\ DETECTION\ ROUTINE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ===}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00143}00143\ \textcolor{comment}{//\ ================================================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00145}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad40b019259799318cb02725dd841c4de}{00145}}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad40b019259799318cb02725dd841c4de}{mpuInterrupt}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \textcolor{comment}{//\ indicates\ whether\ MPU\ interrupt\ pin\ has\ gone\ high}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00146}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a81c0bc69347ad8861af46398dcf3dd64}{00146}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a81c0bc69347ad8861af46398dcf3dd64}{dmpDataReady}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00147}00147\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad40b019259799318cb02725dd841c4de}{mpuInterrupt}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00148}00148\ \}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00152}00152\ \textcolor{comment}{//\ ================================================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00153}00153\ \textcolor{comment}{//\ ===\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ INITIAL\ SETUP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ===}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00154}00154\ \textcolor{comment}{//\ ================================================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00156}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00156}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ join\ I2C\ bus\ (I2Cdev\ library\ doesn't\ do\ this\ automatically)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00158}00158\ \ \ \ \ Wire.begin();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//\ initialize\ serial\ communication}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00161}00161\ \ \ \ \ \textcolor{comment}{//\ (115200\ chosen\ because\ it\ is\ required\ for\ Teapot\ Demo\ output,\ but\ it's}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//\ really\ up\ to\ you\ depending\ on\ your\ project)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00163}00163\ \ \ \ \ Serial.begin(115200);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00164}00164\ \ \ \ \ \textcolor{comment}{//while\ (!Serial);\ //\ wait\ for\ Leonardo\ enumeration,\ others\ continue\ immediately}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//\ NOTE:\ 8MHz\ or\ slower\ host\ processors,\ like\ the\ Teensy\ @\ 3.3v\ or\ Ardunio}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//\ Pro\ Mini\ running\ at\ 3.3v,\ cannot\ handle\ this\ baud\ rate\ reliably\ due\ to}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//\ the\ baud\ timing\ being\ too\ misaligned\ with\ processor\ ticks.\ You\ must\ use}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00169}00169\ \ \ \ \ \textcolor{comment}{//\ 38400\ or\ slower\ in\ these\ cases,\ or\ use\ some\ kind\ of\ external\ separate}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00170}00170\ \ \ \ \ \textcolor{comment}{//\ crystal\ solution\ for\ the\ UART\ timer.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00172}00172\ \ \ \ \ \textcolor{comment}{//\ initialize\ device}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00173}00173\ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{}Initializing\ I2C\ devices..."{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00174}00174\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_abd8fc6c18adf158011118fbccc7e7054}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00176}00176\ \ \ \ \ \textcolor{comment}{//\ verify\ connection}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00177}00177\ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{}Testing\ device\ connections..."{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00178}00178\ \ \ \ \ Serial.println(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_a95ffab7b44fce3834236e0813687d11a}{testConnection}}()\ ?\ F(\textcolor{stringliteral}{"{}MPU6050\ connection\ successful"{}})\ :\ F(\textcolor{stringliteral}{"{}MPU6050\ connection\ failed"{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00180}00180\ \ \ \ \ \textcolor{comment}{//\ wait\ for\ ready}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00181}00181\ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{}\(\backslash\)nSend\ any\ character\ to\ begin\ DMP\ programming\ and\ demo:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00182}00182\ \ \ \ \ \textcolor{keywordflow}{while}\ (Serial.available()\ \&\&\ Serial.read());\ \textcolor{comment}{//\ empty\ buffer}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{while}\ (!Serial.available());\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ data}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00184}00184\ \ \ \ \ \textcolor{keywordflow}{while}\ (Serial.available()\ \&\&\ Serial.read());\ \textcolor{comment}{//\ empty\ buffer\ again}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00186}00186\ \ \ \ \ \textcolor{comment}{//\ load\ and\ configure\ the\ DMP}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00187}00187\ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{}Initializing\ DMP..."{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00188}00188\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad7aeaa77feb7caa9d19d95407da2dcc9}{devStatus}}\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpInitialize();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//\ make\ sure\ it\ worked\ (returns\ 0\ if\ so)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00191}00191\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad7aeaa77feb7caa9d19d95407da2dcc9}{devStatus}}\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ turn\ on\ the\ DMP,\ now\ that\ it's\ ready}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00193}00193\ \ \ \ \ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{}Enabling\ DMP..."{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00194}00194\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_abb6bf6db86b84700c7f13bd838d63755}{setDMPEnabled}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ enable\ Arduino\ interrupt\ detection}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00197}00197\ \ \ \ \ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{}Enabling\ interrupt\ detection\ (Arduino\ external\ interrupt\ 0)..."{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00198}00198\ \ \ \ \ \ \ \ \ attachInterrupt(0,\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a81c0bc69347ad8861af46398dcf3dd64}{dmpDataReady}},\ RISING);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00199}00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}{mpuIntStatus}}\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_a550a735623cb1de950c72cd6931ee804}{getIntStatus}}();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ our\ DMP\ Ready\ flag\ so\ the\ main\ loop()\ function\ knows\ it's\ okay\ to\ use\ it}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00202}00202\ \ \ \ \ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{}DMP\ ready!\ Waiting\ for\ first\ interrupt..."{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00203}00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a6261092e5137b9d7bd0132e96745e0fb}{dmpReady}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ expected\ DMP\ packet\ size\ for\ later\ comparison}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00206}00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}{packetSize}}\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetFIFOPacketSize();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00207}00207\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ERROR!}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 1\ =\ initial\ memory\ load\ failed}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2\ =\ DMP\ configuration\ updates\ failed}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00211}00211\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (if\ it's\ going\ to\ break,\ usually\ the\ code\ will\ be\ 1)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00212}00212\ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}DMP\ Initialization\ failed\ (code\ "{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00213}00213\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad7aeaa77feb7caa9d19d95407da2dcc9}{devStatus}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00214}00214\ \ \ \ \ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{})"{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00217}00217\ \ \ \ \ \textcolor{comment}{//\ configure\ LED\ for\ output}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00218}00218\ \ \ \ \ pinMode(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab4553be4db9860d940f81d7447173b2f}{LED\_PIN}},\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00219}00219\ \}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00223}00223\ \textcolor{comment}{//\ ================================================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00224}00224\ \textcolor{comment}{//\ ===\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MAIN\ PROGRAM\ LOOP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ===}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00225}00225\ \textcolor{comment}{//\ ================================================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00227}\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe461d27b9c48d5921c00d521181f12f}{00227}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00228}00228\ \ \ \ \ \textcolor{comment}{//\ if\ programming\ failed,\ don't\ try\ to\ do\ anything}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00229}00229\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a6261092e5137b9d7bd0132e96745e0fb}{dmpReady}})\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00231}00231\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00233}00233\ \ \ \ \ \textcolor{comment}{//\ wait\ for\ MPU\ interrupt\ or\ extra\ packet(s)\ available}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00234}00234\ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad40b019259799318cb02725dd841c4de}{mpuInterrupt}}\ \&\&\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{fifoCount}}\ <\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}{packetSize}})\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ other\ program\ behavior\ stuff\ here}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ .}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00237}00237\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ .}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ .}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ you\ are\ really\ paranoid\ you\ can\ frequently\ test\ in\ between\ other}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ stuff\ to\ see\ if\ mpuInterrupt\ is\ true,\ and\ if\ so,\ "{}break;"{}\ from\ the}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00241}00241\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ while()\ loop\ to\ immediately\ process\ the\ MPU\ data}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ .}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00243}00243\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ .}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ .}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00245}00245\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00247}00247\ \ \ \ \ \textcolor{comment}{//\ reset\ interrupt\ flag\ and\ get\ INT\_STATUS\ byte}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00248}00248\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad40b019259799318cb02725dd841c4de}{mpuInterrupt}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00249}00249\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}{mpuIntStatus}}\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_a550a735623cb1de950c72cd6931ee804}{getIntStatus}}();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00251}00251\ \ \ \ \ \textcolor{comment}{//\ get\ current\ FIFO\ count}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00252}00252\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{fifoCount}}\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_ad96c7a75a39327ebaae01386bcbc58dd}{getFIFOCount}}();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00254}00254\ \ \ \ \ \textcolor{comment}{//\ check\ for\ overflow\ (this\ should\ never\ happen\ unless\ our\ code\ is\ too\ inefficient)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}{mpuIntStatus}}\ \&\ 0x10)\ ||\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{fifoCount}}\ ==\ 1024)\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ reset\ so\ we\ can\ continue\ cleanly}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00257}00257\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_aafa0dc38b7ea2acd1aecd5d9df8cbd08}{resetFIFO}}();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00258}00258\ \ \ \ \ \ \ \ \ Serial.println(F(\textcolor{stringliteral}{"{}FIFO\ overflow!"{}}));}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00260}00260\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ otherwise,\ check\ for\ DMP\ data\ ready\ interrupt\ (this\ should\ happen\ frequently)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00261}00261\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}{mpuIntStatus}}\ \&\ 0x02)\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ correct\ available\ data\ length,\ should\ be\ a\ VERY\ short\ wait}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{fifoCount}}\ <\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}{packetSize}})\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{fifoCount}}\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_ad96c7a75a39327ebaae01386bcbc58dd}{getFIFOCount}}();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00265}00265\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ read\ a\ packet\ from\ FIFO}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00268}00268\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.\mbox{\hyperlink{class_m_p_u6050_aba36dcb767b5cd8965053987aaa08a6a}{getFIFOBytes}}(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}{packetSize}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ track\ FIFO\ count\ here\ in\ case\ there\ is\ >\ 1\ packet\ available}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (this\ lets\ us\ immediately\ read\ more\ without\ waiting\ for\ an\ interrupt)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00272}00272\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{fifoCount}}\ -\/=\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}{packetSize}};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00274}00274\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ OUTPUT\_READABLE\_QUATERNION}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ display\ quaternion\ values\ in\ easy\ matrix\ form:\ w\ x\ y\ z}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00276}00276\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetQuaternion(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00277}00277\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}quat\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00278}00278\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00279}00279\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00280}00280\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00281}00281\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00282}00282\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00283}00283\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00284}00284\ \ \ \ \ \ \ \ \ Serial.println(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00285}00285\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00287}00287\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ OUTPUT\_READABLE\_EULER}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ display\ Euler\ angles\ in\ degrees}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00289}00289\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetQuaternion(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00290}00290\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetEuler(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}{euler}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00291}00291\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}euler\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00292}00292\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}{euler}}[0]\ *\ 180\ /\ M\_PI);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00293}00293\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00294}00294\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}{euler}}[1]\ *\ 180\ /\ M\_PI);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00295}00295\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00296}00296\ \ \ \ \ \ \ \ \ Serial.println(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}{euler}}[2]\ *\ 180\ /\ M\_PI);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00297}00297\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00299}00299\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ OUTPUT\_READABLE\_YAWPITCHROLL}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ display\ Euler\ angles\ in\ degrees}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00301}00301\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetQuaternion(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00302}00302\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetGravity(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}{gravity}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00303}00303\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetYawPitchRoll(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}{ypr}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}{gravity}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00304}00304\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}ypr\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00305}00305\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}{ypr}}[0]\ *\ 180\ /\ M\_PI);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00306}00306\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00307}00307\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}{ypr}}[1]\ *\ 180\ /\ M\_PI);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00308}00308\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00309}00309\ \ \ \ \ \ \ \ \ Serial.println(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}{ypr}}[2]\ *\ 180\ /\ M\_PI);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00310}00310\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00312}00312\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ OUTPUT\_READABLE\_REALACCEL}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00313}00313\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ display\ real\ acceleration,\ adjusted\ to\ remove\ gravity}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00314}00314\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetQuaternion(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00315}00315\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetAccel(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe6939b4d1797dc67a683e64cf673f44}{aa}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00316}00316\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetGravity(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}{gravity}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00317}00317\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetLinearAccel(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}{aaReal}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe6939b4d1797dc67a683e64cf673f44}{aa}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}{gravity}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00318}00318\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}areal\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00319}00319\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}{aaReal}}.\mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00320}00320\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00321}00321\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}{aaReal}}.\mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00322}00322\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00323}00323\ \ \ \ \ \ \ \ \ Serial.println(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}{aaReal}}.\mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00324}00324\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00326}00326\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ OUTPUT\_READABLE\_WORLDACCEL}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00327}00327\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ display\ initial\ world-\/frame\ acceleration,\ adjusted\ to\ remove\ gravity}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00328}00328\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ rotated\ based\ on\ known\ orientation\ from\ quaternion}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00329}00329\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetQuaternion(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00330}00330\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetAccel(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe6939b4d1797dc67a683e64cf673f44}{aa}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00331}00331\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetGravity(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}{gravity}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00332}00332\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}.dmpGetLinearAccelInWorld(\&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}{aaWorld}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}{aaReal}},\ \&\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00333}00333\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}aworld\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00334}00334\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}{aaWorld}}.\mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00335}00335\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00336}00336\ \ \ \ \ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}{aaWorld}}.\mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00337}00337\ \ \ \ \ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00338}00338\ \ \ \ \ \ \ \ \ Serial.println(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}{aaWorld}}.\mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00339}00339\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00341}00341\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ OUTPUT\_TEAPOT}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ display\ quaternion\ values\ in\ InvenSense\ Teapot\ demo\ format:}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00343}00343\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[2]\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[0];}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00344}00344\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[3]\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[1];}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00345}00345\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[4]\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[4];}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00346}00346\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[5]\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[5];}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00347}00347\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[6]\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[8];}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00348}00348\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[7]\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[9];}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00349}00349\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[8]\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[12];}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00350}00350\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[9]\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifoBuffer}}[13];}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00351}00351\ \ \ \ \ \ \ \ \ Serial.write(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}},\ 14);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00352}00352\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapotPacket}}[11]++;\ \textcolor{comment}{//\ packetCount,\ loops\ at\ 0xFF\ on\ purpose}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00353}00353\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ blink\ LED\ to\ indicate\ activity}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00356}00356\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blinkState}}\ =\ !\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blinkState}};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00357}00357\ \ \ \ \ \ \ \ \ digitalWrite(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab4553be4db9860d940f81d7447173b2f}{LED\_PIN}},\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blinkState}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00358}00358\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050___d_m_p6_8ino_source_l00359}00359\ \}}
+
+\end{DoxyCode}

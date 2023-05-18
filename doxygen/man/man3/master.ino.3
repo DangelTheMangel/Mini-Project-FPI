@@ -1,0 +1,233 @@
+.TH "master/master.ino" 3 "Thu May 18 2023" "Master-car" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+master/master.ino \- This is what sent instructens to the car from the user gestures\&. This code is inspried by: A library for SeeedStudio Grove FM (Website: www\&.seeed\&.cc) by Steve Chang and Grove - Serial Bluetooth v3\&.0 examples (website: https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/)  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'AK09918\&.h'\fP
+.br
+\fC#include 'ICM20600\&.h'\fP
+.br
+\fC#include <Wire\&.h>\fP
+.br
+\fC#include <SoftwareSerial\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRxD\fP   2"
+.br
+.RI "include librays for the 9DOF "
+.ti -1c
+.RI "#define \fBTxD\fP   3"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "SoftwareSerial \fBblueToothSerial\fP (\fBRxD\fP, \fBTxD\fP)"
+.br
+.ti -1c
+.RI "ICM20600 \fBicm20600\fP (true)"
+.br
+.ti -1c
+.RI "void \fBsetup\fP ()"
+.br
+.RI "This function when the bord start and setup the bluetooth connection with Grove - Serial Bluetooth v3\&.0 and calibrate the 9DOF sensor\&. "
+.ti -1c
+.RI "void \fBupdateAcc\fP ()"
+.br
+.RI "This read the Accelaeration from the 9DOF\&. "
+.ti -1c
+.RI "void \fBupdateGyro\fP ()"
+.br
+.RI "This read the Gyroscope from the 9DOF\&. "
+.ti -1c
+.RI "void \fBcalcRoll\fP ()"
+.br
+.RI "This function claculate the roll of the glove from the accelaition\&. "
+.ti -1c
+.RI "void \fBcalcPitch\fP ()"
+.br
+.RI "This function calculate the picht of the glove from the accelaration\&. "
+.ti -1c
+.RI "void \fBloop\fP ()"
+.br
+.RI "This is the loop that is run everything\&. "
+.ti -1c
+.RI "void \fBblueToothTransfore\fP ()"
+.br
+.RI "This function packages the picht and roll and send it to the slave\&. "
+.ti -1c
+.RI "void \fBsetupBlueToothConnection\fP ()"
+.br
+.RI "inspried by the example code called:Master_button setup code website: https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/ "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "AK09918_err_type_t \fBerr\fP"
+.br
+.ti -1c
+.RI "AK09918 \fBak09918\fP"
+.br
+.ti -1c
+.RI "int16_t \fBacc_x\fP"
+.br
+.ti -1c
+.RI "int16_t \fBacc_y\fP"
+.br
+.ti -1c
+.RI "int16_t \fBacc_z\fP"
+.br
+.ti -1c
+.RI "int16_t \fBgyro_x\fP"
+.br
+.ti -1c
+.RI "int16_t \fBgyro_y\fP"
+.br
+.ti -1c
+.RI "int16_t \fBgyro_z\fP"
+.br
+.ti -1c
+.RI "double \fBroll\fP"
+.br
+.ti -1c
+.RI "double \fBpitch\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is what sent instructens to the car from the user gestures\&. This code is inspried by: A library for SeeedStudio Grove FM (Website: www\&.seeed\&.cc) by Steve Chang and Grove - Serial Bluetooth v3\&.0 examples (website: https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/) 
+
+
+.PP
+Definition in file \fBmaster\&.ino\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define RxD   2"
+
+.PP
+include librays for the 9DOF pin for the bluetooth component 
+.PP
+Definition at line \fB14\fP of file \fBmaster\&.ino\fP\&.
+.SS "#define TxD   3"
+pin for the bluetooth component 
+.PP
+Definition at line \fB15\fP of file \fBmaster\&.ino\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "SoftwareSerial blueToothSerial (\fBRxD\fP, \fBTxD\fP)"
+create the the softwareSerial 
+.SS "void blueToothTransfore ()"
+
+.PP
+This function packages the picht and roll and send it to the slave\&. 
+.PP
+Definition at line \fB150\fP of file \fBmaster\&.ino\fP\&.
+.SS "void calcPitch ()"
+
+.PP
+This function calculate the picht of the glove from the accelaration\&. 
+.PP
+Definition at line \fB121\fP of file \fBmaster\&.ino\fP\&.
+.SS "void calcRoll ()"
+
+.PP
+This function claculate the roll of the glove from the accelaition\&. 
+.PP
+Definition at line \fB114\fP of file \fBmaster\&.ino\fP\&.
+.SS "ICM20600 icm20600 (true)"
+A instance of the 9DOF sensor where the sensor can be read 
+.SS "void loop ()"
+
+.PP
+This is the loop that is run everything\&. 
+.PP
+Definition at line \fB130\fP of file \fBmaster\&.ino\fP\&.
+.SS "void setup ()"
+
+.PP
+This function when the bord start and setup the bluetooth connection with Grove - Serial Bluetooth v3\&.0 and calibrate the 9DOF sensor\&. 
+.PP
+Definition at line \fB41\fP of file \fBmaster\&.ino\fP\&.
+.SS "void setupBlueToothConnection ()"
+
+.PP
+inspried by the example code called:Master_button setup code website: https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/ 
+.PP
+Definition at line \fB173\fP of file \fBmaster\&.ino\fP\&.
+.SS "void updateAcc ()"
+
+.PP
+This read the Accelaeration from the 9DOF\&. 
+.PP
+Definition at line \fB94\fP of file \fBmaster\&.ino\fP\&.
+.SS "void updateGyro ()"
+
+.PP
+This read the Gyroscope from the 9DOF\&. 
+.PP
+Definition at line \fB104\fP of file \fBmaster\&.ino\fP\&.
+.SH "Variable Documentation"
+.PP 
+.SS "int16_t acc_x"
+The x value of the acceleration messured by the 9dof 
+.PP
+Definition at line \fB24\fP of file \fBmaster\&.ino\fP\&.
+.SS "int16_t acc_y"
+The y value of the acceleration messured by the 9dof 
+.br
+ 
+.PP
+Definition at line \fB25\fP of file \fBmaster\&.ino\fP\&.
+.SS "int16_t acc_z"
+The z value of the acceleration messured by the 9dof 
+.br
+ 
+.PP
+Definition at line \fB26\fP of file \fBmaster\&.ino\fP\&.
+.SS "AK09918 ak09918"
+A instance of the 9DOF sensor that checks if it is up and running 
+.PP
+Definition at line \fB20\fP of file \fBmaster\&.ino\fP\&.
+.SS "AK09918_err_type_t err"
+The 9DOF error type that get used when starting the sensor to check that it is running 
+.PP
+Definition at line \fB19\fP of file \fBmaster\&.ino\fP\&.
+.SS "int16_t gyro_x"
+The x value of the Gyroscope messured by the 9dof 
+.br
+ 
+.PP
+Definition at line \fB27\fP of file \fBmaster\&.ino\fP\&.
+.SS "int16_t gyro_y"
+The y value of the Gyroscope messured by the 9dof 
+.br
+ 
+.PP
+Definition at line \fB28\fP of file \fBmaster\&.ino\fP\&.
+.SS "int16_t gyro_z"
+The z value of the Gyroscope messured by the 9dof 
+.br
+ 
+.PP
+Definition at line \fB29\fP of file \fBmaster\&.ino\fP\&.
+.SS "double pitch"
+The calculated pitch of the glove from accelaeration 
+.PP
+Definition at line \fB34\fP of file \fBmaster\&.ino\fP\&.
+.SS "double roll"
+The calculated roll of the glove from accelaeration 
+.PP
+Definition at line \fB33\fP of file \fBmaster\&.ino\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Master-car from the source code\&.

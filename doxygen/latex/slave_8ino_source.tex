@@ -1,0 +1,146 @@
+\hypertarget{slave_8ino_source}{}\doxysection{slave.\+ino}
+\label{slave_8ino_source}\index{slave/slave.ino@{slave/slave.ino}}
+\mbox{\hyperlink{slave_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <SoftwareSerial.h>}\ \ \textcolor{comment}{//Software\ Serial\ Port}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <Servo.h>}\ \textcolor{comment}{//For\ controlling\ the\ Servo}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00013}\mbox{\hyperlink{slave_8ino_a2e870fcbc18d10c580a86b0a50a4cf62}{00013}}\ \textcolor{preprocessor}{\#define\ RxD\ 2\ }}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00014}\mbox{\hyperlink{slave_8ino_a7a433743b28486a952e45f709e27fe0f}{00014}}\ \textcolor{preprocessor}{\#define\ TxD\ 3\ }}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00017}00017\ \textcolor{comment}{//\ Motor\ A\ pins\ }}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00018}\mbox{\hyperlink{slave_8ino_acd92b430059d886880c53f13ae038e3f}{00018}}\ \textcolor{preprocessor}{\#define\ A1\ 5}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00019}\mbox{\hyperlink{slave_8ino_a2946bc30423c2a996eeafa49e995c30e}{00019}}\ \textcolor{preprocessor}{\#define\ A2\ 6}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00020}00020\ \textcolor{comment}{//\ Motor\ B\ pins}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00021}\mbox{\hyperlink{slave_8ino_a7b21d6a6a4573b4997b1f04b01cd4efb}{00021}}\ \textcolor{preprocessor}{\#define\ B1\ 10}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00022}\mbox{\hyperlink{slave_8ino_a6945d50f798e1fde624d70c74457090e}{00022}}\ \textcolor{preprocessor}{\#define\ B2\ 11}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00023}00023\ \textcolor{comment}{//pin\ for\ axis/Servo}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00024}\mbox{\hyperlink{slave_8ino_a48cdc6c9a75eb611d0a703c94bdac6b8}{00024}}\ \textcolor{preprocessor}{\#define\ A3\ 9\ }}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00026}00026\ \textcolor{comment}{//for\ controlling\ the\ car}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00027}\mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{00027}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}}\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00028}\mbox{\hyperlink{slave_8ino_a5c5b4121f85e7805d4801519d76870de}{00028}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{slave_8ino_a5c5b4121f85e7805d4801519d76870de}{turn}}\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00029}\mbox{\hyperlink{slave_8ino_aad36546e8175d2922bee165fe028fedc}{00029}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{slave_8ino_aad36546e8175d2922bee165fe028fedc}{min}}\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00031}\mbox{\hyperlink{slave_8ino_a49bd5cdd2772754118d6db2592e0d549}{00031}}\ Servo\ \mbox{\hyperlink{slave_8ino_a49bd5cdd2772754118d6db2592e0d549}{axisServo}};\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00033}\mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{00033}}\ SoftwareSerial\ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}(\mbox{\hyperlink{slave_8ino_a2e870fcbc18d10c580a86b0a50a4cf62}{RxD}},\ \mbox{\hyperlink{slave_8ino_a7a433743b28486a952e45f709e27fe0f}{TxD}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00035}\mbox{\hyperlink{slave_8ino_a3bf8bfd112ea1deb8de4c400c137703b}{00035}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{slave_8ino_a3bf8bfd112ea1deb8de4c400c137703b}{MAX\_MESSAGE\_LENGTH}}\ =\ 12;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00041}\mbox{\hyperlink{slave_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{slave_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00042}00042\ \ \ Serial.begin(9600);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00043}00043\ \ \ \textcolor{comment}{//set\ input\ and\ output\ pins\ for\ bluetooth}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00044}00044\ \ \ pinMode(\mbox{\hyperlink{slave_8ino_a2e870fcbc18d10c580a86b0a50a4cf62}{RxD}},\ INPUT);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00045}00045\ \ \ pinMode(\mbox{\hyperlink{slave_8ino_a7a433743b28486a952e45f709e27fe0f}{TxD}},\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00046}00046\ \ \ \textcolor{comment}{//Set\ pin\ for\ the\ servo\ motor}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00047}00047\ \ \ \mbox{\hyperlink{slave_8ino_a49bd5cdd2772754118d6db2592e0d549}{axisServo}}.attach(\mbox{\hyperlink{slave_8ino_a48cdc6c9a75eb611d0a703c94bdac6b8}{A3}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00048}00048\ \ \ \textcolor{comment}{//get\ a\ bluetooth\ connect\ to\ the\ masterbord}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00049}00049\ \ \ \mbox{\hyperlink{slave_8ino_aabec44d551f4da54e5fb45808e722b04}{setupBlueToothConnection}}();}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00056}\mbox{\hyperlink{slave_8ino_afe461d27b9c48d5921c00d521181f12f}{00056}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{slave_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00057}00057\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.available())\ \{\ \ \textcolor{comment}{//check\ if\ there's\ any\ data\ sent\ from\ the\ remote\ bluetooth\ shield}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ recieve\ the\ bluetooth\ data}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{slave_8ino_ac4344fe634bb6a3983019a46da49646c}{recieveBluetoothData}}();}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//control\ the\ motor\ that\ move\ the\ car\ forward}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{slave_8ino_aeb5368008b84918357a9759148d8c998}{feedForwardControl}}();}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ controll\ the\ turning\ servo}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{slave_8ino_aa9e1a4ce96ae393ca9e06d3f4dc85637}{turnControl}}();}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00064}00064\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00071}\mbox{\hyperlink{slave_8ino_ac4344fe634bb6a3983019a46da49646c}{00071}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{slave_8ino_ac4344fe634bb6a3983019a46da49646c}{recieveBluetoothData}}()\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00074}00074\ \ \ \textcolor{comment}{//\ a\ static\ char\ array\ that\ have\ the\ message\ from\ the\ bluettoht\ buffer}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00075}00075\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ message[\mbox{\hyperlink{slave_8ino_a3bf8bfd112ea1deb8de4c400c137703b}{MAX\_MESSAGE\_LENGTH}}];}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00076}00076\ \ \ \textcolor{comment}{//the\ index\ of\ the\ current\ char}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00077}00077\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ message\_pos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00079}00079\ \ \ \textcolor{comment}{//Read\ the\ next\ available\ byte\ in\ the\ serial\ receive\ buffer}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00080}00080\ \ \ \textcolor{keywordtype}{char}\ inByte\ =\ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.read();}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00082}00082\ \ \ \textcolor{comment}{//Message\ coming\ in\ (check\ not\ terminating\ character)}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00083}00083\ \ \ \textcolor{keywordflow}{if}\ (inByte\ !=\ \textcolor{charliteral}{'\(\backslash\)n'}\ \&\&\ (message\_pos\ <\ \mbox{\hyperlink{slave_8ino_a3bf8bfd112ea1deb8de4c400c137703b}{MAX\_MESSAGE\_LENGTH}}\ -\/\ 1))\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//Add\ the\ incoming\ byte\ to\ our\ message}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00085}00085\ \ \ \ \ message[message\_pos]\ =\ inByte;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00086}00086\ \ \ \ \ message\_pos++;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00087}00087\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00089}00089\ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//print\ the\ message}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00091}00091\ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}The\ message:"{}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//Print\ the\ message\ (or\ do\ other\ things)}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00093}00093\ \ \ \ \ Serial.println(message);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//the\ char\ of\ the\ serpperation\ chars}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{char}\ dl1\ =\ 0x11;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{char}\ dl2\ =\ 0x12;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{char}\ indexC\ =\ 0x13;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//The\ roll\ value\ and\ picht\ value\ as\ strings}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00099}00099\ \ \ \ \ String\ r\_v\ =\ \textcolor{stringliteral}{"{}"{}},\ p\_v\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{slave_8ino_a3bf8bfd112ea1deb8de4c400c137703b}{MAX\_MESSAGE\_LENGTH}}\ -\/\ 1;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00102}00102\ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ current\ =\ message[i];}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00103}00103\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current\ ==\ 00)\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00104}00104\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (current\ ==\ dl2\ ||\ current\ ==\ dl1)\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00105}00105\ \ \ \ \ \ \ \ \ indexC\ =\ current;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00106}00106\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (indexC\ ==\ dl2)\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00107}00107\ \ \ \ \ \ \ \ \ p\_v\ +=\ current;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00108}00108\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (indexC\ ==\ dl1)\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00109}00109\ \ \ \ \ \ \ \ \ r\_v\ +=\ current;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00110}00110\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00113}00113\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{master_8ino_a1d3228afa3a1d6773954f40c1e519eb9}{roll}}\ =\ atof(r\_v.c\_str());}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00114}00114\ \ \ \ \ \textcolor{keywordtype}{double}\ picht\ =\ atof(p\_v.c\_str());}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00115}00115\ \ \ \ \ \mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}}\ =\ 25.5\ *\ picht;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00116}00116\ \ \ \ \ \mbox{\hyperlink{slave_8ino_a5c5b4121f85e7805d4801519d76870de}{turn}}\ =\ 180-\/(\mbox{\hyperlink{master_8ino_a1d3228afa3a1d6773954f40c1e519eb9}{roll}}+10)*9;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//print\ the\ foward\ and\ turn\ values\ and\ the\ roll\ and\ picht\ values}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00119}00119\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}turn:\ "{}}\ +\ String(\mbox{\hyperlink{master_8ino_a1d3228afa3a1d6773954f40c1e519eb9}{roll}})\ +\textcolor{stringliteral}{"{}\ ,\ "{}}\ +\ String(\mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}})+\ \textcolor{stringliteral}{"{}\ forward:\ "{}}\ +\ String(picht)+\textcolor{stringliteral}{"{}\ ,\ "{}}\ +\ String(\mbox{\hyperlink{slave_8ino_a5c5b4121f85e7805d4801519d76870de}{turn}}));}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00121}00121\ \ \ \ \ message[message\_pos]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//rest\ the\ index\ of\ the\ postion\ of\ the\ message}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00123}00123\ \ \ \ \ message\_pos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00124}00124\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00125}00125\ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00130}\mbox{\hyperlink{slave_8ino_aa9e1a4ce96ae393ca9e06d3f4dc85637}{00130}}\ \textcolor{keywordtype}{void}\ \ \mbox{\hyperlink{slave_8ino_aa9e1a4ce96ae393ca9e06d3f4dc85637}{turnControl}}()\{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00131}00131\ \ \ \mbox{\hyperlink{slave_8ino_a49bd5cdd2772754118d6db2592e0d549}{axisServo}}.write(\mbox{\hyperlink{slave_8ino_a5c5b4121f85e7805d4801519d76870de}{turn}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00132}00132\ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00138}\mbox{\hyperlink{slave_8ino_aeb5368008b84918357a9759148d8c998}{00138}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{slave_8ino_aeb5368008b84918357a9759148d8c998}{feedForwardControl}}()\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00140}00140\ \ \ \textcolor{keywordflow}{if}\ (abs(\mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}})\ >\ \mbox{\hyperlink{slave_8ino_aad36546e8175d2922bee165fe028fedc}{min}})\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}}\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00143}00143\ \ \ \ \ \ \ analogWrite(\mbox{\hyperlink{slave_8ino_acd92b430059d886880c53f13ae038e3f}{A1}},\ \mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00144}00144\ \ \ \ \ \ \ analogWrite(\mbox{\hyperlink{slave_8ino_a2946bc30423c2a996eeafa49e995c30e}{A2}},\ 0);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00145}00145\ \ \ \ \ \ \ analogWrite(\mbox{\hyperlink{slave_8ino_a7b21d6a6a4573b4997b1f04b01cd4efb}{B1}},\ \mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00146}00146\ \ \ \ \ \ \ analogWrite(\mbox{\hyperlink{slave_8ino_a6945d50f798e1fde624d70c74457090e}{B2}},\ 0);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00147}00147\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00148}00148\ \ \ \ \ \ \ analogWrite(\mbox{\hyperlink{slave_8ino_acd92b430059d886880c53f13ae038e3f}{A1}},\ 0);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00149}00149\ \ \ \ \ \ \ analogWrite(\mbox{\hyperlink{slave_8ino_a2946bc30423c2a996eeafa49e995c30e}{A2}},\ \mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00150}00150\ \ \ \ \ \ \ analogWrite(\mbox{\hyperlink{slave_8ino_a7b21d6a6a4573b4997b1f04b01cd4efb}{B1}},\ 0);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00151}00151\ \ \ \ \ \ \ analogWrite(\mbox{\hyperlink{slave_8ino_a6945d50f798e1fde624d70c74457090e}{B2}},\ \mbox{\hyperlink{slave_8ino_a40c11a329bd5e2b8be6797b361e9d1c3}{forward}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00152}00152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00154}00154\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00155}00155\ \ \ \ \ digitalWrite(\mbox{\hyperlink{slave_8ino_acd92b430059d886880c53f13ae038e3f}{A1}},\ LOW);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00156}00156\ \ \ \ \ digitalWrite(\mbox{\hyperlink{slave_8ino_a2946bc30423c2a996eeafa49e995c30e}{A2}},\ LOW);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00157}00157\ \ \ \ \ digitalWrite(\mbox{\hyperlink{slave_8ino_a7b21d6a6a4573b4997b1f04b01cd4efb}{B1}},\ LOW);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00158}00158\ \ \ \ \ digitalWrite(\mbox{\hyperlink{slave_8ino_a6945d50f798e1fde624d70c74457090e}{B2}},\ LOW);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00159}00159\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00160}00160\ \}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00167}\mbox{\hyperlink{slave_8ino_aabec44d551f4da54e5fb45808e722b04}{00167}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{slave_8ino_aabec44d551f4da54e5fb45808e722b04}{setupBlueToothConnection}}()\ \{}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00168}00168\ \ \ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.begin(9600);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00169}00169\ \ \ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT"{}});}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00170}00170\ \ \ delay(400);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00172}00172\ \ \ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT+DEFAULT"{}});\ \ \textcolor{comment}{//\ Restore\ all\ setup\ value\ to\ factory\ setup}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00173}00173\ \ \ delay(2000);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00175}00175\ \ \ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT+NAMESeeedBTSlave"{}});\ \ \textcolor{comment}{//\ set\ the\ bluetooth\ name\ as\ "{}SeeedBTSlave"{}\ ,the\ length\ of\ bluetooth\ name\ must\ less\ than\ 12\ characters.}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00176}00176\ \ \ delay(400);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00178}00178\ \ \ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT+PIN0000"{}});\ \ \textcolor{comment}{//\ set\ the\ pair\ code\ to\ connect}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00179}00179\ \ \ delay(400);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00181}00181\ \ \ Serial.println(\textcolor{stringliteral}{"{}pin\ set\ to\ 0000"{}});\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00183}00183\ \ \ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT+AUTH1"{}});\ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00184}00184\ \ \ delay(400);}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00186}00186\ \ \ \mbox{\hyperlink{slave_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.flush();\ \textcolor{comment}{//Flushes\ the\ blueToothSerial}}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00188}00188\ \ \ Serial.println(\textcolor{stringliteral}{"{}Ready\ to\ go"{}});\ \textcolor{comment}{//write\ it\ is\ ready\ to\ go\ }}
+\DoxyCodeLine{\Hypertarget{slave_8ino_source_l00189}00189\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,191 @@
+\hypertarget{_m_p_u9150__raw_8ino}{}\doxysection{libraries/\+Grove\+\_\+\+IMU\+\_\+9\+DOF/examples/\+MPU9150\+\_\+raw/\+MPU9150\+\_\+raw.ino File Reference}
+\label{_m_p_u9150__raw_8ino}\index{libraries/Grove\_IMU\_9DOF/examples/MPU9150\_raw/MPU9150\_raw.ino@{libraries/Grove\_IMU\_9DOF/examples/MPU9150\_raw/MPU9150\_raw.ino}}
+{\ttfamily \#include \char`\"{}Wire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I2\+Cdev.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}MPU6050.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_m_p_u9150__raw_8ino_ab4553be4db9860d940f81d7447173b2f}{LED\+\_\+\+PIN}}~13
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_m_p_u9150__raw_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{_m_p_u9150__raw_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_m_p_u6050}{MPU6050}} \mbox{\hyperlink{_m_p_u9150__raw_8ino_a42da4ad490f0a41e4ec376c8e78ada38}{accelgyro}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_aebedd0a48fe876cce3d3f14326e4ca66}{ax}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_a46d26903f1874d06875a974dfa1a9d3c}{ay}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_a41e60f9324f9d4fd9e916e964370fb2f}{az}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_a4524555b50a829ee7628cf5e5806f227}{gx}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_a8bd44b73dc5745833a8dd8d2a6240613}{gy}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_aa61e9778c784ec4695029ed2cc769a61}{gz}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_aed3c06d40de711fbf86af656aecc5ac1}{mx}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_a805117803b40bce501bce617d9599424}{my}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_m_p_u9150__raw_8ino_a739bf5aca5e2b050daa5c283944e3777}{mz}}
+\item 
+bool \mbox{\hyperlink{_m_p_u9150__raw_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blink\+State}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_ab4553be4db9860d940f81d7447173b2f}\label{_m_p_u9150__raw_8ino_ab4553be4db9860d940f81d7447173b2f}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!LED\_PIN@{LED\_PIN}}
+\index{LED\_PIN@{LED\_PIN}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{LED\_PIN}{LED\_PIN}}
+{\footnotesize\ttfamily \#define LED\+\_\+\+PIN~13}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00051}{51}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_m_p_u9150__raw_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!loop@{loop}}
+\index{loop@{loop}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00076}{76}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_m_p_u9150__raw_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!setup@{setup}}
+\index{setup@{setup}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00054}{54}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a42da4ad490f0a41e4ec376c8e78ada38}\label{_m_p_u9150__raw_8ino_a42da4ad490f0a41e4ec376c8e78ada38}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!accelgyro@{accelgyro}}
+\index{accelgyro@{accelgyro}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{accelgyro}{accelgyro}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_m_p_u6050}{MPU6050}} accelgyro}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00045}{45}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_aebedd0a48fe876cce3d3f14326e4ca66}\label{_m_p_u9150__raw_8ino_aebedd0a48fe876cce3d3f14326e4ca66}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!ax@{ax}}
+\index{ax@{ax}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{ax}{ax}}
+{\footnotesize\ttfamily int16\+\_\+t ax}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00047}{47}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a46d26903f1874d06875a974dfa1a9d3c}\label{_m_p_u9150__raw_8ino_a46d26903f1874d06875a974dfa1a9d3c}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!ay@{ay}}
+\index{ay@{ay}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{ay}{ay}}
+{\footnotesize\ttfamily int16\+\_\+t ay}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00047}{47}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a41e60f9324f9d4fd9e916e964370fb2f}\label{_m_p_u9150__raw_8ino_a41e60f9324f9d4fd9e916e964370fb2f}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!az@{az}}
+\index{az@{az}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{az}{az}}
+{\footnotesize\ttfamily int16\+\_\+t az}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00047}{47}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}\label{_m_p_u9150__raw_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!blinkState@{blinkState}}
+\index{blinkState@{blinkState}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{blinkState}{blinkState}}
+{\footnotesize\ttfamily bool blink\+State = false}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00052}{52}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a4524555b50a829ee7628cf5e5806f227}\label{_m_p_u9150__raw_8ino_a4524555b50a829ee7628cf5e5806f227}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!gx@{gx}}
+\index{gx@{gx}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{gx}{gx}}
+{\footnotesize\ttfamily int16\+\_\+t gx}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00048}{48}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a8bd44b73dc5745833a8dd8d2a6240613}\label{_m_p_u9150__raw_8ino_a8bd44b73dc5745833a8dd8d2a6240613}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!gy@{gy}}
+\index{gy@{gy}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{gy}{gy}}
+{\footnotesize\ttfamily int16\+\_\+t gy}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00048}{48}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_aa61e9778c784ec4695029ed2cc769a61}\label{_m_p_u9150__raw_8ino_aa61e9778c784ec4695029ed2cc769a61}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!gz@{gz}}
+\index{gz@{gz}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{gz}{gz}}
+{\footnotesize\ttfamily int16\+\_\+t gz}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00048}{48}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_aed3c06d40de711fbf86af656aecc5ac1}\label{_m_p_u9150__raw_8ino_aed3c06d40de711fbf86af656aecc5ac1}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!mx@{mx}}
+\index{mx@{mx}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{mx}{mx}}
+{\footnotesize\ttfamily int16\+\_\+t mx}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00049}{49}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a805117803b40bce501bce617d9599424}\label{_m_p_u9150__raw_8ino_a805117803b40bce501bce617d9599424}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!my@{my}}
+\index{my@{my}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{my}{my}}
+{\footnotesize\ttfamily int16\+\_\+t my}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00049}{49}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u9150__raw_8ino_a739bf5aca5e2b050daa5c283944e3777}\label{_m_p_u9150__raw_8ino_a739bf5aca5e2b050daa5c283944e3777}} 
+\index{MPU9150\_raw.ino@{MPU9150\_raw.ino}!mz@{mz}}
+\index{mz@{mz}!MPU9150\_raw.ino@{MPU9150\_raw.ino}}
+\doxysubsubsection{\texorpdfstring{mz}{mz}}
+{\footnotesize\ttfamily int16\+\_\+t mz}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u9150__raw_8ino_source_l00049}{49}} of file \mbox{\hyperlink{_m_p_u9150__raw_8ino_source}{MPU9150\+\_\+raw.\+ino}}.
+

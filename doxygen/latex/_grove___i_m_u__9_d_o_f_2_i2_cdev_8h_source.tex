@@ -1,0 +1,274 @@
+\hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source}{}\doxysection{I2\+Cdev.\+h}
+\label{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source}\index{libraries/Grove\_IMU\_9DOF/I2Cdev.h@{libraries/Grove\_IMU\_9DOF/I2Cdev.h}}
+\mbox{\hyperlink{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00001}00001\ \textcolor{comment}{//\ I2Cdev\ library\ collection\ -\/\ Main\ I2C\ device\ class\ header\ file}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00002}00002\ \textcolor{comment}{//\ Abstracts\ bit\ and\ byte\ I2C\ R/W\ functions\ into\ a\ convenient\ class}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00003}00003\ \textcolor{comment}{//\ 6/9/2012\ by\ Jeff\ Rowberg\ <jeff@rowberg.net>}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00005}00005\ \textcolor{comment}{//\ Changelog:}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/09\ -\/\ fix\ major\ issue\ with\ reading\ >\ 32\ bytes\ at\ a\ time\ with\ Arduino\ Wire}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ add\ compiler\ warnings\ when\ using\ outdated\ or\ IDE\ or\ limited\ I2Cdev\ implementation}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00008}00008\ \textcolor{comment}{//\ \ \ \ \ 2011-\/11-\/01\ -\/\ fix\ write*Bits\ mask\ calculation\ (thanks\ sasquatch\ @\ Arduino\ forums)}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00009}00009\ \textcolor{comment}{//\ \ \ \ \ 2011-\/10-\/03\ -\/\ added\ automatic\ Arduino\ version\ detection\ for\ ease\ of\ use}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00010}00010\ \textcolor{comment}{//\ \ \ \ \ 2011-\/10-\/02\ -\/\ added\ Gene\ Knight's\ NBWire\ TwoWire\ class\ implementation\ with\ small\ modifications}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00011}00011\ \textcolor{comment}{//\ \ \ \ \ 2011-\/08-\/31\ -\/\ added\ support\ for\ Arduino\ 1.0\ Wire\ library\ (methods\ are\ different\ from\ 0.x)}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00012}00012\ \textcolor{comment}{//\ \ \ \ \ 2011-\/08-\/03\ -\/\ added\ optional\ timeout\ parameter\ to\ read*\ methods\ to\ easily\ change\ from\ default}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00013}00013\ \textcolor{comment}{//\ \ \ \ \ 2011-\/08-\/02\ -\/\ added\ support\ for\ 16-\/bit\ registers}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00014}00014\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ fixed\ incorrect\ Doxygen\ comments\ on\ some\ methods}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00015}00015\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ added\ timeout\ value\ for\ read\ operations\ (thanks\ mem\ @\ Arduino\ forums)}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ \ 2011-\/07-\/30\ -\/\ changed\ read/write\ function\ structures\ to\ return\ success\ or\ byte\ counts}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00017}00017\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ made\ all\ methods\ static\ for\ multi-\/device\ memory\ savings}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00018}00018\ \textcolor{comment}{//\ \ \ \ \ 2011-\/07-\/28\ -\/\ initial\ release}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00020}00020\ \textcolor{comment}{/*\ \ ============================================}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00021}00021\ \textcolor{comment}{\ \ \ \ I2Cdev\ device\ library\ code\ is\ placed\ under\ the\ MIT\ license}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00022}00022\ \textcolor{comment}{\ \ \ \ Copyright\ (c)\ 2012\ Jeff\ Rowberg}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00023}00023\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00024}00024\ \textcolor{comment}{\ \ \ \ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00025}00025\ \textcolor{comment}{\ \ \ \ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00026}00026\ \textcolor{comment}{\ \ \ \ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00027}00027\ \textcolor{comment}{\ \ \ \ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00028}00028\ \textcolor{comment}{\ \ \ \ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00029}00029\ \textcolor{comment}{\ \ \ \ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00030}00030\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00031}00031\ \textcolor{comment}{\ \ \ \ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00032}00032\ \textcolor{comment}{\ \ \ \ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00033}00033\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00034}00034\ \textcolor{comment}{\ \ \ \ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00035}00035\ \textcolor{comment}{\ \ \ \ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00036}00036\ \textcolor{comment}{\ \ \ \ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00037}00037\ \textcolor{comment}{\ \ \ \ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00038}00038\ \textcolor{comment}{\ \ \ \ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ \ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00040}00040\ \textcolor{comment}{\ \ \ \ THE\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00041}00041\ \textcolor{comment}{\ \ \ \ ===============================================}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00042}00042\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00044}00044\ \textcolor{preprocessor}{\#ifndef\ \_I2CDEV\_H\_}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ \_I2CDEV\_H\_}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00047}00047\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00048}00048\ \textcolor{comment}{//\ I2C\ interface\ implementation\ setting}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00049}00049\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00050}\mbox{\hyperlink{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_ad7025a5d30aa933619b8560344dbdee6}{00050}}\ \textcolor{preprocessor}{\#define\ I2CDEV\_IMPLEMENTATION\ \ \ \ \ \ \ I2CDEV\_ARDUINO\_WIRE}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00052}00052\ \textcolor{comment}{//\ comment\ this\ out\ if\ you\ are\ using\ a\ non-\/optimal\ IDE/implementation\ setting}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00053}00053\ \textcolor{comment}{//\ but\ want\ the\ compiler\ to\ shut\ up\ about\ it}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00054}\mbox{\hyperlink{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_a3cc0749de8c1d44b3b7e1997a8f1c0fa}{00054}}\ \textcolor{preprocessor}{\#define\ I2CDEV\_IMPLEMENTATION\_WARNINGS}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00056}00056\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00057}00057\ \textcolor{comment}{//\ I2C\ interface\ implementation\ options}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00058}00058\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00059}\mbox{\hyperlink{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_a552406c30ac10b8bf904f5015fb987e0}{00059}}\ \textcolor{preprocessor}{\#define\ I2CDEV\_ARDUINO\_WIRE\ \ \ \ \ \ \ \ \ 1\ }\textcolor{comment}{//\ Wire\ object\ from\ Arduino}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00060}\mbox{\hyperlink{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_a220afc88608d77eb7dea2199ad30ded6}{00060}}\ \textcolor{preprocessor}{\#define\ I2CDEV\_BUILTIN\_NBWIRE\ \ \ \ \ \ \ 2\ }\textcolor{comment}{//\ Tweaked\ Wire\ object\ from\ Gene\ Knight's\ NBWire\ project}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00061}00061\ \textcolor{comment}{//\ \string^\string^\string^\ NBWire\ implementation\ is\ still\ buggy\ w/some\ interrupts!}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00062}\mbox{\hyperlink{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_a1ada544cea9b1c4ecabbdea6e05e7e1b}{00062}}\ \textcolor{preprocessor}{\#define\ I2CDEV\_BUILTIN\_FASTWIRE\ \ \ \ \ 3\ }\textcolor{comment}{//\ FastWire\ object\ from\ Francesco\ Ferrara's\ project}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00063}00063\ \textcolor{comment}{//\ \string^\string^\string^\ FastWire\ implementation\ in\ I2Cdev\ is\ INCOMPLETE!}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00064}00064\ \textcolor{preprocessor}{\#ifndef\ BUFFER\_LENGTH}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00065}\mbox{\hyperlink{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_af7b7dc9a200cb1404c280bd500fd1551}{00065}}\ \textcolor{preprocessor}{\#define\ BUFFER\_LENGTH\ 32}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00066}00066\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00068}00068\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00069}00069\ \textcolor{comment}{//\ Arduino-\/style\ "{}Serial.print"{}\ debug\ constant\ (uncomment\ to\ enable)}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00070}00070\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00071}00071\ \textcolor{comment}{//\#define\ I2CDEV\_SERIAL\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00073}00073\ \textcolor{preprocessor}{\#ifdef\ ARDUINO}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00074}00074\ \textcolor{preprocessor}{\ \ \ \ \#if\ ARDUINO\ <\ 100}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00075}00075\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}WProgram.h"{}}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00076}00076\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00077}00077\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00078}00078\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00079}00079\ \textcolor{preprocessor}{\ \ \ \ \#if\ I2CDEV\_IMPLEMENTATION\ ==\ I2CDEV\_ARDUINO\_WIRE}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00080}00080\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <Wire.h>}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00081}00081\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00082}00082\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00083}00083\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}ArduinoWrapper.h"{}}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00084}00084\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00086}00086\ \textcolor{comment}{//\ 1000ms\ default\ read\ timeout\ (modify\ with\ "{}I2Cdev::readTimeout\ =\ [ms];"{})}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00087}\mbox{\hyperlink{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_ad9726bb02451bb8f59d3d2729e4cd20e}{00087}}\ \textcolor{preprocessor}{\#define\ I2CDEV\_DEFAULT\_READ\_TIMEOUT\ \ \ \ \ 1000}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00089}\mbox{\hyperlink{class_i2_cdev}{00089}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i2_cdev}{I2Cdev}}\ \{}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00090}00090\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00091}00091\ \ \ \ \ \mbox{\hyperlink{class_i2_cdev_a0a466e2323d9f719a1ecc9fa11ac5c84}{I2Cdev}}();}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{static}\ int8\_t\ \mbox{\hyperlink{class_i2_cdev_abe6d8ea07027d362419de86188981559}{readBit}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ bitNum,\ uint8\_t*\ data,}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ timeout\ =\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{I2Cdev::readTimeout}});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00095}00095\ \ \ \ \ \textcolor{keyword}{static}\ int8\_t\ \mbox{\hyperlink{class_i2_cdev_aaaa3b9ef9500a7d69ccc3d0ccaae33c4}{readBitW}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ bitNum,\ uint16\_t*\ data,}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ timeout\ =\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{I2Cdev::readTimeout}});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{static}\ int8\_t\ \mbox{\hyperlink{class_i2_cdev_a8e5e9742072bb80db06ccd46f52e2b6d}{readBits}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ bitStart,\ uint8\_t\ length,\ uint8\_t*\ data,}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ timeout\ =\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{I2Cdev::readTimeout}});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00099}00099\ \ \ \ \ \textcolor{keyword}{static}\ int8\_t\ \mbox{\hyperlink{class_i2_cdev_a1f417ba3e5ce99832e07c31522c97f87}{readBitsW}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ bitStart,\ uint8\_t\ length,\ uint16\_t*\ data,}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ timeout\ =\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{I2Cdev::readTimeout}});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{static}\ int8\_t\ \mbox{\hyperlink{class_i2_cdev_ad3fb41ce124a29f93749d99611c75c33}{readByte}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t*\ data,\ uint16\_t\ timeout\ =\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{I2Cdev::readTimeout}});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00102}00102\ \ \ \ \ \textcolor{keyword}{static}\ int8\_t\ \mbox{\hyperlink{class_i2_cdev_a545cd48b1e806e7e467b542c9e38e8c8}{readWord}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint16\_t*\ data,\ uint16\_t\ timeout\ =\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{I2Cdev::readTimeout}});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{static}\ int8\_t\ \mbox{\hyperlink{class_i2_cdev_aca9c503da5cffd6ac6f8eff9b195c5f4}{readBytes}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ length,\ uint8\_t*\ data,}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ timeout\ =\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{I2Cdev::readTimeout}});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00105}00105\ \ \ \ \ \textcolor{keyword}{static}\ int8\_t\ \mbox{\hyperlink{class_i2_cdev_a1b3d895dc6a00cbb5fb3b0441b2e35de}{readWords}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ length,\ uint16\_t*\ data,}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ timeout\ =\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{I2Cdev::readTimeout}});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00108}00108\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_cdev_aa68890af87de5471d32e583ebbd91acb}{writeBit}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ bitNum,\ uint8\_t\ data);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_cdev_a1b5fbedfadec5d429c81ee84d27e658d}{writeBitW}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ bitNum,\ uint16\_t\ data);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_cdev_a913371251b6a41520c080115650e1b59}{writeBits}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ bitStart,\ uint8\_t\ length,\ uint8\_t\ data);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_cdev_a8f8652a1328224cce867eed665a45c4d}{writeBitsW}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ bitStart,\ uint8\_t\ length,\ uint16\_t\ data);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_cdev_aeb297637ef985cd562da465ba61b7042}{writeByte}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ data);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_cdev_acbe68a802d6a177301736e60bedd1def}{writeWord}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint16\_t\ data);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00114}00114\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_cdev_aa4e39cac6c0eac5112f9132084bcc93e}{writeBytes}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ length,\ uint8\_t*\ data);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i2_cdev_aae37c0526e4b4730a5b2ffd752fd8b21}{writeWords}}(uint8\_t\ devAddr,\ uint8\_t\ regAddr,\ uint8\_t\ length,\ uint16\_t*\ data);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00117}\mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{00117}}\ \ \ \ \ \textcolor{keyword}{static}\ uint16\_t\ \mbox{\hyperlink{class_i2_cdev_a89c2dd0649451cb09d2edb96c27c158c}{readTimeout}};}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00118}00118\ \};}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00120}00120\ \textcolor{preprocessor}{\#if\ I2CDEV\_IMPLEMENTATION\ ==\ I2CDEV\_BUILTIN\_FASTWIRE}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00122}00122\ \textcolor{comment}{//\ FastWire\ 0.2}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00123}00123\ \textcolor{comment}{//\ This\ is\ a\ library\ to\ help\ faster\ programs\ to\ read\ I2C\ devices.}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00124}00124\ \textcolor{comment}{//\ Copyright(C)\ 2011}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00125}00125\ \textcolor{comment}{//\ Francesco\ Ferrara}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00127}00127\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00128}00128\ \textcolor{comment}{/*\ Master\ */}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00129}00129\ \textcolor{preprocessor}{\#define\ TW\_START\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00130}00130\ \textcolor{preprocessor}{\#define\ TW\_REP\_START\ \ \ \ \ \ \ \ \ \ \ \ 0x10}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00132}00132\ \textcolor{comment}{/*\ Master\ Transmitter\ */}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00133}00133\ \textcolor{preprocessor}{\#define\ TW\_MT\_SLA\_ACK\ \ \ \ \ \ \ \ \ \ \ 0x18}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00134}00134\ \textcolor{preprocessor}{\#define\ TW\_MT\_SLA\_NACK\ \ \ \ \ \ \ \ \ \ 0x20}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00135}00135\ \textcolor{preprocessor}{\#define\ TW\_MT\_DATA\_ACK\ \ \ \ \ \ \ \ \ \ 0x28}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00136}00136\ \textcolor{preprocessor}{\#define\ TW\_MT\_DATA\_NACK\ \ \ \ \ \ \ \ \ 0x30}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00137}00137\ \textcolor{preprocessor}{\#define\ TW\_MT\_ARB\_LOST\ \ \ \ \ \ \ \ \ \ 0x38}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00139}00139\ \textcolor{comment}{/*\ Master\ Receiver\ */}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00140}00140\ \textcolor{preprocessor}{\#define\ TW\_MR\_ARB\_LOST\ \ \ \ \ \ \ \ \ \ 0x38}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00141}00141\ \textcolor{preprocessor}{\#define\ TW\_MR\_SLA\_ACK\ \ \ \ \ \ \ \ \ \ \ 0x40}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00142}00142\ \textcolor{preprocessor}{\#define\ TW\_MR\_SLA\_NACK\ \ \ \ \ \ \ \ \ \ 0x48}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00143}00143\ \textcolor{preprocessor}{\#define\ TW\_MR\_DATA\_ACK\ \ \ \ \ \ \ \ \ \ 0x50}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00144}00144\ \textcolor{preprocessor}{\#define\ TW\_MR\_DATA\_NACK\ \ \ \ \ \ \ \ \ 0x58}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00146}00146\ \textcolor{preprocessor}{\#define\ TW\_OK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00147}00147\ \textcolor{preprocessor}{\#define\ TW\_ERROR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00149}00149\ \textcolor{keyword}{class\ }Fastwire\ \{}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00150}00150\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00151}00151\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{boolean}\ waitInt();}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00153}00153\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00154}00154\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{basic__demo_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}(\textcolor{keywordtype}{int}\ khz,\ \textcolor{keywordtype}{boolean}\ pullup);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00155}00155\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{byte}\ write(\textcolor{keywordtype}{byte}\ device,\ \textcolor{keywordtype}{byte}\ address,\ \textcolor{keywordtype}{byte}\ value);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00156}00156\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{byte}\ readBuf(\textcolor{keywordtype}{byte}\ device,\ \textcolor{keywordtype}{byte}\ address,\ \textcolor{keywordtype}{byte}*\ data,\ \textcolor{keywordtype}{byte}\ num);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00157}00157\ \};}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00158}00158\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00160}00160\ \textcolor{preprocessor}{\#if\ I2CDEV\_IMPLEMENTATION\ ==\ I2CDEV\_BUILTIN\_NBWIRE}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00161}00161\ \textcolor{comment}{//\ NBWire\ implementation\ based\ heavily\ on\ code\ by\ Gene\ Knight\ <Gene@Telobot.com>}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00162}00162\ \textcolor{comment}{//\ Originally\ posted\ on\ the\ Arduino\ forum\ at\ http://arduino.cc/forum/index.php/topic,70705.0.html}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00163}00163\ \textcolor{comment}{//\ Originally\ offered\ to\ the\ i2cdevlib\ project\ at\ http://arduino.cc/forum/index.php/topic,68210.30.html}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00165}00165\ \textcolor{preprocessor}{\#define\ NBWIRE\_BUFFER\_LENGTH\ 32}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00167}00167\ \textcolor{keyword}{class\ }TwoWire\ \{}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00168}00168\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00169}00169\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ rxBuffer[];}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00170}00170\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ rxBufferIndex;}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00171}00171\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ rxBufferLength;}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00173}00173\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ txAddress;}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00174}00174\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ txBuffer[];}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00175}00175\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ txBufferIndex;}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00176}00176\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ txBufferLength;}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00178}00178\ \ \ \ \ \textcolor{comment}{//\ static\ uint8\_t\ transmitting;}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00179}00179\ \ \ \ \ \textcolor{keyword}{static}\ void\ (*user\_onRequest)(void);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00180}00180\ \ \ \ \ \textcolor{keyword}{static}\ void\ (*user\_onReceive)(int);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00181}00181\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ onRequestService(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00182}00182\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ onReceiveService(uint8\_t*,\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00184}00184\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00185}00185\ \ \ \ \ TwoWire();}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00186}00186\ \ \ \ \ \textcolor{keywordtype}{void}\ begin();}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00187}00187\ \ \ \ \ \textcolor{keywordtype}{void}\ begin(uint8\_t);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00188}00188\ \ \ \ \ \textcolor{keywordtype}{void}\ begin(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00189}00189\ \ \ \ \ \textcolor{keywordtype}{void}\ beginTransmission(uint8\_t);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//void\ beginTransmission(int);}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00191}00191\ \ \ \ \ uint8\_t\ endTransmission(uint16\_t\ timeout\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00192}00192\ \ \ \ \ \textcolor{keywordtype}{void}\ nbendTransmission(\textcolor{keywordtype}{void}\ (*function)(\textcolor{keywordtype}{int}))\ ;}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00193}00193\ \ \ \ \ uint8\_t\ requestFrom(uint8\_t,\ \textcolor{keywordtype}{int},\ uint16\_t\ timeout\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00194}00194\ \ \ \ \ \textcolor{comment}{//uint8\_t\ requestFrom(int,\ int);}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00195}00195\ \ \ \ \ \textcolor{keywordtype}{void}\ nbrequestFrom(uint8\_t,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{void}\ (*function)(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00196}00196\ \ \ \ \ \textcolor{keywordtype}{void}\ send(uint8\_t);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00197}00197\ \ \ \ \ \textcolor{keywordtype}{void}\ send(uint8\_t*,\ uint8\_t);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00198}00198\ \ \ \ \ \textcolor{comment}{//void\ send(int);}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00199}00199\ \ \ \ \ \textcolor{keywordtype}{void}\ send(\textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00200}00200\ \ \ \ \ uint8\_t\ available(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00201}00201\ \ \ \ \ uint8\_t\ receive(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00202}00202\ \ \ \ \ \textcolor{keywordtype}{void}\ onReceive(\textcolor{keywordtype}{void}\ (*)(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00203}00203\ \ \ \ \ \textcolor{keywordtype}{void}\ onRequest(\textcolor{keywordtype}{void}\ (*)(\textcolor{keywordtype}{void}));}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00204}00204\ \};}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00206}00206\ \textcolor{preprocessor}{\#define\ TWI\_READY\ \ \ 0}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00207}00207\ \textcolor{preprocessor}{\#define\ TWI\_MRX\ \ \ \ \ 1}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00208}00208\ \textcolor{preprocessor}{\#define\ TWI\_MTX\ \ \ \ \ 2}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00209}00209\ \textcolor{preprocessor}{\#define\ TWI\_SRX\ \ \ \ \ 3}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00210}00210\ \textcolor{preprocessor}{\#define\ TWI\_STX\ \ \ \ \ 4}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00212}00212\ \textcolor{preprocessor}{\#define\ TW\_WRITE\ \ \ \ 0}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00213}00213\ \textcolor{preprocessor}{\#define\ TW\_READ\ \ \ \ \ 1}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00215}00215\ \textcolor{preprocessor}{\#define\ TW\_MT\_SLA\_NACK\ \ \ \ \ \ 0x20}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00216}00216\ \textcolor{preprocessor}{\#define\ TW\_MT\_DATA\_NACK\ \ \ \ \ 0x30}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00218}00218\ \textcolor{preprocessor}{\#define\ CPU\_FREQ\ \ \ \ \ \ \ \ \ \ \ \ 16000000L}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00219}00219\ \textcolor{preprocessor}{\#define\ TWI\_FREQ\ \ \ \ \ \ \ \ \ \ \ \ 100000L}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00220}00220\ \textcolor{preprocessor}{\#define\ TWI\_BUFFER\_LENGTH\ \ \ 32}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00222}00222\ \textcolor{comment}{/*\ TWI\ Status\ is\ in\ TWSR,\ in\ the\ top\ 5\ bits:\ TWS7\ -\/\ TWS3\ */}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00224}00224\ \textcolor{preprocessor}{\#define\ TW\_STATUS\_MASK\ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_BV(TWS7)|\_BV(TWS6)|\_BV(TWS5)|\_BV(TWS4)|\_BV(TWS3))}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00225}00225\ \textcolor{preprocessor}{\#define\ TW\_STATUS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (TWSR\ \&\ TW\_STATUS\_MASK)}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00226}00226\ \textcolor{preprocessor}{\#define\ TW\_START\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00227}00227\ \textcolor{preprocessor}{\#define\ TW\_REP\_START\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00228}00228\ \textcolor{preprocessor}{\#define\ TW\_MT\_SLA\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x18}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00229}00229\ \textcolor{preprocessor}{\#define\ TW\_MT\_SLA\_NACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00230}00230\ \textcolor{preprocessor}{\#define\ TW\_MT\_DATA\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x28}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00231}00231\ \textcolor{preprocessor}{\#define\ TW\_MT\_DATA\_NACK\ \ \ \ \ \ \ \ \ \ \ \ \ 0x30}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00232}00232\ \textcolor{preprocessor}{\#define\ TW\_MT\_ARB\_LOST\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x38}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00233}00233\ \textcolor{preprocessor}{\#define\ TW\_MR\_ARB\_LOST\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x38}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00234}00234\ \textcolor{preprocessor}{\#define\ TW\_MR\_SLA\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00235}00235\ \textcolor{preprocessor}{\#define\ TW\_MR\_SLA\_NACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x48}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00236}00236\ \textcolor{preprocessor}{\#define\ TW\_MR\_DATA\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x50}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00237}00237\ \textcolor{preprocessor}{\#define\ TW\_MR\_DATA\_NACK\ \ \ \ \ \ \ \ \ \ \ \ \ 0x58}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00238}00238\ \textcolor{preprocessor}{\#define\ TW\_ST\_SLA\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xA8}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00239}00239\ \textcolor{preprocessor}{\#define\ TW\_ST\_ARB\_LOST\_SLA\_ACK\ \ \ \ \ \ 0xB0}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00240}00240\ \textcolor{preprocessor}{\#define\ TW\_ST\_DATA\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xB8}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00241}00241\ \textcolor{preprocessor}{\#define\ TW\_ST\_DATA\_NACK\ \ \ \ \ \ \ \ \ \ \ \ \ 0xC0}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00242}00242\ \textcolor{preprocessor}{\#define\ TW\_ST\_LAST\_DATA\ \ \ \ \ \ \ \ \ \ \ \ \ 0xC8}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00243}00243\ \textcolor{preprocessor}{\#define\ TW\_SR\_SLA\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x60}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00244}00244\ \textcolor{preprocessor}{\#define\ TW\_SR\_ARB\_LOST\_SLA\_ACK\ \ \ \ \ \ 0x68}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00245}00245\ \textcolor{preprocessor}{\#define\ TW\_SR\_GCALL\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ 0x70}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00246}00246\ \textcolor{preprocessor}{\#define\ TW\_SR\_ARB\_LOST\_GCALL\_ACK\ \ \ \ 0x78}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00247}00247\ \textcolor{preprocessor}{\#define\ TW\_SR\_DATA\_ACK\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00248}00248\ \textcolor{preprocessor}{\#define\ TW\_SR\_DATA\_NACK\ \ \ \ \ \ \ \ \ \ \ \ \ 0x88}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00249}00249\ \textcolor{preprocessor}{\#define\ TW\_SR\_GCALL\_DATA\_ACK\ \ \ \ \ \ \ \ 0x90}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00250}00250\ \textcolor{preprocessor}{\#define\ TW\_SR\_GCALL\_DATA\_NACK\ \ \ \ \ \ \ 0x98}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00251}00251\ \textcolor{preprocessor}{\#define\ TW\_SR\_STOP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xA0}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00252}00252\ \textcolor{preprocessor}{\#define\ TW\_NO\_INFO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xF8}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00253}00253\ \textcolor{preprocessor}{\#define\ TW\_BUS\_ERROR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00255}00255\ \textcolor{comment}{//\#define\ \_MMIO\_BYTE(mem\_addr)\ (*(volatile\ uint8\_t\ *)(mem\_addr))}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00256}00256\ \textcolor{comment}{//\#define\ \_SFR\_BYTE(sfr)\ \_MMIO\_BYTE(\_SFR\_ADDR(sfr))}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00258}00258\ \textcolor{preprocessor}{\#ifndef\ sbi\ }\textcolor{comment}{//\ set\ bit}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00259}00259\ \textcolor{preprocessor}{\ \ \ \ \#define\ sbi(sfr,\ bit)\ (\_SFR\_BYTE(sfr)\ |=\ \_BV(bit))}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00260}00260\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ sbi}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00262}00262\ \textcolor{preprocessor}{\#ifndef\ cbi\ }\textcolor{comment}{//\ clear\ bit}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00263}00263\ \textcolor{preprocessor}{\ \ \ \ \#define\ cbi(sfr,\ bit)\ (\_SFR\_BYTE(sfr)\ \&=\ \string~\_BV(bit))}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00264}00264\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ cbi}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00266}00266\ \textcolor{keyword}{extern}\ TwoWire\ Wire;}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00268}00268\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ I2CDEV\_IMPLEMENTATION\ ==\ I2CDEV\_BUILTIN\_NBWIRE}}
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_grove___i_m_u__9_d_o_f_2_i2_cdev_8h_source_l00270}00270\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_I2CDEV\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

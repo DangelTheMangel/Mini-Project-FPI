@@ -1,0 +1,365 @@
+\hypertarget{master_8ino}{}\doxysection{master/master.ino File Reference}
+\label{master_8ino}\index{master/master.ino@{master/master.ino}}
+
+
+This is what sent instructens to the car from the user gestures. This code is inspried by\+: A library for Seeed\+Studio Grove FM (Website\+: www.\+seeed.\+cc) by Steve Chang and Grove -\/ Serial Bluetooth v3.\+0 examples (website\+: \href{https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/}{\texttt{ https\+://wiki.\+seeedstudio.\+com/\+Grove-\/\+Serial\+\_\+\+Bluetooth\+\_\+v3.\+0/}})  
+
+
+{\ttfamily \#include \char`\"{}AK09918.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ICM20600.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include $<$Software\+Serial.\+h$>$}\newline
+Include dependency graph for master.\+ino\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{master_8ino_a2e870fcbc18d10c580a86b0a50a4cf62}{RxD}}~2
+\begin{DoxyCompactList}\small\item\em include librays for the 9DOF \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{master_8ino_a7a433743b28486a952e45f709e27fe0f}{TxD}}~3
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Software\+Serial \mbox{\hyperlink{master_8ino_aa708aaae7a8634cd4b103756845be406}{blue\+Tooth\+Serial}} (\mbox{\hyperlink{master_8ino_a2e870fcbc18d10c580a86b0a50a4cf62}{RxD}}, \mbox{\hyperlink{master_8ino_a7a433743b28486a952e45f709e27fe0f}{TxD}})
+\item 
+ICM20600 \mbox{\hyperlink{master_8ino_a807c1b84d1f6fbd1f2746b9cbbb06389}{icm20600}} (true)
+\item 
+void \mbox{\hyperlink{master_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em This function when the bord start and setup the bluetooth connection with Grove -\/ Serial Bluetooth v3.\+0 and calibrate the 9DOF sensor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{master_8ino_a0de4860fad8b565f2690e4a36ad583ea}{update\+Acc}} ()
+\begin{DoxyCompactList}\small\item\em This read the Accelaeration from the 9DOF. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{master_8ino_a2ed3b8b52650ae2ff837d66dc3dde7f8}{update\+Gyro}} ()
+\begin{DoxyCompactList}\small\item\em This read the Gyroscope from the 9DOF. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{master_8ino_aea0b81dcfff966dfbde3b3c5737a1db5}{calc\+Roll}} ()
+\begin{DoxyCompactList}\small\item\em This function claculate the roll of the glove from the accelaition. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{master_8ino_a124a9b8f45a83c95da49b57daa404a7f}{calc\+Pitch}} ()
+\begin{DoxyCompactList}\small\item\em This function calculate the picht of the glove from the accelaration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{master_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em This is the loop that is run everything. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{master_8ino_affa74a38c6d9465df84191ed6bd505bd}{blue\+Tooth\+Transfore}} ()
+\begin{DoxyCompactList}\small\item\em This function packages the picht and roll and send it to the slave. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{master_8ino_aabec44d551f4da54e5fb45808e722b04}{setup\+Blue\+Tooth\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em inspried by the example code called\+:Master\+\_\+button setup code website\+: \href{https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/}{\texttt{ https\+://wiki.\+seeedstudio.\+com/\+Grove-\/\+Serial\+\_\+\+Bluetooth\+\_\+v3.\+0/}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+AK09918\+\_\+err\+\_\+type\+\_\+t \mbox{\hyperlink{master_8ino_a49d075376b4370dfdd3eb4bb9704c059}{err}}
+\item 
+AK09918 \mbox{\hyperlink{master_8ino_acf349734b916fdfc82601a3aa47a9d7c}{ak09918}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{master_8ino_aa31250bd8ad7b6e60eb7cfdc5709b701}{acc\+\_\+x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{master_8ino_a2edd44395cc97e056ec642808d645127}{acc\+\_\+y}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{master_8ino_a269c4f06d5fbe3b801242887a3c621c3}{acc\+\_\+z}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{master_8ino_a8dde3342979ed9986c16e356851a9c2a}{gyro\+\_\+x}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{master_8ino_a7c42f0111bf74679a9c36bca042bf011}{gyro\+\_\+y}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{master_8ino_aa7f04de51e63caab363ce9a56cd752bf}{gyro\+\_\+z}}
+\item 
+double \mbox{\hyperlink{master_8ino_a1d3228afa3a1d6773954f40c1e519eb9}{roll}}
+\item 
+double \mbox{\hyperlink{master_8ino_a34c057a0378030db67bd6a129f37d938}{pitch}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is what sent instructens to the car from the user gestures. This code is inspried by\+: A library for Seeed\+Studio Grove FM (Website\+: www.\+seeed.\+cc) by Steve Chang and Grove -\/ Serial Bluetooth v3.\+0 examples (website\+: \href{https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/}{\texttt{ https\+://wiki.\+seeedstudio.\+com/\+Grove-\/\+Serial\+\_\+\+Bluetooth\+\_\+v3.\+0/}}) 
+
+
+
+Definition in file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{master_8ino_a2e870fcbc18d10c580a86b0a50a4cf62}\label{master_8ino_a2e870fcbc18d10c580a86b0a50a4cf62}} 
+\index{master.ino@{master.ino}!RxD@{RxD}}
+\index{RxD@{RxD}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{RxD}{RxD}}
+{\footnotesize\ttfamily \#define RxD~2}
+
+
+
+include librays for the 9DOF 
+
+pin for the bluetooth component 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00014}{14}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_a7a433743b28486a952e45f709e27fe0f}\label{master_8ino_a7a433743b28486a952e45f709e27fe0f}} 
+\index{master.ino@{master.ino}!TxD@{TxD}}
+\index{TxD@{TxD}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{TxD}{TxD}}
+{\footnotesize\ttfamily \#define TxD~3}
+
+pin for the bluetooth component 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00015}{15}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{master_8ino_aa708aaae7a8634cd4b103756845be406}\label{master_8ino_aa708aaae7a8634cd4b103756845be406}} 
+\index{master.ino@{master.ino}!blueToothSerial@{blueToothSerial}}
+\index{blueToothSerial@{blueToothSerial}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{blueToothSerial()}{blueToothSerial()}}
+{\footnotesize\ttfamily Software\+Serial blue\+Tooth\+Serial (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{master_8ino_a2e870fcbc18d10c580a86b0a50a4cf62}{RxD}}}]{,  }\item[{\mbox{\hyperlink{master_8ino_a7a433743b28486a952e45f709e27fe0f}{TxD}}}]{ }\end{DoxyParamCaption})}
+
+create the the software\+Serial Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{master_8ino_affa74a38c6d9465df84191ed6bd505bd}\label{master_8ino_affa74a38c6d9465df84191ed6bd505bd}} 
+\index{master.ino@{master.ino}!blueToothTransfore@{blueToothTransfore}}
+\index{blueToothTransfore@{blueToothTransfore}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{blueToothTransfore()}{blueToothTransfore()}}
+{\footnotesize\ttfamily void blue\+Tooth\+Transfore (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function packages the picht and roll and send it to the slave. 
+
+
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00150}{150}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{master_8ino_a124a9b8f45a83c95da49b57daa404a7f}\label{master_8ino_a124a9b8f45a83c95da49b57daa404a7f}} 
+\index{master.ino@{master.ino}!calcPitch@{calcPitch}}
+\index{calcPitch@{calcPitch}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{calcPitch()}{calcPitch()}}
+{\footnotesize\ttfamily void calc\+Pitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function calculate the picht of the glove from the accelaration. 
+
+
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00121}{121}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{master_8ino_aea0b81dcfff966dfbde3b3c5737a1db5}\label{master_8ino_aea0b81dcfff966dfbde3b3c5737a1db5}} 
+\index{master.ino@{master.ino}!calcRoll@{calcRoll}}
+\index{calcRoll@{calcRoll}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{calcRoll()}{calcRoll()}}
+{\footnotesize\ttfamily void calc\+Roll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function claculate the roll of the glove from the accelaition. 
+
+
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00114}{114}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{master_8ino_a807c1b84d1f6fbd1f2746b9cbbb06389}\label{master_8ino_a807c1b84d1f6fbd1f2746b9cbbb06389}} 
+\index{master.ino@{master.ino}!icm20600@{icm20600}}
+\index{icm20600@{icm20600}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{icm20600()}{icm20600()}}
+{\footnotesize\ttfamily ICM20600 icm20600 (\begin{DoxyParamCaption}\item[{true}]{ }\end{DoxyParamCaption})}
+
+A instance of the 9DOF sensor where the sensor can be read Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{master_8ino_afe461d27b9c48d5921c00d521181f12f}\label{master_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{master.ino@{master.ino}!loop@{loop}}
+\index{loop@{loop}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This is the loop that is run everything. 
+
+
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00130}{130}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{master_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{master_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{master.ino@{master.ino}!setup@{setup}}
+\index{setup@{setup}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function when the bord start and setup the bluetooth connection with Grove -\/ Serial Bluetooth v3.\+0 and calibrate the 9DOF sensor. 
+
+
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00041}{41}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{master_8ino_aabec44d551f4da54e5fb45808e722b04}\label{master_8ino_aabec44d551f4da54e5fb45808e722b04}} 
+\index{master.ino@{master.ino}!setupBlueToothConnection@{setupBlueToothConnection}}
+\index{setupBlueToothConnection@{setupBlueToothConnection}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{setupBlueToothConnection()}{setupBlueToothConnection()}}
+{\footnotesize\ttfamily void setup\+Blue\+Tooth\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+inspried by the example code called\+:Master\+\_\+button setup code website\+: \href{https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/}{\texttt{ https\+://wiki.\+seeedstudio.\+com/\+Grove-\/\+Serial\+\_\+\+Bluetooth\+\_\+v3.\+0/}} 
+
+
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00173}{173}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{master_8ino_a0de4860fad8b565f2690e4a36ad583ea}\label{master_8ino_a0de4860fad8b565f2690e4a36ad583ea}} 
+\index{master.ino@{master.ino}!updateAcc@{updateAcc}}
+\index{updateAcc@{updateAcc}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{updateAcc()}{updateAcc()}}
+{\footnotesize\ttfamily void update\+Acc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This read the Accelaeration from the 9DOF. 
+
+
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00094}{94}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{master_8ino_a2ed3b8b52650ae2ff837d66dc3dde7f8}\label{master_8ino_a2ed3b8b52650ae2ff837d66dc3dde7f8}} 
+\index{master.ino@{master.ino}!updateGyro@{updateGyro}}
+\index{updateGyro@{updateGyro}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{updateGyro()}{updateGyro()}}
+{\footnotesize\ttfamily void update\+Gyro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This read the Gyroscope from the 9DOF. 
+
+
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00104}{104}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{master_8ino_aa31250bd8ad7b6e60eb7cfdc5709b701}\label{master_8ino_aa31250bd8ad7b6e60eb7cfdc5709b701}} 
+\index{master.ino@{master.ino}!acc\_x@{acc\_x}}
+\index{acc\_x@{acc\_x}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{acc\_x}{acc\_x}}
+{\footnotesize\ttfamily int16\+\_\+t acc\+\_\+x}
+
+The x value of the acceleration messured by the 9dof 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00024}{24}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_a2edd44395cc97e056ec642808d645127}\label{master_8ino_a2edd44395cc97e056ec642808d645127}} 
+\index{master.ino@{master.ino}!acc\_y@{acc\_y}}
+\index{acc\_y@{acc\_y}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{acc\_y}{acc\_y}}
+{\footnotesize\ttfamily int16\+\_\+t acc\+\_\+y}
+
+The y value of the acceleration messured by the 9dof ~\newline
+ 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00025}{25}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_a269c4f06d5fbe3b801242887a3c621c3}\label{master_8ino_a269c4f06d5fbe3b801242887a3c621c3}} 
+\index{master.ino@{master.ino}!acc\_z@{acc\_z}}
+\index{acc\_z@{acc\_z}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{acc\_z}{acc\_z}}
+{\footnotesize\ttfamily int16\+\_\+t acc\+\_\+z}
+
+The z value of the acceleration messured by the 9dof ~\newline
+ 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00026}{26}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_acf349734b916fdfc82601a3aa47a9d7c}\label{master_8ino_acf349734b916fdfc82601a3aa47a9d7c}} 
+\index{master.ino@{master.ino}!ak09918@{ak09918}}
+\index{ak09918@{ak09918}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{ak09918}{ak09918}}
+{\footnotesize\ttfamily AK09918 ak09918}
+
+A instance of the 9DOF sensor that checks if it is up and running 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00020}{20}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_a49d075376b4370dfdd3eb4bb9704c059}\label{master_8ino_a49d075376b4370dfdd3eb4bb9704c059}} 
+\index{master.ino@{master.ino}!err@{err}}
+\index{err@{err}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily AK09918\+\_\+err\+\_\+type\+\_\+t err}
+
+The 9DOF error type that get used when starting the sensor to check that it is running 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00019}{19}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_a8dde3342979ed9986c16e356851a9c2a}\label{master_8ino_a8dde3342979ed9986c16e356851a9c2a}} 
+\index{master.ino@{master.ino}!gyro\_x@{gyro\_x}}
+\index{gyro\_x@{gyro\_x}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{gyro\_x}{gyro\_x}}
+{\footnotesize\ttfamily int16\+\_\+t gyro\+\_\+x}
+
+The x value of the Gyroscope messured by the 9dof ~\newline
+ 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00027}{27}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_a7c42f0111bf74679a9c36bca042bf011}\label{master_8ino_a7c42f0111bf74679a9c36bca042bf011}} 
+\index{master.ino@{master.ino}!gyro\_y@{gyro\_y}}
+\index{gyro\_y@{gyro\_y}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{gyro\_y}{gyro\_y}}
+{\footnotesize\ttfamily int16\+\_\+t gyro\+\_\+y}
+
+The y value of the Gyroscope messured by the 9dof ~\newline
+ 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00028}{28}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_aa7f04de51e63caab363ce9a56cd752bf}\label{master_8ino_aa7f04de51e63caab363ce9a56cd752bf}} 
+\index{master.ino@{master.ino}!gyro\_z@{gyro\_z}}
+\index{gyro\_z@{gyro\_z}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{gyro\_z}{gyro\_z}}
+{\footnotesize\ttfamily int16\+\_\+t gyro\+\_\+z}
+
+The z value of the Gyroscope messured by the 9dof ~\newline
+ 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00029}{29}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_a34c057a0378030db67bd6a129f37d938}\label{master_8ino_a34c057a0378030db67bd6a129f37d938}} 
+\index{master.ino@{master.ino}!pitch@{pitch}}
+\index{pitch@{pitch}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{pitch}{pitch}}
+{\footnotesize\ttfamily double pitch}
+
+The calculated pitch of the glove from accelaeration 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00034}{34}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+
+\mbox{\Hypertarget{master_8ino_a1d3228afa3a1d6773954f40c1e519eb9}\label{master_8ino_a1d3228afa3a1d6773954f40c1e519eb9}} 
+\index{master.ino@{master.ino}!roll@{roll}}
+\index{roll@{roll}!master.ino@{master.ino}}
+\doxysubsubsection{\texorpdfstring{roll}{roll}}
+{\footnotesize\ttfamily double roll}
+
+The calculated roll of the glove from accelaeration 
+
+Definition at line \mbox{\hyperlink{master_8ino_source_l00033}{33}} of file \mbox{\hyperlink{master_8ino_source}{master.\+ino}}.
+

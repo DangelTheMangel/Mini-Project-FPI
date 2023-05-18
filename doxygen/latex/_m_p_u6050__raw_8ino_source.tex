@@ -1,0 +1,101 @@
+\hypertarget{_m_p_u6050__raw_8ino_source}{}\doxysection{MPU6050\+\_\+raw.\+ino}
+\label{_m_p_u6050__raw_8ino_source}\index{libraries/Grove\_IMU\_9DOF/examples/MPU6050\_raw/MPU6050\_raw.ino@{libraries/Grove\_IMU\_9DOF/examples/MPU6050\_raw/MPU6050\_raw.ino}}
+\mbox{\hyperlink{_m_p_u6050__raw_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00001}00001\ \textcolor{comment}{//\ I2C\ device\ class\ (I2Cdev)\ demonstration\ Arduino\ sketch\ for\ MPU6050\ class}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00002}00002\ \textcolor{comment}{//\ 10/7/2011\ by\ Jeff\ Rowberg\ <jeff@rowberg.net>}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00003}00003\ \textcolor{comment}{//\ Updates\ should\ (hopefully)\ always\ be\ available\ at\ https://github.com/jrowberg/i2cdevlib}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00005}00005\ \textcolor{comment}{//\ Changelog:}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ 2011-\/10-\/07\ -\/\ initial\ release}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00008}00008\ \textcolor{comment}{/*\ \ ============================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00009}00009\ \textcolor{comment}{\ \ \ \ I2Cdev\ device\ library\ code\ is\ placed\ under\ the\ MIT\ license}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00010}00010\ \textcolor{comment}{\ \ \ \ Copyright\ (c)\ 2011\ Jeff\ Rowberg}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00011}00011\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00012}00012\ \textcolor{comment}{\ \ \ \ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00013}00013\ \textcolor{comment}{\ \ \ \ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00014}00014\ \textcolor{comment}{\ \ \ \ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00015}00015\ \textcolor{comment}{\ \ \ \ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00016}00016\ \textcolor{comment}{\ \ \ \ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00017}00017\ \textcolor{comment}{\ \ \ \ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00018}00018\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00019}00019\ \textcolor{comment}{\ \ \ \ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00020}00020\ \textcolor{comment}{\ \ \ \ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00021}00021\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00022}00022\ \textcolor{comment}{\ \ \ \ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00023}00023\ \textcolor{comment}{\ \ \ \ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00024}00024\ \textcolor{comment}{\ \ \ \ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00025}00025\ \textcolor{comment}{\ \ \ \ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00026}00026\ \textcolor{comment}{\ \ \ \ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00027}00027\ \textcolor{comment}{\ \ \ \ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00028}00028\ \textcolor{comment}{\ \ \ \ THE\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00029}00029\ \textcolor{comment}{\ \ \ \ ===============================================}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00030}00030\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00032}00032\ \textcolor{comment}{//\ Arduino\ Wire\ library\ is\ required\ if\ I2Cdev\ I2CDEV\_ARDUINO\_WIRE\ implementation}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00033}00033\ \textcolor{comment}{//\ is\ used\ in\ I2Cdev.h}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}Wire.h"{}}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00036}00036\ \textcolor{comment}{//\ I2Cdev\ and\ MPU6050\ must\ be\ installed\ as\ libraries,\ or\ else\ the\ .cpp/.h\ files}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00037}00037\ \textcolor{comment}{//\ for\ both\ classes\ must\ be\ in\ the\ include\ path\ of\ your\ project}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}I2Cdev.h"{}}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_m_p_u6050_8h}{MPU6050.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00041}00041\ \textcolor{comment}{//\ class\ default\ I2C\ address\ is\ 0x68}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00042}00042\ \textcolor{comment}{//\ specific\ I2C\ addresses\ may\ be\ passed\ as\ a\ parameter\ here}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00043}00043\ \textcolor{comment}{//\ AD0\ low\ =\ 0x68\ (default\ for\ InvenSense\ evaluation\ board)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00044}00044\ \textcolor{comment}{//\ AD0\ high\ =\ 0x69}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00045}\mbox{\hyperlink{_m_p_u6050__raw_8ino_a42da4ad490f0a41e4ec376c8e78ada38}{00045}}\ \mbox{\hyperlink{class_m_p_u6050}{MPU6050}}\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a42da4ad490f0a41e4ec376c8e78ada38}{accelgyro}};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00047}\mbox{\hyperlink{_m_p_u6050__raw_8ino_aebedd0a48fe876cce3d3f14326e4ca66}{00047}}\ int16\_t\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_aebedd0a48fe876cce3d3f14326e4ca66}{ax}},\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a46d26903f1874d06875a974dfa1a9d3c}{ay}},\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a41e60f9324f9d4fd9e916e964370fb2f}{az}};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00048}\mbox{\hyperlink{_m_p_u6050__raw_8ino_a4524555b50a829ee7628cf5e5806f227}{00048}}\ int16\_t\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a4524555b50a829ee7628cf5e5806f227}{gx}},\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a8bd44b73dc5745833a8dd8d2a6240613}{gy}},\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_aa61e9778c784ec4695029ed2cc769a61}{gz}};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00050}\mbox{\hyperlink{_m_p_u6050__raw_8ino_ab4553be4db9860d940f81d7447173b2f}{00050}}\ \textcolor{preprocessor}{\#define\ LED\_PIN\ 13}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00051}\mbox{\hyperlink{_m_p_u6050__raw_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{00051}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blinkState}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00053}\mbox{\hyperlink{_m_p_u6050__raw_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00053}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ join\ I2C\ bus\ (I2Cdev\ library\ doesn't\ do\ this\ automatically)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00055}00055\ \ \ \ \ Wire.begin();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ initialize\ serial\ communication}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ (38400\ chosen\ because\ it\ works\ as\ well\ at\ 8MHz\ as\ it\ does\ at\ 16MHz,\ but}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ it's\ really\ up\ to\ you\ depending\ on\ your\ project)}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00060}00060\ \ \ \ \ Serial.begin(38400);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ initialize\ device}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{while}(!Serial);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00064}00064\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Initializing\ I2C\ devices..."{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a42da4ad490f0a41e4ec376c8e78ada38}{accelgyro}}.\mbox{\hyperlink{class_m_p_u6050_abd8fc6c18adf158011118fbccc7e7054}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ verify\ connection}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00068}00068\ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Testing\ device\ connections..."{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00069}00069\ \ \ \ \ Serial.println(\mbox{\hyperlink{_m_p_u6050__raw_8ino_a42da4ad490f0a41e4ec376c8e78ada38}{accelgyro}}.\mbox{\hyperlink{class_m_p_u6050_a95ffab7b44fce3834236e0813687d11a}{testConnection}}()\ ?\ \textcolor{stringliteral}{"{}MPU6050\ connection\ successful"{}}\ :\ \textcolor{stringliteral}{"{}MPU6050\ connection\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ configure\ Arduino\ LED\ for}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00072}00072\ \ \ \ \ pinMode(\mbox{\hyperlink{_m_p_u6050__raw_8ino_ab4553be4db9860d940f81d7447173b2f}{LED\_PIN}},\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00075}\mbox{\hyperlink{_m_p_u6050__raw_8ino_afe461d27b9c48d5921c00d521181f12f}{00075}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ read\ raw\ accel/gyro\ measurements\ from\ device}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00077}00077\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a42da4ad490f0a41e4ec376c8e78ada38}{accelgyro}}.\mbox{\hyperlink{class_m_p_u6050_a574d3093dc131e4251a9b37adf208ca7}{getMotion6}}(\&\mbox{\hyperlink{_m_p_u6050__raw_8ino_aebedd0a48fe876cce3d3f14326e4ca66}{ax}},\ \&\mbox{\hyperlink{_m_p_u6050__raw_8ino_a46d26903f1874d06875a974dfa1a9d3c}{ay}},\ \&\mbox{\hyperlink{_m_p_u6050__raw_8ino_a41e60f9324f9d4fd9e916e964370fb2f}{az}},\ \&\mbox{\hyperlink{_m_p_u6050__raw_8ino_a4524555b50a829ee7628cf5e5806f227}{gx}},\ \&\mbox{\hyperlink{_m_p_u6050__raw_8ino_a8bd44b73dc5745833a8dd8d2a6240613}{gy}},\ \&\mbox{\hyperlink{_m_p_u6050__raw_8ino_aa61e9778c784ec4695029ed2cc769a61}{gz}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ these\ methods\ (and\ a\ few\ others)\ are\ also\ available}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//accelgyro.getAcceleration(\&ax,\ \&ay,\ \&az);}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//accelgyro.getRotation(\&gx,\ \&gy,\ \&gz);}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ display\ tab-\/separated\ accel/gyro\ x/y/z\ values}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00084}00084\ \ \ \ \ Serial.print(\textcolor{stringliteral}{"{}a/g:\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00085}00085\ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050__raw_8ino_aebedd0a48fe876cce3d3f14326e4ca66}{ax}});\ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00086}00086\ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050__raw_8ino_a46d26903f1874d06875a974dfa1a9d3c}{ay}});\ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00087}00087\ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050__raw_8ino_a41e60f9324f9d4fd9e916e964370fb2f}{az}});\ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00088}00088\ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050__raw_8ino_a4524555b50a829ee7628cf5e5806f227}{gx}});\ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00089}00089\ \ \ \ \ Serial.print(\mbox{\hyperlink{_m_p_u6050__raw_8ino_a8bd44b73dc5745833a8dd8d2a6240613}{gy}});\ Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00090}00090\ \ \ \ \ Serial.println(\mbox{\hyperlink{_m_p_u6050__raw_8ino_aa61e9778c784ec4695029ed2cc769a61}{gz}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ blink\ LED\ to\ indicate\ activity}}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00093}00093\ \ \ \ \ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blinkState}}\ =\ !\mbox{\hyperlink{_m_p_u6050__raw_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blinkState}};}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00094}00094\ \ \ \ \ digitalWrite(\mbox{\hyperlink{_m_p_u6050__raw_8ino_ab4553be4db9860d940f81d7447173b2f}{LED\_PIN}},\ \mbox{\hyperlink{_m_p_u6050__raw_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blinkState}});}
+\DoxyCodeLine{\Hypertarget{_m_p_u6050__raw_8ino_source_l00095}00095\ \}}
+
+\end{DoxyCode}

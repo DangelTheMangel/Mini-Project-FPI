@@ -1,0 +1,479 @@
+\hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino}{}\doxysection{libraries/\+Grove\+\_\+\+IMU\+\_\+9\+DOF/examples/\+IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated/\+IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.ino File Reference}
+\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino}\index{libraries/Grove\_IMU\_9DOF/examples/IMU\_9DOF\_Demo\_Compass\_Calibrated/IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{libraries/Grove\_IMU\_9DOF/examples/IMU\_9DOF\_Demo\_Compass\_Calibrated/IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+{\ttfamily \#include \char`\"{}Wire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I2\+Cdev.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}MPU6050.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a236a98eec2fbe6b8d0c769b7d58896c6}{sample\+\_\+num\+\_\+mdate}}~5000
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ad77f7a67793c644a8b93c112a415098e}{get\+Heading}} (void)
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ae14fd160ac39e0499b68885b3c15d34f}{get\+Tilt\+Heading}} (void)
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a35da32d179240003c5ac5991c256ee96}{Mxyz\+\_\+init\+\_\+calibrated}} ()
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a350956495c99d0b0b38daee5bec09a08}{get\+\_\+calibration\+\_\+\+Data}} ()
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ae1ff2f84462cc87ca7c6bc4af2428fc7}{get\+\_\+one\+\_\+sample\+\_\+date\+\_\+mxyz}} ()
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a3a62dae32bed08890608426243a9fe0a}{get\+Accel\+\_\+\+Data}} (void)
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_af454305b304cdbfb0db2377192c84696}{get\+Gyro\+\_\+\+Data}} (void)
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a54e851e1625a4da21fae8edfae98d472}{get\+Compass\+\_\+\+Data}} (void)
+\item 
+void \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a0a79d9384a217ee4ad4ec1fbcf55cfa6}{get\+Compass\+Date\+\_\+calibrated}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_m_p_u6050}{MPU6050}} \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a42da4ad490f0a41e4ec376c8e78ada38}{accelgyro}}
+\item 
+\mbox{\hyperlink{class_i2_cdev}{I2\+Cdev}} \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a993d0eb1cbbfaf5c8fb95ef0be584868}{I2\+C\+\_\+M}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a756636f2c2136c452b69b47657b28616}{buffer\+\_\+m}} \mbox{[}6\mbox{]}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aebedd0a48fe876cce3d3f14326e4ca66}{ax}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a46d26903f1874d06875a974dfa1a9d3c}{ay}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a41e60f9324f9d4fd9e916e964370fb2f}{az}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4524555b50a829ee7628cf5e5806f227}{gx}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a8bd44b73dc5745833a8dd8d2a6240613}{gy}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aa61e9778c784ec4695029ed2cc769a61}{gz}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aed3c06d40de711fbf86af656aecc5ac1}{mx}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a805117803b40bce501bce617d9599424}{my}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a739bf5aca5e2b050daa5c283944e3777}{mz}}
+\item 
+float \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ac5682e48513a771560df50e3b213e61a}{heading}}
+\item 
+float \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a835eee8966f86c3b35632e601bd3046a}{tiltheading}}
+\item 
+float \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a39752d8f956ebc31f64cb26754ea8313}{Axyz}} \mbox{[}3\mbox{]}
+\item 
+float \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4cf9cb7194f30a9b38390ff316cdef93}{Gxyz}} \mbox{[}3\mbox{]}
+\item 
+float \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a67306fea89c98ae5ac7d95719d56e840}{Mxyz}} \mbox{[}3\mbox{]}
+\item 
+volatile float \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a020694a1c8315c0897f1e80c1948105f}{mx\+\_\+sample}} \mbox{[}3\mbox{]}
+\item 
+volatile float \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a139682a64a40f19553cfdbe08e9f9fa5}{my\+\_\+sample}} \mbox{[}3\mbox{]}
+\item 
+volatile float \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_afbd174fb3d84502796b4cdb3bd4ead4b}{mz\+\_\+sample}} \mbox{[}3\mbox{]}
+\item 
+volatile int \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4b9e0ef9d7773fe356347afac216195b}{mx\+\_\+max}} = 0
+\item 
+volatile int \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a228b4075a1f42b30088a709df48e18b6}{my\+\_\+max}} = 0
+\item 
+volatile int \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_abf01be1ad51cecf23baaafcfea651295}{mz\+\_\+max}} = 0
+\item 
+volatile int \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a9884e463d3c188927a14f24bcd65a9b2}{mx\+\_\+min}} = 0
+\item 
+volatile int \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a598c12e644a440f70ae29920d06ab78a}{my\+\_\+min}} = 0
+\item 
+volatile int \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a7859725d399228f78b01d199b047f647}{mz\+\_\+min}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a236a98eec2fbe6b8d0c769b7d58896c6}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a236a98eec2fbe6b8d0c769b7d58896c6}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!sample\_num\_mdate@{sample\_num\_mdate}}
+\index{sample\_num\_mdate@{sample\_num\_mdate}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{sample\_num\_mdate}{sample\_num\_mdate}}
+{\footnotesize\ttfamily \#define sample\+\_\+num\+\_\+mdate~5000}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00032}{32}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a350956495c99d0b0b38daee5bec09a08}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a350956495c99d0b0b38daee5bec09a08}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!get\_calibration\_Data@{get\_calibration\_Data}}
+\index{get\_calibration\_Data@{get\_calibration\_Data}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{get\_calibration\_Data()}{get\_calibration\_Data()}}
+{\footnotesize\ttfamily void get\+\_\+calibration\+\_\+\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00179}{179}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ae1ff2f84462cc87ca7c6bc4af2428fc7}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ae1ff2f84462cc87ca7c6bc4af2428fc7}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!get\_one\_sample\_date\_mxyz@{get\_one\_sample\_date\_mxyz}}
+\index{get\_one\_sample\_date\_mxyz@{get\_one\_sample\_date\_mxyz}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{get\_one\_sample\_date\_mxyz()}{get\_one\_sample\_date\_mxyz()}}
+{\footnotesize\ttfamily void get\+\_\+one\+\_\+sample\+\_\+date\+\_\+mxyz (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00235}{235}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a3a62dae32bed08890608426243a9fe0a}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a3a62dae32bed08890608426243a9fe0a}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!getAccel\_Data@{getAccel\_Data}}
+\index{getAccel\_Data@{getAccel\_Data}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{getAccel\_Data()}{getAccel\_Data()}}
+{\footnotesize\ttfamily void get\+Accel\+\_\+\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00243}{243}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a54e851e1625a4da21fae8edfae98d472}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a54e851e1625a4da21fae8edfae98d472}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!getCompass\_Data@{getCompass\_Data}}
+\index{getCompass\_Data@{getCompass\_Data}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{getCompass\_Data()}{getCompass\_Data()}}
+{\footnotesize\ttfamily void get\+Compass\+\_\+\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00257}{257}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a0a79d9384a217ee4ad4ec1fbcf55cfa6}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a0a79d9384a217ee4ad4ec1fbcf55cfa6}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!getCompassDate\_calibrated@{getCompassDate\_calibrated}}
+\index{getCompassDate\_calibrated@{getCompassDate\_calibrated}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{getCompassDate\_calibrated()}{getCompassDate\_calibrated()}}
+{\footnotesize\ttfamily void get\+Compass\+Date\+\_\+calibrated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00271}{271}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_af454305b304cdbfb0db2377192c84696}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_af454305b304cdbfb0db2377192c84696}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!getGyro\_Data@{getGyro\_Data}}
+\index{getGyro\_Data@{getGyro\_Data}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{getGyro\_Data()}{getGyro\_Data()}}
+{\footnotesize\ttfamily void get\+Gyro\+\_\+\+Data (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00250}{250}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ad77f7a67793c644a8b93c112a415098e}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ad77f7a67793c644a8b93c112a415098e}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!getHeading@{getHeading}}
+\index{getHeading@{getHeading}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{getHeading()}{getHeading()}}
+{\footnotesize\ttfamily void get\+Heading (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00131}{131}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ae14fd160ac39e0499b68885b3c15d34f}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ae14fd160ac39e0499b68885b3c15d34f}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!getTiltHeading@{getTiltHeading}}
+\index{getTiltHeading@{getTiltHeading}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{getTiltHeading()}{getTiltHeading()}}
+{\footnotesize\ttfamily void get\+Tilt\+Heading (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00138}{138}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!loop@{loop}}
+\index{loop@{loop}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00076}{76}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a35da32d179240003c5ac5991c256ee96}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a35da32d179240003c5ac5991c256ee96}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!Mxyz\_init\_calibrated@{Mxyz\_init\_calibrated}}
+\index{Mxyz\_init\_calibrated@{Mxyz\_init\_calibrated}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{Mxyz\_init\_calibrated()}{Mxyz\_init\_calibrated()}}
+{\footnotesize\ttfamily void Mxyz\+\_\+init\+\_\+calibrated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00153}{153}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!setup@{setup}}
+\index{setup@{setup}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00051}{51}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a42da4ad490f0a41e4ec376c8e78ada38}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a42da4ad490f0a41e4ec376c8e78ada38}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!accelgyro@{accelgyro}}
+\index{accelgyro@{accelgyro}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{accelgyro}{accelgyro}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_m_p_u6050}{MPU6050}} accelgyro}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00012}{12}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aebedd0a48fe876cce3d3f14326e4ca66}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aebedd0a48fe876cce3d3f14326e4ca66}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!ax@{ax}}
+\index{ax@{ax}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{ax}{ax}}
+{\footnotesize\ttfamily int16\+\_\+t ax}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00018}{18}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a39752d8f956ebc31f64cb26754ea8313}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a39752d8f956ebc31f64cb26754ea8313}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!Axyz@{Axyz}}
+\index{Axyz@{Axyz}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{Axyz}{Axyz}}
+{\footnotesize\ttfamily float Axyz\mbox{[}3\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00027}{27}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a46d26903f1874d06875a974dfa1a9d3c}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a46d26903f1874d06875a974dfa1a9d3c}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!ay@{ay}}
+\index{ay@{ay}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{ay}{ay}}
+{\footnotesize\ttfamily int16\+\_\+t ay}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00018}{18}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a41e60f9324f9d4fd9e916e964370fb2f}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a41e60f9324f9d4fd9e916e964370fb2f}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!az@{az}}
+\index{az@{az}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{az}{az}}
+{\footnotesize\ttfamily int16\+\_\+t az}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00018}{18}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a756636f2c2136c452b69b47657b28616}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a756636f2c2136c452b69b47657b28616}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!buffer\_m@{buffer\_m}}
+\index{buffer\_m@{buffer\_m}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{buffer\_m}{buffer\_m}}
+{\footnotesize\ttfamily uint8\+\_\+t buffer\+\_\+m\mbox{[}6\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00015}{15}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4524555b50a829ee7628cf5e5806f227}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4524555b50a829ee7628cf5e5806f227}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!gx@{gx}}
+\index{gx@{gx}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{gx}{gx}}
+{\footnotesize\ttfamily int16\+\_\+t gx}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00019}{19}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4cf9cb7194f30a9b38390ff316cdef93}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4cf9cb7194f30a9b38390ff316cdef93}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!Gxyz@{Gxyz}}
+\index{Gxyz@{Gxyz}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{Gxyz}{Gxyz}}
+{\footnotesize\ttfamily float Gxyz\mbox{[}3\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00028}{28}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a8bd44b73dc5745833a8dd8d2a6240613}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a8bd44b73dc5745833a8dd8d2a6240613}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!gy@{gy}}
+\index{gy@{gy}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{gy}{gy}}
+{\footnotesize\ttfamily int16\+\_\+t gy}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00019}{19}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aa61e9778c784ec4695029ed2cc769a61}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aa61e9778c784ec4695029ed2cc769a61}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!gz@{gz}}
+\index{gz@{gz}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{gz}{gz}}
+{\footnotesize\ttfamily int16\+\_\+t gz}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00019}{19}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ac5682e48513a771560df50e3b213e61a}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_ac5682e48513a771560df50e3b213e61a}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!heading@{heading}}
+\index{heading@{heading}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{heading}{heading}}
+{\footnotesize\ttfamily float heading}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00024}{24}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a993d0eb1cbbfaf5c8fb95ef0be584868}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a993d0eb1cbbfaf5c8fb95ef0be584868}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!I2C\_M@{I2C\_M}}
+\index{I2C\_M@{I2C\_M}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{I2C\_M}{I2C\_M}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_i2_cdev}{I2\+Cdev}} I2\+C\+\_\+M}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00013}{13}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aed3c06d40de711fbf86af656aecc5ac1}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_aed3c06d40de711fbf86af656aecc5ac1}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!mx@{mx}}
+\index{mx@{mx}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{mx}{mx}}
+{\footnotesize\ttfamily int16\+\_\+t mx}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00020}{20}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4b9e0ef9d7773fe356347afac216195b}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a4b9e0ef9d7773fe356347afac216195b}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!mx\_max@{mx\_max}}
+\index{mx\_max@{mx\_max}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{mx\_max}{mx\_max}}
+{\footnotesize\ttfamily volatile int mx\+\_\+max = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00042}{42}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a9884e463d3c188927a14f24bcd65a9b2}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a9884e463d3c188927a14f24bcd65a9b2}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!mx\_min@{mx\_min}}
+\index{mx\_min@{mx\_min}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{mx\_min}{mx\_min}}
+{\footnotesize\ttfamily volatile int mx\+\_\+min = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00046}{46}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a020694a1c8315c0897f1e80c1948105f}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a020694a1c8315c0897f1e80c1948105f}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!mx\_sample@{mx\_sample}}
+\index{mx\_sample@{mx\_sample}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{mx\_sample}{mx\_sample}}
+{\footnotesize\ttfamily volatile float mx\+\_\+sample\mbox{[}3\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00034}{34}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a67306fea89c98ae5ac7d95719d56e840}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a67306fea89c98ae5ac7d95719d56e840}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!Mxyz@{Mxyz}}
+\index{Mxyz@{Mxyz}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{Mxyz}{Mxyz}}
+{\footnotesize\ttfamily float Mxyz\mbox{[}3\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00029}{29}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a805117803b40bce501bce617d9599424}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a805117803b40bce501bce617d9599424}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!my@{my}}
+\index{my@{my}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{my}{my}}
+{\footnotesize\ttfamily int16\+\_\+t my}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00020}{20}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a228b4075a1f42b30088a709df48e18b6}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a228b4075a1f42b30088a709df48e18b6}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!my\_max@{my\_max}}
+\index{my\_max@{my\_max}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{my\_max}{my\_max}}
+{\footnotesize\ttfamily volatile int my\+\_\+max = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00043}{43}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a598c12e644a440f70ae29920d06ab78a}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a598c12e644a440f70ae29920d06ab78a}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!my\_min@{my\_min}}
+\index{my\_min@{my\_min}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{my\_min}{my\_min}}
+{\footnotesize\ttfamily volatile int my\+\_\+min = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00047}{47}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a139682a64a40f19553cfdbe08e9f9fa5}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a139682a64a40f19553cfdbe08e9f9fa5}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!my\_sample@{my\_sample}}
+\index{my\_sample@{my\_sample}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{my\_sample}{my\_sample}}
+{\footnotesize\ttfamily volatile float my\+\_\+sample\mbox{[}3\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00035}{35}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a739bf5aca5e2b050daa5c283944e3777}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a739bf5aca5e2b050daa5c283944e3777}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!mz@{mz}}
+\index{mz@{mz}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{mz}{mz}}
+{\footnotesize\ttfamily int16\+\_\+t mz}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00020}{20}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_abf01be1ad51cecf23baaafcfea651295}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_abf01be1ad51cecf23baaafcfea651295}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!mz\_max@{mz\_max}}
+\index{mz\_max@{mz\_max}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{mz\_max}{mz\_max}}
+{\footnotesize\ttfamily volatile int mz\+\_\+max = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00044}{44}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a7859725d399228f78b01d199b047f647}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a7859725d399228f78b01d199b047f647}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!mz\_min@{mz\_min}}
+\index{mz\_min@{mz\_min}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{mz\_min}{mz\_min}}
+{\footnotesize\ttfamily volatile int mz\+\_\+min = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00048}{48}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_afbd174fb3d84502796b4cdb3bd4ead4b}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_afbd174fb3d84502796b4cdb3bd4ead4b}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!mz\_sample@{mz\_sample}}
+\index{mz\_sample@{mz\_sample}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{mz\_sample}{mz\_sample}}
+{\footnotesize\ttfamily volatile float mz\+\_\+sample\mbox{[}3\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00036}{36}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+
+\mbox{\Hypertarget{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a835eee8966f86c3b35632e601bd3046a}\label{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_a835eee8966f86c3b35632e601bd3046a}} 
+\index{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}!tiltheading@{tiltheading}}
+\index{tiltheading@{tiltheading}!IMU\_9DOF\_Demo\_Compass\_Calibrated.ino@{IMU\_9DOF\_Demo\_Compass\_Calibrated.ino}}
+\doxysubsubsection{\texorpdfstring{tiltheading}{tiltheading}}
+{\footnotesize\ttfamily float tiltheading}
+
+
+
+Definition at line \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source_l00025}{25}} of file \mbox{\hyperlink{_i_m_u__9_d_o_f___demo___compass___calibrated_8ino_source}{IMU\+\_\+9\+DOF\+\_\+\+Demo\+\_\+\+Compass\+\_\+\+Calibrated.\+ino}}.
+

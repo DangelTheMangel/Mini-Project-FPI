@@ -1,0 +1,287 @@
+\hypertarget{_m_p_u6050___d_m_p6_8ino}{}\doxysection{libraries/\+Grove\+\_\+\+IMU\+\_\+9\+DOF/examples/\+MPU6050\+\_\+\+DMP6/\+MPU6050\+\_\+\+DMP6.ino File Reference}
+\label{_m_p_u6050___d_m_p6_8ino}\index{libraries/Grove\_IMU\_9DOF/examples/MPU6050\_DMP6/MPU6050\_DMP6.ino@{libraries/Grove\_IMU\_9DOF/examples/MPU6050\_DMP6/MPU6050\_DMP6.ino}}
+{\ttfamily \#include \char`\"{}Wire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}I2\+Cdev.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}MPU6050\+\_\+6\+Axis\+\_\+\+Motion\+Apps20.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aefa52309bdaf59039162bb984350a96d}{OUTPUT\+\_\+\+TEAPOT}}
+\item 
+\#define \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab4553be4db9860d940f81d7447173b2f}{LED\+\_\+\+PIN}}~13
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a81c0bc69347ad8861af46398dcf3dd64}{dmp\+Data\+Ready}} ()
+\item 
+void \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_m_p_u6050}{MPU6050}} \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}{mpu}}
+\item 
+bool \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}{blink\+State}} = false
+\item 
+bool \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a6261092e5137b9d7bd0132e96745e0fb}{dmp\+Ready}} = false
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}{mpu\+Int\+Status}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad7aeaa77feb7caa9d19d95407da2dcc9}{dev\+Status}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}{packet\+Size}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}{fifo\+Count}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}{fifo\+Buffer}} \mbox{[}64\mbox{]}
+\item 
+\mbox{\hyperlink{class_quaternion}{Quaternion}} \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}
+\item 
+\mbox{\hyperlink{class_vector_int16}{Vector\+Int16}} \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_afe6939b4d1797dc67a683e64cf673f44}{aa}}
+\item 
+\mbox{\hyperlink{class_vector_int16}{Vector\+Int16}} \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}{aa\+Real}}
+\item 
+\mbox{\hyperlink{class_vector_int16}{Vector\+Int16}} \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}{aa\+World}}
+\item 
+\mbox{\hyperlink{class_vector_float}{Vector\+Float}} \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}{gravity}}
+\item 
+float \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}{euler}} \mbox{[}3\mbox{]}
+\item 
+float \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}{ypr}} \mbox{[}3\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}{teapot\+Packet}} \mbox{[}14\mbox{]} = \{ \textquotesingle{}\$\textquotesingle{}, 0x02, 0, 0, 0, 0, 0, 0, 0, 0, 0x00, 0x00, \textquotesingle{}\textbackslash{}r\textquotesingle{}, \textquotesingle{}\textbackslash{}n\textquotesingle{} \}
+\item 
+volatile bool \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_ad40b019259799318cb02725dd841c4de}{mpu\+Interrupt}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_ab4553be4db9860d940f81d7447173b2f}\label{_m_p_u6050___d_m_p6_8ino_ab4553be4db9860d940f81d7447173b2f}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!LED\_PIN@{LED\_PIN}}
+\index{LED\_PIN@{LED\_PIN}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{LED\_PIN}{LED\_PIN}}
+{\footnotesize\ttfamily \#define LED\+\_\+\+PIN~13}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00116}{116}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_aefa52309bdaf59039162bb984350a96d}\label{_m_p_u6050___d_m_p6_8ino_aefa52309bdaf59039162bb984350a96d}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!OUTPUT\_TEAPOT@{OUTPUT\_TEAPOT}}
+\index{OUTPUT\_TEAPOT@{OUTPUT\_TEAPOT}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{OUTPUT\_TEAPOT}{OUTPUT\_TEAPOT}}
+{\footnotesize\ttfamily \#define OUTPUT\+\_\+\+TEAPOT}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00112}{112}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_a81c0bc69347ad8861af46398dcf3dd64}\label{_m_p_u6050___d_m_p6_8ino_a81c0bc69347ad8861af46398dcf3dd64}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!dmpDataReady@{dmpDataReady}}
+\index{dmpDataReady@{dmpDataReady}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{dmpDataReady()}{dmpDataReady()}}
+{\footnotesize\ttfamily void dmp\+Data\+Ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00146}{146}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_m_p_u6050___d_m_p6_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!loop@{loop}}
+\index{loop@{loop}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00227}{227}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_m_p_u6050___d_m_p6_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!setup@{setup}}
+\index{setup@{setup}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00156}{156}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_afe6939b4d1797dc67a683e64cf673f44}\label{_m_p_u6050___d_m_p6_8ino_afe6939b4d1797dc67a683e64cf673f44}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!aa@{aa}}
+\index{aa@{aa}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{aa}{aa}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector_int16}{Vector\+Int16}} aa}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00129}{129}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}\label{_m_p_u6050___d_m_p6_8ino_aafa6bc013734c4054fc407a8c7b90616}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!aaReal@{aaReal}}
+\index{aaReal@{aaReal}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{aaReal}{aaReal}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector_int16}{Vector\+Int16}} aa\+Real}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00130}{130}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}\label{_m_p_u6050___d_m_p6_8ino_ae7857266f79bf03123c4bd27f987d4bf}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!aaWorld@{aaWorld}}
+\index{aaWorld@{aaWorld}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{aaWorld}{aaWorld}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector_int16}{Vector\+Int16}} aa\+World}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00131}{131}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}\label{_m_p_u6050___d_m_p6_8ino_a08dbc8fa8eee6ad95aa230b9a5d10d25}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!blinkState@{blinkState}}
+\index{blinkState@{blinkState}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{blinkState}{blinkState}}
+{\footnotesize\ttfamily bool blink\+State = false}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00117}{117}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_ad7aeaa77feb7caa9d19d95407da2dcc9}\label{_m_p_u6050___d_m_p6_8ino_ad7aeaa77feb7caa9d19d95407da2dcc9}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!devStatus@{devStatus}}
+\index{devStatus@{devStatus}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{devStatus}{devStatus}}
+{\footnotesize\ttfamily uint8\+\_\+t dev\+Status}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00122}{122}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_a6261092e5137b9d7bd0132e96745e0fb}\label{_m_p_u6050___d_m_p6_8ino_a6261092e5137b9d7bd0132e96745e0fb}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!dmpReady@{dmpReady}}
+\index{dmpReady@{dmpReady}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{dmpReady}{dmpReady}}
+{\footnotesize\ttfamily bool dmp\+Ready = false}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00120}{120}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}\label{_m_p_u6050___d_m_p6_8ino_abcb479cd24c7228acf13862e15682ecf}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!euler@{euler}}
+\index{euler@{euler}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{euler}{euler}}
+{\footnotesize\ttfamily float euler\mbox{[}3\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00133}{133}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}\label{_m_p_u6050___d_m_p6_8ino_ae92a27ad96167417497c93673af80716}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!fifoBuffer@{fifoBuffer}}
+\index{fifoBuffer@{fifoBuffer}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{fifoBuffer}{fifoBuffer}}
+{\footnotesize\ttfamily uint8\+\_\+t fifo\+Buffer\mbox{[}64\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00125}{125}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}\label{_m_p_u6050___d_m_p6_8ino_ad5759f25913b90e7c1d0415965f35858}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!fifoCount@{fifoCount}}
+\index{fifoCount@{fifoCount}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{fifoCount}{fifoCount}}
+{\footnotesize\ttfamily uint16\+\_\+t fifo\+Count}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00124}{124}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}\label{_m_p_u6050___d_m_p6_8ino_ab5d8b76c541e14e10f2c9d03c94c52ad}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!gravity@{gravity}}
+\index{gravity@{gravity}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{gravity}{gravity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vector_float}{Vector\+Float}} gravity}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00132}{132}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}\label{_m_p_u6050___d_m_p6_8ino_a88c170d7ee5608442cacbd97992d5ed8}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!mpu@{mpu}}
+\index{mpu@{mpu}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{mpu}{mpu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_m_p_u6050}{MPU6050}} mpu}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00057}{57}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_ad40b019259799318cb02725dd841c4de}\label{_m_p_u6050___d_m_p6_8ino_ad40b019259799318cb02725dd841c4de}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!mpuInterrupt@{mpuInterrupt}}
+\index{mpuInterrupt@{mpuInterrupt}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{mpuInterrupt}{mpuInterrupt}}
+{\footnotesize\ttfamily volatile bool mpu\+Interrupt = false}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00145}{145}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}\label{_m_p_u6050___d_m_p6_8ino_a8adc2fbab64572a8814244c36d5b40b1}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!mpuIntStatus@{mpuIntStatus}}
+\index{mpuIntStatus@{mpuIntStatus}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{mpuIntStatus}{mpuIntStatus}}
+{\footnotesize\ttfamily uint8\+\_\+t mpu\+Int\+Status}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00121}{121}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}\label{_m_p_u6050___d_m_p6_8ino_aa15ada3dbce2cf6473d4c9e26836f187}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!packetSize@{packetSize}}
+\index{packetSize@{packetSize}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{packetSize}{packetSize}}
+{\footnotesize\ttfamily uint16\+\_\+t packet\+Size}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00123}{123}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}\label{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!q@{q}}
+\index{q@{q}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{q}{q}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_quaternion}{Quaternion}} q}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00128}{128}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}\label{_m_p_u6050___d_m_p6_8ino_ac6ad5d442b2a89e40c2023b25bd55ec5}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!teapotPacket@{teapotPacket}}
+\index{teapotPacket@{teapotPacket}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{teapotPacket}{teapotPacket}}
+{\footnotesize\ttfamily uint8\+\_\+t teapot\+Packet\mbox{[}14\mbox{]} = \{ \textquotesingle{}\$\textquotesingle{}, 0x02, 0, 0, 0, 0, 0, 0, 0, 0, 0x00, 0x00, \textquotesingle{}\textbackslash{}r\textquotesingle{}, \textquotesingle{}\textbackslash{}n\textquotesingle{} \}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00137}{137}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+
+\mbox{\Hypertarget{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}\label{_m_p_u6050___d_m_p6_8ino_a05495988fd5a9c78b16475eb9d6d4c97}} 
+\index{MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}!ypr@{ypr}}
+\index{ypr@{ypr}!MPU6050\_DMP6.ino@{MPU6050\_DMP6.ino}}
+\doxysubsubsection{\texorpdfstring{ypr}{ypr}}
+{\footnotesize\ttfamily float ypr\mbox{[}3\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source_l00134}{134}} of file \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_source}{MPU6050\+\_\+\+DMP6.\+ino}}.
+

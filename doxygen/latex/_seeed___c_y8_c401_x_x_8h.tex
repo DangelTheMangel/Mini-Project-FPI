@@ -1,0 +1,218 @@
+\hypertarget{_seeed___c_y8_c401_x_x_8h}{}\doxysection{libraries/\+Grove\+\_\+-\/\+\_\+\+Capacitive\+\_\+\+Touch\+\_\+\+Slide\+\_\+\+Sensor\+\_\+\+CY8\+C40\+XX/\+Seeed\+\_\+\+CY8\+C401\+XX.h File Reference}
+\label{_seeed___c_y8_c401_x_x_8h}\index{libraries/Grove\_-\/\_Capacitive\_Touch\_Slide\_Sensor\_CY8C40XX/Seeed\_CY8C401XX.h@{libraries/Grove\_-\/\_Capacitive\_Touch\_Slide\_Sensor\_CY8C40XX/Seeed\_CY8C401XX.h}}
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_c_y8_c___i_i_c___o_p_r_t_s}{CY8\+C\+\_\+\+IIC\+\_\+\+OPRTS}}
+\item 
+class \mbox{\hyperlink{class_c_y8_c}{CY8C}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_abd84fddd1e4d48464bf25edb16562a2d}{SEEED\+\_\+\+DN\+\_\+\+DEFINES}}
+\item 
+\#define \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aaf2574d680c30089c1690b3d25a1ecbb}{SERIAL\+\_\+\+DB}}~Serial
+\item 
+\#define \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a3cce7ae0cff368d677cb5e661bf2772d}{CHECK\+\_\+\+RESULT}}(a,  b)
+\item 
+\#define \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a2322c1ac0dc10e6c6265250bd6d943d1}{DEFAULT\+\_\+\+IIC\+\_\+\+ADDR}}~0x08
+\item 
+\#define \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aaefb4881a7923cfec786c1170bfaa72c}{TOUCH\+\_\+\+BUTTON\+\_\+\+VALUE\+\_\+\+REG\+\_\+\+ADDR}}~0\+X00
+\item 
+\#define \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a7daabdca3406b642f0b66c357fa3f377}{TOUCH\+\_\+\+SLIDER\+\_\+\+VALUE\+\_\+\+REG\+\_\+\+ADDR}}~0\+X01
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aa62c75d314a0d1f37f79c4b73b2292e2}{s32}}
+\item 
+typedef long unsigned int \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_af1ffc574999df455b87f626f74714989}{u32}}
+\item 
+typedef short \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a2e9bf6983da73775aa86158c825bf777}{s16}}
+\item 
+typedef unsigned short \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}
+\item 
+typedef char \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a2ff401e087cf786c38a6812723e94473}{s8}}
+\item 
+typedef unsigned char \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698}{err\+\_\+t}} \{ \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698abf350750d0d4fabd8954c0f1e9bbae94}{NO\+\_\+\+ERROR}} =0
+, \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a05718b630d7176e8e040eca44907b99f}{ERROR\+\_\+\+PARAM}} =-\/1
+, \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a5b5fb0470836f6be725ae292cfa91da0}{ERROR\+\_\+\+COMM}} =-\/2
+, \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a4376936726b6c44d0031979d2d4eb165}{ERROR\+\_\+\+OTHERS}} =-\/128
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a3cce7ae0cff368d677cb5e661bf2772d}\label{_seeed___c_y8_c401_x_x_8h_a3cce7ae0cff368d677cb5e661bf2772d}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!CHECK\_RESULT@{CHECK\_RESULT}}
+\index{CHECK\_RESULT@{CHECK\_RESULT}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{CHECK\_RESULT}{CHECK\_RESULT}}
+{\footnotesize\ttfamily \#define CHECK\+\_\+\+RESULT(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\{\textcolor{keywordflow}{if}(a=b)\ \ \{\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aaf2574d680c30089c1690b3d25a1ecbb}{SERIAL\_DB}}.print(\_\_FILE\_\_);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aaf2574d680c30089c1690b3d25a1ecbb}{SERIAL\_DB}}.print(\_\_LINE\_\_);\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aaf2574d680c30089c1690b3d25a1ecbb}{SERIAL\_DB}}.print(\textcolor{stringliteral}{"{}\ error\ code\ ="{}});\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aaf2574d680c30089c1690b3d25a1ecbb}{SERIAL\_DB}}.println(a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a;\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\}\textcolor{keywordflow}{while}(0)}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00066}{66}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a2322c1ac0dc10e6c6265250bd6d943d1}\label{_seeed___c_y8_c401_x_x_8h_a2322c1ac0dc10e6c6265250bd6d943d1}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!DEFAULT\_IIC\_ADDR@{DEFAULT\_IIC\_ADDR}}
+\index{DEFAULT\_IIC\_ADDR@{DEFAULT\_IIC\_ADDR}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_IIC\_ADDR}{DEFAULT\_IIC\_ADDR}}
+{\footnotesize\ttfamily \#define DEFAULT\+\_\+\+IIC\+\_\+\+ADDR~0x08}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00077}{77}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_abd84fddd1e4d48464bf25edb16562a2d}\label{_seeed___c_y8_c401_x_x_8h_abd84fddd1e4d48464bf25edb16562a2d}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!SEEED\_DN\_DEFINES@{SEEED\_DN\_DEFINES}}
+\index{SEEED\_DN\_DEFINES@{SEEED\_DN\_DEFINES}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{SEEED\_DN\_DEFINES}{SEEED\_DN\_DEFINES}}
+{\footnotesize\ttfamily \#define SEEED\+\_\+\+DN\+\_\+\+DEFINES}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00041}{41}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_aaf2574d680c30089c1690b3d25a1ecbb}\label{_seeed___c_y8_c401_x_x_8h_aaf2574d680c30089c1690b3d25a1ecbb}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!SERIAL\_DB@{SERIAL\_DB}}
+\index{SERIAL\_DB@{SERIAL\_DB}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{SERIAL\_DB}{SERIAL\_DB}}
+{\footnotesize\ttfamily \#define SERIAL\+\_\+\+DB~Serial}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00046}{46}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_aaefb4881a7923cfec786c1170bfaa72c}\label{_seeed___c_y8_c401_x_x_8h_aaefb4881a7923cfec786c1170bfaa72c}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!TOUCH\_BUTTON\_VALUE\_REG\_ADDR@{TOUCH\_BUTTON\_VALUE\_REG\_ADDR}}
+\index{TOUCH\_BUTTON\_VALUE\_REG\_ADDR@{TOUCH\_BUTTON\_VALUE\_REG\_ADDR}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{TOUCH\_BUTTON\_VALUE\_REG\_ADDR}{TOUCH\_BUTTON\_VALUE\_REG\_ADDR}}
+{\footnotesize\ttfamily \#define TOUCH\+\_\+\+BUTTON\+\_\+\+VALUE\+\_\+\+REG\+\_\+\+ADDR~0\+X00}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00079}{79}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a7daabdca3406b642f0b66c357fa3f377}\label{_seeed___c_y8_c401_x_x_8h_a7daabdca3406b642f0b66c357fa3f377}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!TOUCH\_SLIDER\_VALUE\_REG\_ADDR@{TOUCH\_SLIDER\_VALUE\_REG\_ADDR}}
+\index{TOUCH\_SLIDER\_VALUE\_REG\_ADDR@{TOUCH\_SLIDER\_VALUE\_REG\_ADDR}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{TOUCH\_SLIDER\_VALUE\_REG\_ADDR}{TOUCH\_SLIDER\_VALUE\_REG\_ADDR}}
+{\footnotesize\ttfamily \#define TOUCH\+\_\+\+SLIDER\+\_\+\+VALUE\+\_\+\+REG\+\_\+\+ADDR~0\+X01}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00080}{80}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a2e9bf6983da73775aa86158c825bf777}\label{_seeed___c_y8_c401_x_x_8h_a2e9bf6983da73775aa86158c825bf777}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!s16@{s16}}
+\index{s16@{s16}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{s16}{s16}}
+{\footnotesize\ttfamily typedef short \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a2e9bf6983da73775aa86158c825bf777}{s16}}}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00052}{52}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_aa62c75d314a0d1f37f79c4b73b2292e2}\label{_seeed___c_y8_c401_x_x_8h_aa62c75d314a0d1f37f79c4b73b2292e2}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!s32@{s32}}
+\index{s32@{s32}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{s32}{s32}}
+{\footnotesize\ttfamily typedef int \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aa62c75d314a0d1f37f79c4b73b2292e2}{s32}}}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00050}{50}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a2ff401e087cf786c38a6812723e94473}\label{_seeed___c_y8_c401_x_x_8h_a2ff401e087cf786c38a6812723e94473}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!s8@{s8}}
+\index{s8@{s8}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{s8}{s8}}
+{\footnotesize\ttfamily typedef char \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a2ff401e087cf786c38a6812723e94473}{s8}}}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00054}{54}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a9e6c91d77e24643b888dbd1a1a590054}\label{_seeed___c_y8_c401_x_x_8h_a9e6c91d77e24643b888dbd1a1a590054}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!u16@{u16}}
+\index{u16@{u16}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{u16}{u16}}
+{\footnotesize\ttfamily typedef unsigned short \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00053}{53}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_af1ffc574999df455b87f626f74714989}\label{_seeed___c_y8_c401_x_x_8h_af1ffc574999df455b87f626f74714989}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!u32@{u32}}
+\index{u32@{u32}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{u32}{u32}}
+{\footnotesize\ttfamily typedef long unsigned int \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_af1ffc574999df455b87f626f74714989}{u32}}}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00051}{51}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_aed742c436da53c1080638ce6ef7d13de}\label{_seeed___c_y8_c401_x_x_8h_aed742c436da53c1080638ce6ef7d13de}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!u8@{u8}}
+\index{u8@{u8}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{u8}{u8}}
+{\footnotesize\ttfamily typedef unsigned char \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}
+
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00055}{55}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698}\label{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698}} 
+\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!err\_t@{err\_t}}
+\index{err\_t@{err\_t}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}
+\doxysubsubsection{\texorpdfstring{err\_t}{err\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698}{err\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_ERROR@{NO\_ERROR}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!NO\_ERROR@{NO\_ERROR}}}\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698abf350750d0d4fabd8954c0f1e9bbae94}\label{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698abf350750d0d4fabd8954c0f1e9bbae94}} 
+NO\+\_\+\+ERROR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_PARAM@{ERROR\_PARAM}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!ERROR\_PARAM@{ERROR\_PARAM}}}\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a05718b630d7176e8e040eca44907b99f}\label{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a05718b630d7176e8e040eca44907b99f}} 
+ERROR\+\_\+\+PARAM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_COMM@{ERROR\_COMM}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!ERROR\_COMM@{ERROR\_COMM}}}\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a5b5fb0470836f6be725ae292cfa91da0}\label{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a5b5fb0470836f6be725ae292cfa91da0}} 
+ERROR\+\_\+\+COMM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_OTHERS@{ERROR\_OTHERS}!Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}}\index{Seeed\_CY8C401XX.h@{Seeed\_CY8C401XX.h}!ERROR\_OTHERS@{ERROR\_OTHERS}}}\mbox{\Hypertarget{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a4376936726b6c44d0031979d2d4eb165}\label{_seeed___c_y8_c401_x_x_8h_a5edd7aad54ac059bf561cf2f92017698a4376936726b6c44d0031979d2d4eb165}} 
+ERROR\+\_\+\+OTHERS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source_l00057}{57}} of file \mbox{\hyperlink{_seeed___c_y8_c401_x_x_8h_source}{Seeed\+\_\+\+CY8\+C401\+XX.\+h}}.
+

@@ -1,0 +1,222 @@
+\hypertarget{helper__3dmath_8h_source}{}\doxysection{helper\+\_\+3dmath.\+h}
+\label{helper__3dmath_8h_source}\index{libraries/Grove\_IMU\_9DOF/helper\_3dmath.h@{libraries/Grove\_IMU\_9DOF/helper\_3dmath.h}}
+\mbox{\hyperlink{helper__3dmath_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00001}00001\ \textcolor{comment}{//\ I2C\ device\ class\ (I2Cdev)\ demonstration\ Arduino\ sketch\ for\ MPU6050\ class,\ 3D\ math\ helper}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00002}00002\ \textcolor{comment}{//\ 6/5/2012\ by\ Jeff\ Rowberg\ <jeff@rowberg.net>}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00003}00003\ \textcolor{comment}{//\ Updates\ should\ (hopefully)\ always\ be\ available\ at\ https://github.com/jrowberg/i2cdevlib}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00005}00005\ \textcolor{comment}{//\ Changelog:}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ 2012-\/06-\/05\ -\/\ add\ 3D\ math\ helper\ file\ to\ DMP6\ example\ sketch}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00008}00008\ \textcolor{comment}{/*\ \ ============================================}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00009}00009\ \textcolor{comment}{\ \ \ \ I2Cdev\ device\ library\ code\ is\ placed\ under\ the\ MIT\ license}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00010}00010\ \textcolor{comment}{\ \ \ \ Copyright\ (c)\ 2012\ Jeff\ Rowberg}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00011}00011\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00013}00013\ \textcolor{comment}{\ \ \ \ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00016}00016\ \textcolor{comment}{\ \ \ \ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00017}00017\ \textcolor{comment}{\ \ \ \ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00018}00018\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00019}00019\ \textcolor{comment}{\ \ \ \ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00020}00020\ \textcolor{comment}{\ \ \ \ all\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00021}00021\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00022}00022\ \textcolor{comment}{\ \ \ \ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00023}00023\ \textcolor{comment}{\ \ \ \ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00024}00024\ \textcolor{comment}{\ \ \ \ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00025}00025\ \textcolor{comment}{\ \ \ \ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00026}00026\ \textcolor{comment}{\ \ \ \ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00027}00027\ \textcolor{comment}{\ \ \ \ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00028}00028\ \textcolor{comment}{\ \ \ \ THE\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00029}00029\ \textcolor{comment}{\ \ \ \ ===============================================}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00030}00030\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ \_HELPER\_3DMATH\_H\_}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ \_HELPER\_3DMATH\_H\_}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00035}\mbox{\hyperlink{class_quaternion}{00035}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_quaternion}{Quaternion}}\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00036}00036\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00037}\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{00037}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00038}\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{00038}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00039}\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{00039}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00040}\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{00040}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00042}\mbox{\hyperlink{class_quaternion_abcc01358aada56ea5f0db4da18aaf77d}{00042}}\ \ \ \ \ \mbox{\hyperlink{class_quaternion_abcc01358aada56ea5f0db4da18aaf77d}{Quaternion}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00049}\mbox{\hyperlink{class_quaternion_ad8158a59767dc3d42ebf0324b82ba95a}{00049}}\ \ \ \ \ \mbox{\hyperlink{class_quaternion_ad8158a59767dc3d42ebf0324b82ba95a}{Quaternion}}(\textcolor{keywordtype}{float}\ nw,\ \textcolor{keywordtype}{float}\ nx,\ \textcolor{keywordtype}{float}\ ny,\ \textcolor{keywordtype}{float}\ nz)\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ =\ nw;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ =\ nx;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ =\ ny;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ =\ nz;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00056}\mbox{\hyperlink{class_quaternion_a3ff8405ed92a3ca16de656e6c83b4028}{00056}}\ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ \mbox{\hyperlink{class_quaternion_a3ff8405ed92a3ca16de656e6c83b4028}{getProduct}}(\mbox{\hyperlink{class_quaternion}{Quaternion}}\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}})\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Quaternion\ multiplication\ is\ defined\ by:}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ (Q1\ *\ Q2).w\ =\ (w1w2\ -\/\ x1x2\ -\/\ y1y2\ -\/\ z1z2)}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ (Q1\ *\ Q2).x\ =\ (w1x2\ +\ x1w2\ +\ y1z2\ -\/\ z1y2)}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ (Q1\ *\ Q2).y\ =\ (w1y2\ -\/\ x1z2\ +\ y1w2\ +\ z1x2)}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ (Q1\ *\ Q2).z\ =\ (w1z2\ +\ x1y2\ -\/\ y1x2\ +\ z1w2}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_quaternion_abcc01358aada56ea5f0db4da18aaf77d}{Quaternion}}(}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ -\/\ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ -\/\ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ -\/\ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}},\ \textcolor{comment}{//\ new\ w}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ +\ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ +\ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ -\/\ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}},\ \textcolor{comment}{//\ new\ x}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ -\/\ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ +\ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ +\ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}},\ \textcolor{comment}{//\ new\ y}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ +\ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ -\/\ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ +\ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ *\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}.\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}});\ \textcolor{comment}{//\ new\ z}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00069}\mbox{\hyperlink{class_quaternion_a079a5673188a8a7d608e8495de0dd119}{00069}}\ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ \mbox{\hyperlink{class_quaternion_a079a5673188a8a7d608e8495de0dd119}{getConjugate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_quaternion_abcc01358aada56ea5f0db4da18aaf77d}{Quaternion}}(\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}},\ -\/\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}},\ -\/\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}},\ -\/\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00073}\mbox{\hyperlink{class_quaternion_a6d0f82bd29fcbe29f784e848ec2eb8f1}{00073}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_quaternion_a6d0f82bd29fcbe29f784e848ec2eb8f1}{getMagnitude}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ *\ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ +\ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ *\ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ +\ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ *\ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ +\ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ *\ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00077}\mbox{\hyperlink{class_quaternion_a48e6bafb249c895ed25f29dc9170e11e}{00077}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_quaternion_a48e6bafb249c895ed25f29dc9170e11e}{normalize}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m\ =\ \mbox{\hyperlink{class_quaternion_a6d0f82bd29fcbe29f784e848ec2eb8f1}{getMagnitude}}();}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00085}\mbox{\hyperlink{class_quaternion_a61f5f7cb9b248aa259292c3c1960a1f0}{00085}}\ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ \mbox{\hyperlink{class_quaternion_a61f5f7cb9b248aa259292c3c1960a1f0}{getNormalized}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ r(\mbox{\hyperlink{class_quaternion_aa44a65ab99e36f6ab8771030eed8a7ad}{w}},\ \mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}},\ \mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}},\ \mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{class_quaternion_a48e6bafb249c895ed25f29dc9170e11e}{normalize}}();}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00090}00090\ \};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00092}\mbox{\hyperlink{class_vector_int16}{00092}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_vector_int16}{VectorInt16}}\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00093}00093\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00094}\mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{00094}}\ \ \ \ \ int16\_t\ \mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00095}\mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{00095}}\ \ \ \ \ int16\_t\ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00096}\mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{00096}}\ \ \ \ \ int16\_t\ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00098}\mbox{\hyperlink{class_vector_int16_a314bffb747999af26026f734c43d61a2}{00098}}\ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a314bffb747999af26026f734c43d61a2}{VectorInt16}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00104}\mbox{\hyperlink{class_vector_int16_acce45f37b3f90df1d5aff6edbf12f02b}{00104}}\ \ \ \ \ \mbox{\hyperlink{class_vector_int16_acce45f37b3f90df1d5aff6edbf12f02b}{VectorInt16}}(int16\_t\ nx,\ int16\_t\ ny,\ int16\_t\ nz)\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}}\ =\ nx;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}}\ =\ ny;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}}\ =\ nz;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00110}\mbox{\hyperlink{class_vector_int16_aeb8087ac5732450bc18ac944a16d0694}{00110}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_vector_int16_aeb8087ac5732450bc18ac944a16d0694}{getMagnitude}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(\mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}}\ *\ \mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}}\ +\ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}}\ *\ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}}\ +\ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}}\ *\ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00114}\mbox{\hyperlink{class_vector_int16_aefdadb30fbc20b564bbbf0b1a885e349}{00114}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_int16_aefdadb30fbc20b564bbbf0b1a885e349}{normalize}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m\ =\ \mbox{\hyperlink{class_vector_int16_aeb8087ac5732450bc18ac944a16d0694}{getMagnitude}}();}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00116}00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00117}00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00118}00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00121}\mbox{\hyperlink{class_vector_int16_a1f2c17ac660f1e90a095f9e7914200c5}{00121}}\ \ \ \ \ \mbox{\hyperlink{class_vector_int16}{VectorInt16}}\ \mbox{\hyperlink{class_vector_int16_a1f2c17ac660f1e90a095f9e7914200c5}{getNormalized}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16}{VectorInt16}}\ r(\mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}},\ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}},\ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{class_vector_int16_aefdadb30fbc20b564bbbf0b1a885e349}{normalize}}();}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00125}00125\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00127}\mbox{\hyperlink{class_vector_int16_ac7bf149db0a2b66d7683b87ebeb2dfc5}{00127}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_int16_ac7bf149db0a2b66d7683b87ebeb2dfc5}{rotate}}(\mbox{\hyperlink{class_quaternion}{Quaternion}}*\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}})\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ http://www.cprogramming.com/tutorial/3d/quaternions.html}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ http://www.euclideanspace.com/maths/algebra/realNormedAlgebra/quaternions/transforms/index.htm}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ http://content.gpwiki.org/index.php/OpenGL:Tutorials:Using\_Quaternions\_to\_represent\_rotation}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \string^\ or:\ http://webcache.googleusercontent.com/search?q=cache:xgJAp3bDNhQJ:content.gpwiki.org/index.php/OpenGL:Tutorials:Using\_Quaternions\_to\_represent\_rotation\&hl=en\&gl=us\&strip=1}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ P\_out\ =\ q\ *\ P\_in\ *\ conj(q)}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ P\_out\ is\ the\ output\ vector}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ q\ is\ the\ orientation\ quaternion}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ P\_in\ is\ the\ input\ vector\ (a*aReal)}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/\ conj(q)\ is\ the\ conjugate\ of\ the\ orientation\ quaternion\ (q=[w,x,y,z],\ q*=[w,-\/x,-\/y,-\/z])}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ p(0,\ \mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}},\ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}},\ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ quaternion\ multiplication:\ q\ *\ p,\ stored\ back\ in\ p}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ p\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}\ -\/>\ getProduct(p);}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ quaternion\ multiplication:\ p\ *\ conj(q),\ stored\ back\ in\ p}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ p\ =\ p.\mbox{\hyperlink{class_quaternion_a3ff8405ed92a3ca16de656e6c83b4028}{getProduct}}(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}\ -\/>\ getConjugate());}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ p\ quaternion\ is\ now\ [0,\ x',\ y',\ z']}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00147}00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}}\ =\ p.\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}}\ =\ p.\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00149}00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}}\ =\ p.\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00150}00150\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00152}\mbox{\hyperlink{class_vector_int16_a9e1d9f4553b069bf353e807f130a285b}{00152}}\ \ \ \ \ \mbox{\hyperlink{class_vector_int16}{VectorInt16}}\ \mbox{\hyperlink{class_vector_int16_a9e1d9f4553b069bf353e807f130a285b}{getRotated}}(\mbox{\hyperlink{class_quaternion}{Quaternion}}*\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}})\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_int16}{VectorInt16}}\ r(\mbox{\hyperlink{class_vector_int16_a648435b4c99e9da9c95549ac344beaec}{x}},\ \mbox{\hyperlink{class_vector_int16_a5d340e1f1bcbc064e5084ca609a6a6a3}{y}},\ \mbox{\hyperlink{class_vector_int16_af1b5c4c297bdd32751ab4519480b919f}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00154}00154\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{class_vector_int16_ac7bf149db0a2b66d7683b87ebeb2dfc5}{rotate}}(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00156}00156\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00157}00157\ \};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00159}\mbox{\hyperlink{class_vector_float}{00159}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_vector_float}{VectorFloat}}\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00160}00160\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00161}\mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{00161}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00162}\mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{00162}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00163}\mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{00163}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00165}\mbox{\hyperlink{class_vector_float_a8b54ec5c117ca7101cff478b3cfaa0cc}{00165}}\ \ \ \ \ \mbox{\hyperlink{class_vector_float_a8b54ec5c117ca7101cff478b3cfaa0cc}{VectorFloat}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00166}00166\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00168}00168\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00169}00169\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00171}\mbox{\hyperlink{class_vector_float_a3b12ed03e28bded4316275882433e5aa}{00171}}\ \ \ \ \ \mbox{\hyperlink{class_vector_float_a3b12ed03e28bded4316275882433e5aa}{VectorFloat}}(\textcolor{keywordtype}{float}\ nx,\ \textcolor{keywordtype}{float}\ ny,\ \textcolor{keywordtype}{float}\ nz)\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00172}00172\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}}\ =\ nx;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00173}00173\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}}\ =\ ny;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00174}00174\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}}\ =\ nz;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00175}00175\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00177}\mbox{\hyperlink{class_vector_float_abe0c3954d8da8829a053125df1ce63d5}{00177}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_vector_float_abe0c3954d8da8829a053125df1ce63d5}{getMagnitude}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sqrt(\mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}}\ *\ \mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}}\ +\ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}}\ *\ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}}\ +\ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}}\ *\ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00179}00179\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00181}\mbox{\hyperlink{class_vector_float_a112eaf8758a6f51b96ed1ccb71700495}{00181}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_float_a112eaf8758a6f51b96ed1ccb71700495}{normalize}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m\ =\ \mbox{\hyperlink{class_vector_float_abe0c3954d8da8829a053125df1ce63d5}{getMagnitude}}();}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00183}00183\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00184}00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00185}00185\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}}\ /=\ m;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00186}00186\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00188}\mbox{\hyperlink{class_vector_float_aacb5e7ca59563c47dd066d8b1264ec4b}{00188}}\ \ \ \ \ \mbox{\hyperlink{class_vector_float}{VectorFloat}}\ \mbox{\hyperlink{class_vector_float_aacb5e7ca59563c47dd066d8b1264ec4b}{getNormalized}}()\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00189}00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float}{VectorFloat}}\ r(\mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}},\ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}},\ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00190}00190\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{class_vector_float_a112eaf8758a6f51b96ed1ccb71700495}{normalize}}();}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00194}\mbox{\hyperlink{class_vector_float_afef0e6d631fb1eb67b6913e90730aa9e}{00194}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_vector_float_afef0e6d631fb1eb67b6913e90730aa9e}{rotate}}(\mbox{\hyperlink{class_quaternion}{Quaternion}}*\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}})\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00195}00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_quaternion}{Quaternion}}\ p(0,\ \mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}},\ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}},\ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ quaternion\ multiplication:\ q\ *\ p,\ stored\ back\ in\ p}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00198}00198\ \ \ \ \ \ \ \ \ p\ =\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}\ -\/>\ getProduct(p);}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00200}00200\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ quaternion\ multiplication:\ p\ *\ conj(q),\ stored\ back\ in\ p}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00201}00201\ \ \ \ \ \ \ \ \ p\ =\ p.\mbox{\hyperlink{class_quaternion_a3ff8405ed92a3ca16de656e6c83b4028}{getProduct}}(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}}\ -\/>\ getConjugate());}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00203}00203\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ p\ quaternion\ is\ now\ [0,\ x',\ y',\ z']}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00204}00204\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}}\ =\ p.\mbox{\hyperlink{class_quaternion_a8b80f191a3155cc0158d2b4f4d50b2cb}{x}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00205}00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}}\ =\ p.\mbox{\hyperlink{class_quaternion_a3bd3f270462944423611f44e19d2511b}{y}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00206}00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}}\ =\ p.\mbox{\hyperlink{class_quaternion_a625cb732d8ff3083e7852b86b736ab29}{z}};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00207}00207\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00209}\mbox{\hyperlink{class_vector_float_ab4093d50e98baf0d98b437a2b3ee7c2e}{00209}}\ \ \ \ \ \mbox{\hyperlink{class_vector_float}{VectorFloat}}\ \mbox{\hyperlink{class_vector_float_ab4093d50e98baf0d98b437a2b3ee7c2e}{getRotated}}(\mbox{\hyperlink{class_quaternion}{Quaternion}}*\ \mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}})\ \{}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00210}00210\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_vector_float}{VectorFloat}}\ r(\mbox{\hyperlink{class_vector_float_a2d8e5159f045ca977769d168af75320c}{x}},\ \mbox{\hyperlink{class_vector_float_a4affe2a9de97600b3d8df98586679e14}{y}},\ \mbox{\hyperlink{class_vector_float_a54b8e4234e3b48e106d090570755f107}{z}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00211}00211\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{class_vector_float_afef0e6d631fb1eb67b6913e90730aa9e}{rotate}}(\mbox{\hyperlink{_m_p_u6050___d_m_p6_8ino_a8455c7b32b9822f6c80625ae7d288d80}{q}});}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00214}00214\ \};}
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{helper__3dmath_8h_source_l00216}00216\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_HELPER\_3DMATH\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

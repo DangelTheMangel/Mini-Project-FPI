@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['seeed_20icm20600_20_2b_20ak09918_20library_20_20_3ca_20href_3d_22https_3a_2f_2ftravis_2dci_2ecom_2fseeed_2dstudio_2fseeed_5ficm20600_5fak09918_22_20_3e_3cimg_20src_3d_22https_3a_2f_2ftravis_2dci_2ecom_2fseeed_2dstudio_2fseeed_5ficm20600_5fak09918_2esvg_3fbranch_3dmaster_22_20alt_3d_22build_20status_22_2f_3e_3c_2fa_3e_0',['Seeed ICM20600 + AK09918 Library  &lt;a href=&quot;https://travis-ci.com/Seeed-Studio/Seeed_ICM20600_AK09918&quot; &gt;&lt;img src=&quot;https://travis-ci.com/Seeed-Studio/Seeed_ICM20600_AK09918.svg?branch=master&quot; alt=&quot;Build Status&quot;/&gt;&lt;/a&gt;',['../md_libraries__grove__i_m_u_9_d_o_f__i_c_m20600__a_k09918__r_e_a_d_m_e.html',1,'(Global Namespace)'],['../md_libraries__seeed__i_c_m20600__a_k09918__seeed__i_c_m20600__a_k09918_master__r_e_a_d_m_e.html',1,'(Global Namespace)']]]
+];
