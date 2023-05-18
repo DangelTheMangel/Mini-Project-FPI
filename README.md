@@ -10,7 +10,7 @@ The
 
 
 
-##Libraries needed
+## Libraries needed
 
 *Grove_-_Capacitive_Touch_Slide_Sensor_CY8C40XX
 *Grove_IMU_9DOF
