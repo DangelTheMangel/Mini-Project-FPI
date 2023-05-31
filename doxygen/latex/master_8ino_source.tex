@@ -108,7 +108,7 @@
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00140}00140\ \ \ \textcolor{comment}{//take\ the\ roll\ and\ picth\ and\ package\ and\ send\ it}}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00141}00141\ \ \ \mbox{\hyperlink{master_8ino_affa74a38c6d9465df84191ed6bd505bd}{blueToothTransfore}}();}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00142}00142\ \ \ \textcolor{comment}{//create\ a\ 1\ secon\ delay}}
-\DoxyCodeLine{\Hypertarget{master_8ino_source_l00143}00143\ \ \ delay(1000);}
+\DoxyCodeLine{\Hypertarget{master_8ino_source_l00143}00143\ \ \ delay(500);}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00144}00144\ \}}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00145}00145\ }
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00150}\mbox{\hyperlink{master_8ino_affa74a38c6d9465df84191ed6bd505bd}{00150}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{master_8ino_affa74a38c6d9465df84191ed6bd505bd}{blueToothTransfore}}()\ \{}
@@ -142,7 +142,7 @@
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00183}00183\ \ \ Serial.println(\textcolor{stringliteral}{"{}Bluetooth\ slave\ name\ st\ as\ myMaster"{}});}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00184}00184\ \ \ \mbox{\hyperlink{master_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT+ROLEM"{}});\ \ \textcolor{comment}{//\ set\ the\ bluetooth\ work\ in\ Master\ mode}}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00185}00185\ \ \ delay(400);}
-\DoxyCodeLine{\Hypertarget{master_8ino_source_l00186}00186\ \ \ \mbox{\hyperlink{master_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT+PIN0000"{}});\ \ \textcolor{comment}{//\ set\ the\ pair\ code\ to\ connect}}
+\DoxyCodeLine{\Hypertarget{master_8ino_source_l00186}00186\ \ \ \mbox{\hyperlink{master_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT+PIN0406"{}});\ \ \textcolor{comment}{//\ set\ the\ pair\ code\ to\ connect}}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00187}00187\ \ \ delay(400);}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00188}00188\ \ \ Serial.println(\textcolor{stringliteral}{"{}pin\ set\ to\ 0000"{}});}
 \DoxyCodeLine{\Hypertarget{master_8ino_source_l00189}00189\ \ \ \mbox{\hyperlink{master_8ino_aa708aaae7a8634cd4b103756845be406}{blueToothSerial}}.print(\textcolor{stringliteral}{"{}AT+AUTH1"{}});}

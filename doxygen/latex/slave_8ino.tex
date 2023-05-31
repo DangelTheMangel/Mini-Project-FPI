@@ -46,6 +46,8 @@ void \mbox{\hyperlink{slave_8ino_aa9e1a4ce96ae393ca9e06d3f4dc85637}{turn\+Contro
 \begin{DoxyCompactList}\small\item\em turns the car according to the turn variable by using the servo motor \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{slave_8ino_aeb5368008b84918357a9759148d8c998}{feed\+Forward\+Control}} ()
 \begin{DoxyCompactList}\small\item\em Controll the motors that makes the car move arrcording to the forward variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{slave_8ino_a2dcb5b4a72106e2e963c0b5f718f8aa3}{stopmotors}} ()
+\item 
 void \mbox{\hyperlink{slave_8ino_aabec44d551f4da54e5fb45808e722b04}{setup\+Blue\+Tooth\+Connection}} ()
 \begin{DoxyCompactList}\small\item\em inspried by the example code called\+:Master\+\_\+button setup code website\+: \href{https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/}{\texttt{ https\+://wiki.\+seeedstudio.\+com/\+Grove-\/\+Serial\+\_\+\+Bluetooth\+\_\+v3.\+0/}} It initilizing bluetooth connction \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
@@ -190,7 +192,7 @@ Take the duration form the distance sensor and calculate teh distances.
 
 
 
-Definition at line \mbox{\hyperlink{slave_8ino_source_l00102}{102}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
+Definition at line \mbox{\hyperlink{slave_8ino_source_l00103}{103}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
 
 Here is the caller graph for this function\+:
 % FIG 2
@@ -210,10 +212,12 @@ if foward is postive the car move forward else it move backwards
 
 if the values of foward is less the car dont move it wheels.
 
-Definition at line \mbox{\hyperlink{slave_8ino_source_l00198}{198}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
+Definition at line \mbox{\hyperlink{slave_8ino_source_l00197}{197}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
 
-Here is the caller graph for this function\+:
+Here is the call graph for this function\+:
 % FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
 \mbox{\Hypertarget{slave_8ino_afe461d27b9c48d5921c00d521181f12f}\label{slave_8ino_afe461d27b9c48d5921c00d521181f12f}} 
 \index{slave.ino@{slave.ino}!loop@{loop}}
 \index{loop@{loop}!slave.ino@{slave.ino}}
@@ -229,7 +233,7 @@ This is the function that update the bluetooth data and controlls the car.
 Definition at line \mbox{\hyperlink{slave_8ino_source_l00086}{86}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
 
 Here is the call graph for this function\+:
-% FIG 4
+% FIG 5
 \mbox{\Hypertarget{slave_8ino_ac4344fe634bb6a3983019a46da49646c}\label{slave_8ino_ac4344fe634bb6a3983019a46da49646c}} 
 \index{slave.ino@{slave.ino}!recieveBluetoothData@{recieveBluetoothData}}
 \index{recieveBluetoothData@{recieveBluetoothData}!slave.ino@{slave.ino}}
@@ -252,12 +256,12 @@ converting the strings to doubles and calculate the forward and turn values
 
 Add null character to string
 
-Definition at line \mbox{\hyperlink{slave_8ino_source_l00131}{131}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
+Definition at line \mbox{\hyperlink{slave_8ino_source_l00130}{130}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
 
 Here is the call graph for this function\+:
-% FIG 5
-Here is the caller graph for this function\+:
 % FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
 \mbox{\Hypertarget{slave_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{slave_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
 \index{slave.ino@{slave.ino}!setup@{setup}}
 \index{setup@{setup}!slave.ino@{slave.ino}}
@@ -273,7 +277,7 @@ This is the setup function that is run when the board is started and it setup th
 Definition at line \mbox{\hyperlink{slave_8ino_source_l00062}{62}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
 
 Here is the call graph for this function\+:
-% FIG 7
+% FIG 8
 \mbox{\Hypertarget{slave_8ino_aabec44d551f4da54e5fb45808e722b04}\label{slave_8ino_aabec44d551f4da54e5fb45808e722b04}} 
 \index{slave.ino@{slave.ino}!setupBlueToothConnection@{setupBlueToothConnection}}
 \index{setupBlueToothConnection@{setupBlueToothConnection}!slave.ino@{slave.ino}}
@@ -286,12 +290,24 @@ inspried by the example code called\+:Master\+\_\+button setup code website\+: \
 
 
 
-Definition at line \mbox{\hyperlink{slave_8ino_source_l00227}{227}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
+Definition at line \mbox{\hyperlink{slave_8ino_source_l00230}{230}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
 
 Here is the call graph for this function\+:
-% FIG 8
-Here is the caller graph for this function\+:
 % FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{slave_8ino_a2dcb5b4a72106e2e963c0b5f718f8aa3}\label{slave_8ino_a2dcb5b4a72106e2e963c0b5f718f8aa3}} 
+\index{slave.ino@{slave.ino}!stopmotors@{stopmotors}}
+\index{stopmotors@{stopmotors}!slave.ino@{slave.ino}}
+\doxysubsubsection{\texorpdfstring{stopmotors()}{stopmotors()}}
+{\footnotesize\ttfamily void stopmotors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{slave_8ino_source_l00218}{218}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
+
+Here is the caller graph for this function\+:
+% FIG 11
 \mbox{\Hypertarget{slave_8ino_aa9e1a4ce96ae393ca9e06d3f4dc85637}\label{slave_8ino_aa9e1a4ce96ae393ca9e06d3f4dc85637}} 
 \index{slave.ino@{slave.ino}!turnControl@{turnControl}}
 \index{turnControl@{turnControl}!slave.ino@{slave.ino}}
@@ -304,10 +320,10 @@ turns the car according to the turn variable by using the servo motor
 
 
 
-Definition at line \mbox{\hyperlink{slave_8ino_source_l00190}{190}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
+Definition at line \mbox{\hyperlink{slave_8ino_source_l00189}{189}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
 
 Here is the caller graph for this function\+:
-% FIG 10
+% FIG 12
 \mbox{\Hypertarget{slave_8ino_a061973848b469db9330ff25b2fc63e28}\label{slave_8ino_a061973848b469db9330ff25b2fc63e28}} 
 \index{slave.ino@{slave.ino}!updateDistanceDisplay@{updateDistanceDisplay}}
 \index{updateDistanceDisplay@{updateDistanceDisplay}!slave.ino@{slave.ino}}
@@ -320,10 +336,10 @@ Take the distance from the distance sensor and update the 4 leds to show the dis
 
 
 
-Definition at line \mbox{\hyperlink{slave_8ino_source_l00116}{116}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
+Definition at line \mbox{\hyperlink{slave_8ino_source_l00115}{115}} of file \mbox{\hyperlink{slave_8ino_source}{slave.\+ino}}.
 
 Here is the caller graph for this function\+:
-% FIG 11
+% FIG 13
 
 
 \doxysubsection{Variable Documentation}

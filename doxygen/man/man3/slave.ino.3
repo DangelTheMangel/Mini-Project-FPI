@@ -74,6 +74,9 @@ slave/slave.ino \- This is what control the car and recive the data from the glo
 .br
 .RI "Controll the motors that makes the car move arrcording to the forward variable\&. "
 .ti -1c
+.RI "void \fBstopmotors\fP ()"
+.br
+.ti -1c
 .RI "void \fBsetupBlueToothConnection\fP ()"
 .br
 .RI "inspried by the example code called:Master_button setup code website: https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/ It initilizing bluetooth connction "
@@ -180,7 +183,7 @@ create the the softwareSerial
 .PP
 Take the duration form the distance sensor and calculate teh distances\&. 
 .PP
-Definition at line \fB102\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB103\fP of file \fBslave\&.ino\fP\&.
 .SS "void feedForwardControl ()"
 
 .PP
@@ -190,7 +193,7 @@ if foward is postive the car move forward else it move backwards
 .PP
 if the values of foward is less the car dont move it wheels\&.
 .PP
-Definition at line \fB198\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB197\fP of file \fBslave\&.ino\fP\&.
 .SS "void loop ()"
 
 .PP
@@ -212,7 +215,7 @@ converting the strings to doubles and calculate the forward and turn values
 .PP
 Add null character to string
 .PP
-Definition at line \fB131\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB130\fP of file \fBslave\&.ino\fP\&.
 .SS "void setup ()"
 
 .PP
@@ -224,19 +227,23 @@ Definition at line \fB62\fP of file \fBslave\&.ino\fP\&.
 .PP
 inspried by the example code called:Master_button setup code website: https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/ It initilizing bluetooth connction 
 .PP
-Definition at line \fB227\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB230\fP of file \fBslave\&.ino\fP\&.
+.SS "void stopmotors ()"
+
+.PP
+Definition at line \fB218\fP of file \fBslave\&.ino\fP\&.
 .SS "void turnControl ()"
 
 .PP
 turns the car according to the turn variable by using the servo motor 
 .PP
-Definition at line \fB190\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB189\fP of file \fBslave\&.ino\fP\&.
 .SS "void updateDistanceDisplay ()"
 
 .PP
 Take the distance from the distance sensor and update the 4 leds to show the distance\&. 
 .PP
-Definition at line \fB116\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB115\fP of file \fBslave\&.ino\fP\&.
 .SH "Variable Documentation"
 .PP 
 .SS "Servo axisServo"
