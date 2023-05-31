@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['setup_0',['setup',['../master_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;master.ino'],['../slave_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;slave.ino']]],
-  ['setupbluetoothconnection_1',['setupBlueToothConnection',['../master_8ino.html#aabec44d551f4da54e5fb45808e722b04',1,'setupBlueToothConnection():&#160;master.ino'],['../slave_8ino.html#aabec44d551f4da54e5fb45808e722b04',1,'setupBlueToothConnection():&#160;slave.ino']]],
-  ['slave_2eino_2',['slave.ino',['../slave_8ino.html',1,'']]]
+  ['readme_2emd_0',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['recievebluetoothdata_1',['recieveBluetoothData',['../slave_8ino.html#ac4344fe634bb6a3983019a46da49646c',1,'slave.ino']]],
+  ['roll_2',['roll',['../master_8ino.html#a1d3228afa3a1d6773954f40c1e519eb9',1,'master.ino']]],
+  ['rxd_3',['RxD',['../master_8ino.html#a2e870fcbc18d10c580a86b0a50a4cf62',1,'RxD():&#160;master.ino'],['../slave_8ino.html#a2e870fcbc18d10c580a86b0a50a4cf62',1,'RxD():&#160;slave.ino']]]
 ];

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['recvchar_0',['recvChar',['../slave_8ino.html#af11c9d65441dfb1fececd2a0eea37b16',1,'slave.ino']]],
-  ['roll_1',['roll',['../master_8ino.html#a1d3228afa3a1d6773954f40c1e519eb9',1,'master.ino']]],
-  ['rolloffset_2',['rollOffset',['../master_8ino.html#a2a02a42962a498003a5e3a93351f4471',1,'master.ino']]],
-  ['rool_5factive_3',['rool_active',['../master_8ino.html#a535e94223d9a26bc9a4b4df5d19ac24d',1,'master.ino']]]
+  ['trig_0',['trig',['../slave_8ino.html#a9d5f502a1d9916cc26f13ab444ab4cb6',1,'slave.ino']]],
+  ['turn_1',['turn',['../slave_8ino.html#a5c5b4121f85e7805d4801519d76870de',1,'slave.ino']]]
 ];

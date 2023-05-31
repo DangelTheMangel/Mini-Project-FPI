@@ -5,34 +5,55 @@
  * - Grove - Serial Bluetooth v3.0 examples button (website: https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/)
  * - Servo Motor Basics with Arduino: https://docs.arduino.cc/learn/electronics/servo-motors
  * - L9110S H-bridge Dual DC Stepper Motor Driver Controller: https://arduinotech.dk/shop/l9110s-h-bridge-dual-dc-stepper-motor-driver-controller/
- */ 
+ */
 
 #include <SoftwareSerial.h>  //Software Serial Port
-#include <Servo.h> //For controlling the Servo
+#include <Servo.h>           //For controlling the Servo
 
 #define RxD 2 /**< pin for the bluetooth component */
 #define TxD 3 /**< pin for the bluetooth component */
 
 
-// Motor A pins 
-#define A1 5/**< pin for Motor A */
-#define A2 6/**< pin for Motor A */
+// Motor A pins
+#define A1 3 /**< pin for Motor A */
+#define A2 5 /**< pin for Motor A */
 // Motor B pins
-#define B1 10/**< pin for Motor B */
-#define B2 11/**< pin for Motor B */
+#define B1 6 /**< pin for Motor B */
+#define B2 9 /**< pin for Motor B */
 //pin for axis/Servo
-#define A3 9 /**< pin for controlling the servo*/
+#define A3 11 /**< pin for controlling the servo*/
 
 //for controlling the car
 double forward = 0; /**< The value that controll the forward momententiom. It controll the if it should move forward, backwards or stand still*/
-double turn = 0; /**< In degrees how much the front of the car have turned*/
-double min = 2;/**< if foward is less then min the car dont move at all*/
+double turn = 0;    /**< In degrees how much the front of the car have turned*/
+double min = 2;     /**< if foward is less then min the car dont move at all*/
 
 Servo axisServo; /**< Instance of the Servo that controll the front of the car*/
 
-SoftwareSerial blueToothSerial(RxD, TxD);/**< create the the softwareSerial */
+SoftwareSerial blueToothSerial(RxD, TxD); /**< create the the softwareSerial */
 
-const unsigned int MAX_MESSAGE_LENGTH = 12;/**< The max length of chacters of the bluetooth message */
+const unsigned int MAX_MESSAGE_LENGTH = 12; /**< The max length of chacters of the bluetooth message */
+
+//The distancse sensor
+const int trig = 13;/**< pin for the trig from the distance sensor*/
+
+const int echo = 12;/**< pin for the echo from the distance sensor*/
+
+const int LED1 = 10;/**< pin for led 1 */
+
+const int LED2 = 8;/**< pin for led 2*/
+
+const int LED3 = 7;/**< pin for led 3*/
+
+const int LED4 = 4;/**< pin for led 4*/
+
+int duration = 0;/**< The duration with the distance sensor*/
+
+int distance = 0;/**< The distance from the distance sensor*/
+
+int distances;/**< */
+
+
 
 /**
  * @brief This is the setup function that is run when the board is started and it setup the outputs,input and create a connection to the master bord
@@ -47,6 +68,15 @@ void setup() {
   axisServo.attach(A3);
   //get a bluetooth connect to the masterbord
   setupBlueToothConnection();
+
+  //distance sensor
+  memset(distances, 0, 3);
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
 }
 
 /**
@@ -61,6 +91,34 @@ void loop() {
     feedForwardControl();
     // controll the turning servo
     turnControl();
+  }
+}
+/**
+ * @brief Take the duration form the distance sensor and calculate teh distances
+ * 
+ */
+void clacDistiance() {
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(1000);
+  digitalWrite(trig, LOW);
+  duration = pulseIn(echo, HIGH);
+  distance = ((duration / 2) / 28.5);
+  Serial.print("Distance: ");
+  Serial.println(distance);
+}
+
+/**
+ * @brief Take the distance from the distance sensor and update the 4 leds to show the distance
+ * 
+ */
+void updateDistanceDisplay() {
+  for (int i = 0; i < 4; i++) {
+    if (distance <= (7 + 7 * i)) {
+      if(distance >= 0)
+      digitalWrite((LED1-i), HIGH);
+    } else {
+      digitalWrite((LED1-i), LOW);
+    }
   }
 }
 
@@ -113,10 +171,10 @@ void recieveBluetoothData() {
     double roll = atof(r_v.c_str());
     double picht = atof(p_v.c_str());
     forward = 25.5 * picht;
-    turn = 180-(roll+10)*9;
+    turn = 180 - (roll + 10) * 9;
 
     //print the foward and turn values and the roll and picht values
-    Serial.println("turn: " + String(roll) +" , " + String(forward)+ " forward: " + String(picht)+" , " + String(turn));
+    Serial.println("turn: " + String(roll) + " , " + String(forward) + " forward: " + String(picht) + " , " + String(turn));
     ///Add null character to string
     message[message_pos] = '\0';
     //rest the index of the postion of the message
@@ -127,7 +185,7 @@ void recieveBluetoothData() {
  * @brief turns the car according to the turn variable by using the servo motor
  * 
  */
-void  turnControl(){
+void turnControl() {
   axisServo.write(turn);
 }
 
@@ -150,7 +208,7 @@ void feedForwardControl() {
       analogWrite(B1, 0);
       analogWrite(B2, forward);
     }
-  /// if the values of foward is less the car dont move it wheels.  
+    /// if the values of foward is less the car dont move it wheels.
   } else {
     digitalWrite(A1, LOW);
     digitalWrite(A2, LOW);
@@ -178,12 +236,12 @@ void setupBlueToothConnection() {
   blueToothSerial.print("AT+PIN0000");  // set the pair code to connect
   delay(400);
 
-  Serial.println("pin set to 0000"); //
+  Serial.println("pin set to 0000");  //
 
   blueToothSerial.print("AT+AUTH1");  //
   delay(400);
 
-  blueToothSerial.flush(); //Flushes the blueToothSerial
+  blueToothSerial.flush();  //Flushes the blueToothSerial
 
-  Serial.println("Ready to go"); //write it is ready to go 
+  Serial.println("Ready to go");  //write it is ready to go
 }

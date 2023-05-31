@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['turn_0',['turn',['../slave_8ino.html#a5c5b4121f85e7805d4801519d76870de',1,'slave.ino']]],
-  ['turncontrol_1',['turnControl',['../slave_8ino.html#aa9e1a4ce96ae393ca9e06d3f4dc85637',1,'slave.ino']]],
-  ['txd_2',['TxD',['../master_8ino.html#a7a433743b28486a952e45f709e27fe0f',1,'TxD():&#160;master.ino'],['../slave_8ino.html#a7a433743b28486a952e45f709e27fe0f',1,'TxD():&#160;slave.ino']]]
+  ['setup_0',['setup',['../master_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;master.ino'],['../slave_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;slave.ino']]],
+  ['setupbluetoothconnection_1',['setupBlueToothConnection',['../master_8ino.html#aabec44d551f4da54e5fb45808e722b04',1,'setupBlueToothConnection():&#160;master.ino'],['../slave_8ino.html#aabec44d551f4da54e5fb45808e722b04',1,'setupBlueToothConnection():&#160;slave.ino']]],
+  ['slave_2eino_2',['slave.ino',['../slave_8ino.html',1,'']]]
 ];

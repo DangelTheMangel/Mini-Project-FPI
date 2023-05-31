@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['max_5fmessage_5flength_0',['MAX_MESSAGE_LENGTH',['../slave_8ino.html#a3bf8bfd112ea1deb8de4c400c137703b',1,'slave.ino']]],
-  ['min_1',['min',['../slave_8ino.html#aad36546e8175d2922bee165fe028fedc',1,'slave.ino']]]
+  ['gyro_5fx_0',['gyro_x',['../master_8ino.html#a8dde3342979ed9986c16e356851a9c2a',1,'master.ino']]],
+  ['gyro_5fy_1',['gyro_y',['../master_8ino.html#a7c42f0111bf74679a9c36bca042bf011',1,'master.ino']]],
+  ['gyro_5fz_2',['gyro_z',['../master_8ino.html#aa7f04de51e63caab363ce9a56cd752bf',1,'master.ino']]]
 ];

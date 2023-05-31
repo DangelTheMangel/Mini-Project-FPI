@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['turn_0',['turn',['../slave_8ino.html#a5c5b4121f85e7805d4801519d76870de',1,'slave.ino']]]
+  ['pitch_0',['pitch',['../master_8ino.html#a34c057a0378030db67bd6a129f37d938',1,'master.ino']]]
 ];

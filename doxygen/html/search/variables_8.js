@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['turn_0',['turn',['../slave_8ino.html#a5c5b4121f85e7805d4801519d76870de',1,'slave.ino']]]
+  ['roll_0',['roll',['../master_8ino.html#a1d3228afa3a1d6773954f40c1e519eb9',1,'master.ino']]]
 ];

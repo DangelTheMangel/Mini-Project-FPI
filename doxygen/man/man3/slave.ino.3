@@ -1,4 +1,4 @@
-.TH "slave/slave.ino" 3 "Thu May 18 2023" "Mini-Project-FPI" \" -*- nroff -*-
+.TH "slave/slave.ino" 3 "Wed May 31 2023" "Mini-Project-FPI" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -24,19 +24,19 @@ slave/slave.ino \- This is what control the car and recive the data from the glo
 .RI "#define \fBTxD\fP   3"
 .br
 .ti -1c
-.RI "#define \fBA1\fP   5"
+.RI "#define \fBA1\fP   3"
 .br
 .ti -1c
-.RI "#define \fBA2\fP   6"
+.RI "#define \fBA2\fP   5"
 .br
 .ti -1c
-.RI "#define \fBB1\fP   10"
+.RI "#define \fBB1\fP   6"
 .br
 .ti -1c
-.RI "#define \fBB2\fP   11"
+.RI "#define \fBB2\fP   9"
 .br
 .ti -1c
-.RI "#define \fBA3\fP   9"
+.RI "#define \fBA3\fP   11"
 .br
 .in -1c
 .SS "Functions"
@@ -53,6 +53,14 @@ slave/slave.ino \- This is what control the car and recive the data from the glo
 .RI "void \fBloop\fP ()"
 .br
 .RI "This is the function that update the bluetooth data and controlls the car\&. "
+.ti -1c
+.RI "void \fBclacDistiance\fP ()"
+.br
+.RI "Take the duration form the distance sensor and calculate teh distances\&. "
+.ti -1c
+.RI "void \fBupdateDistanceDisplay\fP ()"
+.br
+.RI "Take the distance from the distance sensor and update the 4 leds to show the distance\&. "
 .ti -1c
 .RI "void \fBrecieveBluetoothData\fP ()"
 .br
@@ -88,6 +96,33 @@ slave/slave.ino \- This is what control the car and recive the data from the glo
 .ti -1c
 .RI "const unsigned int \fBMAX_MESSAGE_LENGTH\fP = 12"
 .br
+.ti -1c
+.RI "const int \fBtrig\fP = 13"
+.br
+.ti -1c
+.RI "const int \fBecho\fP = 12"
+.br
+.ti -1c
+.RI "const int \fBLED1\fP = 10"
+.br
+.ti -1c
+.RI "const int \fBLED2\fP = 8"
+.br
+.ti -1c
+.RI "const int \fBLED3\fP = 7"
+.br
+.ti -1c
+.RI "const int \fBLED4\fP = 4"
+.br
+.ti -1c
+.RI "int \fBduration\fP = 0"
+.br
+.ti -1c
+.RI "int \fBdistance\fP = 0"
+.br
+.ti -1c
+.RI "int \fBdistances\fP"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -108,23 +143,23 @@ L9110S H-bridge Dual DC Stepper Motor Driver Controller: https://arduinotech.dk/
 Definition in file \fBslave\&.ino\fP\&.
 .SH "Macro Definition Documentation"
 .PP 
-.SS "#define A1   5"
+.SS "#define A1   3"
 pin for Motor A 
 .PP
 Definition at line \fB18\fP of file \fBslave\&.ino\fP\&.
-.SS "#define A2   6"
+.SS "#define A2   5"
 pin for Motor A 
 .PP
 Definition at line \fB19\fP of file \fBslave\&.ino\fP\&.
-.SS "#define A3   9"
+.SS "#define A3   11"
 pin for controlling the servo 
 .PP
 Definition at line \fB24\fP of file \fBslave\&.ino\fP\&.
-.SS "#define B1   10"
+.SS "#define B1   6"
 pin for Motor B 
 .PP
 Definition at line \fB21\fP of file \fBslave\&.ino\fP\&.
-.SS "#define B2   11"
+.SS "#define B2   9"
 pin for Motor B 
 .PP
 Definition at line \fB22\fP of file \fBslave\&.ino\fP\&.
@@ -140,6 +175,12 @@ Definition at line \fB14\fP of file \fBslave\&.ino\fP\&.
 .PP 
 .SS "SoftwareSerial blueToothSerial (\fBRxD\fP, \fBTxD\fP)"
 create the the softwareSerial 
+.SS "void clacDistiance ()"
+
+.PP
+Take the duration form the distance sensor and calculate teh distances\&. 
+.PP
+Definition at line \fB100\fP of file \fBslave\&.ino\fP\&.
 .SS "void feedForwardControl ()"
 
 .PP
@@ -147,17 +188,15 @@ Controll the motors that makes the car move arrcording to the forward variable\&
 .PP
 if foward is postive the car move forward else it move backwards
 .PP
-if the values of foward is less the car dont move it wheels\&. 
-.br
-
+if the values of foward is less the car dont move it wheels\&.
 .PP
-Definition at line \fB138\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB196\fP of file \fBslave\&.ino\fP\&.
 .SS "void loop ()"
 
 .PP
 This is the function that update the bluetooth data and controlls the car\&. 
 .PP
-Definition at line \fB56\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB86\fP of file \fBslave\&.ino\fP\&.
 .SS "void recieveBluetoothData ()"
 
 .PP
@@ -173,35 +212,73 @@ converting the strings to doubles and calculate the forward and turn values
 .PP
 Add null character to string
 .PP
-Definition at line \fB71\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB129\fP of file \fBslave\&.ino\fP\&.
 .SS "void setup ()"
 
 .PP
 This is the setup function that is run when the board is started and it setup the outputs,input and create a connection to the master bord\&. 
 .PP
-Definition at line \fB41\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB62\fP of file \fBslave\&.ino\fP\&.
 .SS "void setupBlueToothConnection ()"
 
 .PP
 inspried by the example code called:Master_button setup code website: https://wiki.seeedstudio.com/Grove-Serial_Bluetooth_v3.0/ It initilizing bluetooth connction 
 .PP
-Definition at line \fB167\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB225\fP of file \fBslave\&.ino\fP\&.
 .SS "void turnControl ()"
 
 .PP
 turns the car according to the turn variable by using the servo motor 
 .PP
-Definition at line \fB130\fP of file \fBslave\&.ino\fP\&.
+Definition at line \fB188\fP of file \fBslave\&.ino\fP\&.
+.SS "void updateDistanceDisplay ()"
+
+.PP
+Take the distance from the distance sensor and update the 4 leds to show the distance\&. 
+.PP
+Definition at line \fB114\fP of file \fBslave\&.ino\fP\&.
 .SH "Variable Documentation"
 .PP 
 .SS "Servo axisServo"
 Instance of the Servo that controll the front of the car 
 .PP
 Definition at line \fB31\fP of file \fBslave\&.ino\fP\&.
+.SS "int distance = 0"
+The distance from the distance sensor 
+.PP
+Definition at line \fB52\fP of file \fBslave\&.ino\fP\&.
+.SS "int distances"
+
+.PP
+Definition at line \fB54\fP of file \fBslave\&.ino\fP\&.
+.SS "int duration = 0"
+The duration with the distance sensor 
+.PP
+Definition at line \fB50\fP of file \fBslave\&.ino\fP\&.
+.SS "const int echo = 12"
+pin for the echo from the distance sensor 
+.PP
+Definition at line \fB40\fP of file \fBslave\&.ino\fP\&.
 .SS "double forward = 0"
 The value that controll the forward momententiom\&. It controll the if it should move forward, backwards or stand still 
 .PP
 Definition at line \fB27\fP of file \fBslave\&.ino\fP\&.
+.SS "const int LED1 = 10"
+pin for led 1 
+.PP
+Definition at line \fB42\fP of file \fBslave\&.ino\fP\&.
+.SS "const int LED2 = 8"
+pin for led 2 
+.PP
+Definition at line \fB44\fP of file \fBslave\&.ino\fP\&.
+.SS "const int LED3 = 7"
+pin for led 3 
+.PP
+Definition at line \fB46\fP of file \fBslave\&.ino\fP\&.
+.SS "const int LED4 = 4"
+pin for led 4 
+.PP
+Definition at line \fB48\fP of file \fBslave\&.ino\fP\&.
 .SS "const unsigned int MAX_MESSAGE_LENGTH = 12"
 The max length of chacters of the bluetooth message 
 .PP
@@ -210,6 +287,10 @@ Definition at line \fB35\fP of file \fBslave\&.ino\fP\&.
 if foward is less then min the car dont move at all 
 .PP
 Definition at line \fB29\fP of file \fBslave\&.ino\fP\&.
+.SS "const int trig = 13"
+pin for the trig from the distance sensor 
+.PP
+Definition at line \fB38\fP of file \fBslave\&.ino\fP\&.
 .SS "double turn = 0"
 In degrees how much the front of the car have turned 
 .PP
