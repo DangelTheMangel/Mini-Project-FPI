@@ -92,6 +92,8 @@ void loop() {
     // controll the turning servo
     turnControl();
   }
+  clacDistiance();
+  updateDistanceDisplay();
 }
 /**
  * @brief Take the duration form the distance sensor and calculate teh distances
