@@ -140,7 +140,7 @@ void loop()
   //take the roll and picth and package and send it
   blueToothTransfore();
   //create a 1 secon delay
-  delay(1000);
+  delay(500);
 }
 
 /**
@@ -183,7 +183,7 @@ void setupBlueToothConnection()
   Serial.println("Bluetooth slave name st as myMaster");
   blueToothSerial.print("AT+ROLEM");  // set the bluetooth work in Master mode
   delay(400);
-  blueToothSerial.print("AT+PIN0000");  // set the pair code to connect
+  blueToothSerial.print("AT+PIN0406");  // set the pair code to connect
   delay(400);
   Serial.println("pin set to 0000");
   blueToothSerial.print("AT+AUTH1");

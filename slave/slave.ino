@@ -35,23 +35,23 @@ SoftwareSerial blueToothSerial(RxD, TxD); /**< create the the softwareSerial */
 const unsigned int MAX_MESSAGE_LENGTH = 12; /**< The max length of chacters of the bluetooth message */
 
 //The distancse sensor
-const int trig = 13;/**< pin for the trig from the distance sensor*/
+const int trig = 13; /**< pin for the trig from the distance sensor*/
 
-const int echo = 12;/**< pin for the echo from the distance sensor*/
+const int echo = 12; /**< pin for the echo from the distance sensor*/
 
-const int LED1 = 10;/**< pin for led 1 */
+const int LED1 = 10; /**< pin for led 1 */
 
-const int LED2 = 8;/**< pin for led 2*/
+const int LED2 = 8; /**< pin for led 2*/
 
-const int LED3 = 7;/**< pin for led 3*/
+const int LED3 = 7; /**< pin for led 3*/
 
-const int LED4 = 4;/**< pin for led 4*/
+const int LED4 = 4; /**< pin for led 4*/
 
-int duration = 0;/**< The duration with the distance sensor*/
+int duration = 0; /**< The duration with the distance sensor*/
 
-int distance = 0;/**< The distance from the distance sensor*/
+int distance = 0; /**< The distance from the distance sensor*/
 
-int distances;/**< */
+int distances; /**< */
 
 
 
@@ -84,6 +84,7 @@ void setup() {
  * 
  */
 void loop() {
+
   if (blueToothSerial.available()) {  //check if there's any data sent from the remote bluetooth shield
     // recieve the bluetooth data
     recieveBluetoothData();
@@ -105,8 +106,6 @@ void clacDistiance() {
   digitalWrite(trig, LOW);
   duration = pulseIn(echo, HIGH);
   distance = ((duration / 2) / 28.5);
-  Serial.print("Distance: ");
-  Serial.println(distance);
 }
 
 /**
@@ -116,10 +115,10 @@ void clacDistiance() {
 void updateDistanceDisplay() {
   for (int i = 0; i < 4; i++) {
     if (distance <= (7 + 7 * i)) {
-      if(distance >= 0)
-      digitalWrite((LED1-i), HIGH);
+      if (distance >= 0)
+        digitalWrite((LED1 - i), HIGH);
     } else {
-      digitalWrite((LED1-i), LOW);
+      digitalWrite((LED1 - i), LOW);
     }
   }
 }
@@ -173,7 +172,7 @@ void recieveBluetoothData() {
     double roll = atof(r_v.c_str());
     double picht = atof(p_v.c_str());
     forward = 25.5 * picht;
-    turn = 180 - (roll + 10) * 9;
+    turn = 120 - (roll + 10) * 6;
 
     //print the foward and turn values and the roll and picht values
     Serial.println("turn: " + String(roll) + " , " + String(forward) + " forward: " + String(picht) + " , " + String(turn));
@@ -212,11 +211,15 @@ void feedForwardControl() {
     }
     /// if the values of foward is less the car dont move it wheels.
   } else {
-    digitalWrite(A1, LOW);
-    digitalWrite(A2, LOW);
-    digitalWrite(B1, LOW);
-    digitalWrite(B2, LOW);
+    stopmotors();
   }
+}
+
+void stopmotors() {
+  digitalWrite(A1, LOW);
+  digitalWrite(A2, LOW);
+  digitalWrite(B1, LOW);
+  digitalWrite(B2, LOW);
 }
 
 /**
@@ -235,7 +238,7 @@ void setupBlueToothConnection() {
   blueToothSerial.print("AT+NAMESeeedBTSlave");  // set the bluetooth name as "SeeedBTSlave" ,the length of bluetooth name must less than 12 characters.
   delay(400);
 
-  blueToothSerial.print("AT+PIN0000");  // set the pair code to connect
+  blueToothSerial.print("AT+PIN0406");  // set the pair code to connect
   delay(400);
 
   Serial.println("pin set to 0000");  //
