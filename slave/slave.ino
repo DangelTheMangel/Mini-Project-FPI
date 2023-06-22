@@ -209,13 +209,13 @@ void feedForwardControl() {
     ///if foward is postive the car move forward else it move backwards
     if (forward > 0) {
       analogWrite(A1, forward);
-      analogWrite(A2, 0);
-      analogWrite(B1, forward);
+      analogWrite(B1, 0);
+      analogWrite(A2, forward);
       analogWrite(B2, 0);
     } else {
       analogWrite(A1, 0);
-      analogWrite(A2, forward);
-      analogWrite(B1, 0);
+      analogWrite(B1, forward);
+      analogWrite(A2, 0);
       analogWrite(B2, forward);
     }
     /// if the values of foward is less the car dont move it wheels.
