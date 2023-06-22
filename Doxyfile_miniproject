@@ -61,7 +61,7 @@ PROJECT_BRIEF          = "Files for controlling a remote car with motion gesture
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = C:/Users/Christian/OneDrive/Billeder/iconer/Albert.png
+PROJECT_LOGO           = C:/Users/Christian/Downloads/logo-removebg-preview.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is

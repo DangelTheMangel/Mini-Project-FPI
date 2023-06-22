@@ -47,6 +47,8 @@ const int LED3 = 7; /**< pin for led 3*/
 
 const int LED4 = 4; /**< pin for led 4*/
 
+int ledList [4]; /**<A list of all the pins for the leds 4*/
+
 int duration = 0; /**< The duration with the distance sensor*/
 
 int distance = 0; /**< The distance from the distance sensor*/
@@ -77,6 +79,13 @@ void setup() {
   pinMode(LED2, OUTPUT);
   pinMode(LED3, OUTPUT);
   pinMode(LED4, OUTPUT);
+
+  //create the array with the leds
+  ledList[0] = LED1;
+  ledList[1] = LED2;
+  ledList[2] = LED3;
+  ledList[3] = LED4;
+
 }
 
 /**
@@ -116,9 +125,9 @@ void updateDistanceDisplay() {
   for (int i = 0; i < 4; i++) {
     if (distance <= (7 + 7 * i)) {
       if (distance >= 0)
-        digitalWrite((LED1 - i), HIGH);
+        digitalWrite((ledList[i]), HIGH);
     } else {
-      digitalWrite((LED1 - i), LOW);
+      digitalWrite((ledList[i]), LOW);
     }
   }
 }
