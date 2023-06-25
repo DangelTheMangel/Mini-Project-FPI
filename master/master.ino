@@ -14,7 +14,7 @@
 #define RxD 2/**< pin for the bluetooth component */
 #define TxD 3/**< pin for the bluetooth component */
 
-//code for the 9DOF sensor
+//code for the 9DOF sensor with inspriation from this https://wiki.seeedstudio.com/Grove-IMU_9DOF_v2.0/
 SoftwareSerial blueToothSerial(RxD, TxD);/**< create the the softwareSerial */
 AK09918_err_type_t err;/**< The 9DOF error type that get used when starting the sensor to check that it is running */
 AK09918 ak09918;/**< A instance of the 9DOF sensor that checks if it is up and running*/
@@ -88,7 +88,7 @@ void setup()
 
 
 /**
- * @brief This read the Accelaeration from the 9DOF.
+ * @brief This read the Accelaeration from the 9DOF. with inspriation from this https://wiki.seeedstudio.com/Grove-IMU_9DOF_v2.0/
  * 
  */
 void updateAcc() {
@@ -98,7 +98,7 @@ void updateAcc() {
 }
 
 /**
- * @brief This read the Gyroscope from the 9DOF.
+ * @brief This read the Gyroscope from the 9DOF. with inspriation from this https://wiki.seeedstudio.com/Grove-IMU_9DOF_v2.0/
  * 
  */
 void updateGyro() {
@@ -108,14 +108,14 @@ void updateGyro() {
 }
 
 /**
- * @brief This function claculate the roll of the glove from the accelaition.
+ * @brief This function claculate the roll of the glove from the accelaition. with inspriation from this https://wiki.seeedstudio.com/Grove-IMU_9DOF_v2.0/
  * 
  */
 void calcRoll() {
   roll = atan2((float)acc_y, (float)acc_z);
 }
 /**
- * @brief This function calculate the picht of the glove from the accelaration
+ * @brief This function calculate the picht of the glove from the accelaration with inspriation from this https://wiki.seeedstudio.com/Grove-IMU_9DOF_v2.0/
  * 
  */
 void calcPitch() {
