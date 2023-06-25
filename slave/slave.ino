@@ -106,7 +106,7 @@ void loop() {
   updateDistanceDisplay();
 }
 /**
- * @brief Take the duration form the distance sensor and calculate teh distances
+ * @brief Take the duration form the distance sensor and calculate teh distances. insprede from: https://www.youtube.com/watch?v=xZ8kKT-DLxk&t=3s
  * 
  */
 void clacDistiance() {
