@@ -180,7 +180,7 @@ void recieveBluetoothData() {
     ///converting the strings to doubles and calculate the forward and turn values
     double roll = atof(r_v.c_str());
     double picht = atof(p_v.c_str());
-    forward = 25.5 * picht;
+    forward = 10 * picht;
     turn = 120 - (roll + 10) * 6;
 
     //print the foward and turn values and the roll and picht values
@@ -208,15 +208,15 @@ void feedForwardControl() {
   if (abs(forward) > min) {
     ///if foward is postive the car move forward else it move backwards
     if (forward > 0) {
-      analogWrite(A1, forward);
-      analogWrite(B1, 0);
-      analogWrite(A2, forward);
+      analogWrite(A1, abs(forward));
+      analogWrite(B1, abs(forward));
+      analogWrite(A2, 0);
       analogWrite(B2, 0);
     } else {
       analogWrite(A1, 0);
-      analogWrite(B1, forward);
-      analogWrite(A2, 0);
-      analogWrite(B2, forward);
+      analogWrite(B1, 0);
+      analogWrite(A2, abs(forward));
+      analogWrite(B2, abs(forward));
     }
     /// if the values of foward is less the car dont move it wheels.
   } else {
